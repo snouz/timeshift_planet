@@ -1326,3 +1326,15 @@ data:extend({
 
 table.insert(water_tile_type_names, "panglia-wetland-light-dead-skin")
 table.insert(water_tile_type_names, "panglia-wetland-dead-skin")
+
+
+
+if data.raw["item"]["landfill"] and data.raw["item"]["landfill"].place_as_tile and data.raw["item"]["landfill"].place_as_tile.tile_condition then
+  table.insert(data.raw["item"]["landfill"].place_as_tile.tile_condition, "panglia-wetland-light-dead-skin")
+  table.insert(data.raw["item"]["landfill"].place_as_tile.tile_condition, "panglia-wetland-dead-skin")
+end
+
+if data.raw["item"]["foundation"] and data.raw["item"]["foundation"].place_as_tile and data.raw["item"]["foundation"].place_as_tile.tile_condition then
+  table.insert(data.raw["item"]["foundation"].place_as_tile.tile_condition, "panglia-wetland-light-dead-skin")
+  table.insert(data.raw["item"]["foundation"].place_as_tile.tile_condition, "panglia-wetland-dead-skin")
+end

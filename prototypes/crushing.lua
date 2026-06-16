@@ -39,7 +39,7 @@ data:extend({
     pick_sound = item_sounds.mechanical_inventory_pickup,
     drop_sound = item_sounds.mechanical_inventory_move,
     stack_size = 20,
-    weight = 100,
+    weight = 100 * kg
   },
 
 

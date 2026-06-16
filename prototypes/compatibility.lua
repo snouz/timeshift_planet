@@ -195,3 +195,25 @@ if data.raw["technology"]["thinking-brain-technology"] then
     time = 900*500,
   }
 end
+
+if mods["canal-excavator"] then
+  data:extend({{
+    type = "mod-data",
+    name = "canex-panglia-config",
+    data_type = "canex-surface-config",
+    data = {
+      surfaceName = "panglia",
+      localisation = {"space-location-name.panglia"},
+      oreStartingAmount = 10,
+      mining_time = 1,
+      tint = {r = 113, g = 144, b = 125},
+      mineResult = {
+        {type="item", name = "stone", probability = 0.6, amount = 1},
+        {type="item", name = "panglia_panglite", probability = 0.2, amount = 1},
+        {type="item", name = "iron-ore", probability = 0.1, amount = 1},
+        {type="item", name = "copper-ore", probability = 0.1, amount = 1},
+        {type="item", name = "uranium-238", probability = 0.0005, amount = 1},
+      }
+    }
+  }})
+end

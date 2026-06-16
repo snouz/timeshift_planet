@@ -147,6 +147,10 @@ data:extend({
         type = "unlock-recipe",
         recipe = "panglia_universe_precursor_volcanic"
       },
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_universe_precursor_volcanic_result"
+      },
     },
     prerequisites = {"panglia_igneous_rock_to_lava", "matter_printer-technology", "panglia_branbalite_slurry_to_lubricant"},
     unit =

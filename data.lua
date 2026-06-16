@@ -25,3 +25,4 @@ require "prototypes.achievements"
 require "prototypes.compatibility"
 require "prototypes.menu-simulations"
 
+table.insert(ModuleCategoryDefaults.default_categories, 'panglia_module')

@@ -4,7 +4,7 @@
   "description": "Panglia is a lush alien world with powerful roots, strange materials and antilinear zones. Unique buildings, items, rewards, techs, music, challenges... it's a followup to Moshine",
   "author": "snouz",
   "homepage": "https://github.com/snouz/timeshift_planet",
-  "version": "0.5.1",
+  "version": "0.5.5",
   "factorio_version": "2.0",
   "dependencies": [
     "base",
@@ -16,7 +16,9 @@
     "Cloning-vat-building >= 1.0.4",
     "snouz_better_asteroid_collector >= 1.0.2",
     "snouz_long_electric_gun_turret >= 1.0.5",
-    "snouz_space_platform_hull >= 1.0.1"
+    "snouz_space_platform_hull >= 1.0.1",
+    "module-category-defaults",
+    "? canal-excavator >= 1.12"
   ],
   "space_travel_required": true
 }

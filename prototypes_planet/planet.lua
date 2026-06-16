@@ -235,7 +235,7 @@ data:extend({
       ["magnetic-field"] = 56,
       ["solar-power"] = 40,
       pressure = 1401, --must be 1000 >< 2000 for agricultural tower
-      gravity = 14,
+      gravity = 14.01,
       panglia_timeshift = 1,
     },
     asteroid_spawn_influence = 1,

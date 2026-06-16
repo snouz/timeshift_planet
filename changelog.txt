@@ -1,9 +1,38 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.6
+Date: 2026-06-
+  Bugfixes:
+    - Fixed module-category-defaults breaking speed zones (Thanks Gnavianus and Nycia_von_Kriztorvz)
+    - Fixes landfill and foundations being unbuildable on panglia water (Thanks Nycia_von_Kriztorvz)
+  Compatibility:
+    - Added Canal Excavator compatibility (Jurgyy)
+---------------------------------------------------------------------------------------------------
+Version: 0.5.5
+Date: 2025-10-23
+  Bugfixes:
+    - Forgot to make the menu-simulations non-exclusive (reactivated native sims)
+---------------------------------------------------------------------------------------------------
+Version: 0.5.4
+Date: 2025-10-23
+  Changes:
+    - Improved menu-simulations
+    - Fixed robot efficiency not being exactly 1
+---------------------------------------------------------------------------------------------------
+Version: 0.5.3
+Date: 2025-10-11
+  Bugfixes:
+    - Fixed not being able to use the universe incubator on the planet
+---------------------------------------------------------------------------------------------------
+Version: 0.5.2
+Date: 2025-10-11
+  Bugfixes:
+    - Fixed mod not loading because it requires a higher version the asset mod
+---------------------------------------------------------------------------------------------------
 Version: 0.5.1
-Date: 2025-10-
+Date: 2025-10-11
   Bugfixes:
     - Fixed some recipes being available from the start (thanks Qazerowl)
-  UI:
+  Gui:
     - Merged some icons together
   Graphics:
     - DNA computer process has its own color (green)
@@ -16,10 +45,10 @@ Date: 2025-10-06
     - Added 4 menu simulations
   Compatibility:
     - Generate igneous rocks and mixed rocks if you've generated panglia before v0.4.0
-  Sound:
+  Sounds:
     - Modified planet intro music
     - Panglite rocks now use specific panglite sounds
-  Balance:
+  Balancing:
     - Halved the speed of speed zones (to 50x for now) (every recipe meant to be used with them have their time scaled too)
     - Made branbalite spoil in 90m (from 25) and stack to 10 (from 50) to avoid clogging the agricultural tower
     - Tech "advanced optics and nanotech" requires datacell research, and triggers on panglite craft instead of glass (so it doesn't trigger when still locked)
@@ -44,14 +73,14 @@ Date: 2025-09-28
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.3
 Date: 2025-09-27
-  Balance:
+  Balancing:
     - Divided fuel value of branbalite slurry by 1000, multiplied effectivity of panderoots by 40000
   Graphics:
     - Changed branbalite slurry color in pipes/overlay
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2025-09-27
-  Balance:
+  Balancing:
     - Tech volcanic mini-universe now uses classic science instead of trigger (it was triggering all the time before unlocked)
     - Tech hyper crusher tech requires advanced circuit from panglite fiber
     - Tech Branbalite slurry to rocket fuel requires volcanic micro-universe
@@ -63,7 +92,7 @@ Date: 2025-09-27
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
 Date: 2025-09-26
-  Balance:
+  Balancing:
     - Removed panglite from universe incubator recycling recipe, so you can't make quality panglite
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.0
@@ -93,7 +122,7 @@ Date: 2025-09-26
     - Hypercrusher tech icon change
   Compatibility:
     - Fixed Branbalite not being buildable when Metal & Stars is there
-  UI:
+  Gui:
     - Combined some icons in factoriopedia
     - Hidden the recipe category "crushing"
     - Changed branbalite's factoriopedia preview
@@ -116,11 +145,11 @@ Date: 2025-09-15
     - Added 6 achievements
     - datacell [raw dna] is unlocked by an earlier tech
     - Techs for dna manipulation, simulation chamber, synaptic assembler, sentient processors and robot ugrades are using Moshine's tech system (with datacells)
-  Balance:
+  Balancing:
     - Panglite multiplication: remove quality, allow productivity
     - Hypercrusher can't have quality
     - disallowed base recipe for universe precursors on panglia and in space
-  UI:
+  Gui:
     - Changed dust icon and UI placement
     - Changed Hypercrusher icon
     - Made datacells subgroup, changed datacells to stats of moshine's (40 stacks, 5kg)
@@ -140,11 +169,11 @@ Date: 2025-09-07
     - Added 1 extra research to worker-robots-storage
     - Added Asteroid collector MK2 (as a submod) and changed its requirements
     - Added Focussed gun turrets (as a submod) and make it require Panglite fiber
-  Balance:
+  Balancing:
     - Added cryogenic packs to sentient processor tech
   Bugfixes:
     - Simulation chamber tech now requires AI T10
-  UI:
+  Gui:
     - Removed some recipe tooltips
   Graphics:
     - Reworked cloning-related icons and datacell icons
@@ -160,7 +189,7 @@ Date: 2025-08-31
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.3
 Date: 2025-08-30
-  Balance:
+  Balancing:
     - Panderoots turrets have a better resistance to fire, poison, explosion
   Compatibility:
     - Fixed compatibility with Quality Seeds
@@ -173,7 +202,7 @@ Version: 0.1.2
 Date: 2025-08-27
   Graphics:
     - New Panderoots graphics and animation (and sounds)
-  Balance:
+  Balancing:
     - Made most custom recipes exclusive to Panglia
     - Simulation chamber can only be built on Panglia
     - Made Panglite 10x slower to produce
@@ -188,7 +217,7 @@ Date: 2025-08-25
   Bugfixes:
     - Unhide clone recipes
     - Made planet research unavailable from game start
-  Balance:
+  Balancing:
     - Simulator tech is unlocked with one "baby", not 100
     - Speed zones quality reduction: -20% instead of -30%
     - Speed zones energy consumption: +50% instead of +10000% relative to speed
