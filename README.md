@@ -13,7 +13,7 @@ Feedback very welcome, here or discord @snouz.
 This is early access, the experience is probably not balanced yet.
 
 # Credits:
-- Locale: Russian by Erofitskiy
+- Locale: Russian by Erofitskiy, Polish by S3BA, Simplified Chinese by Guard42
 - 29 tracks from artist Blear Moon / Serat (from albums [Flow Sessions](https://freemusicarchive.org/music/serat/flow-sessions), [Fallow](https://freemusicarchive.org/music/Blear_Moon/Fallow) and [Town of Two Houses](https://freemusicarchive.org/music/Blear_Moon/Town_of_Two_Houses)), (CC BY-NC / CC BY)
 - Includes [a piano cover of Final Fantasy IX's Branbal by Pablo Enver](https://www.youtube.com/watch?v=ciHHp7-qfwo) (used with permission)
 - The cosmic incubator, cloning vat and synaptic assembler graphics majorly contain parts of [Hurricane046 buildings](https://shorturl.at/AFcDm) (CC BY)

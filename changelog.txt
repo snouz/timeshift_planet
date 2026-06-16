@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.6
-Date: 2026-06-
+Date: 2026-06-16
   Bugfixes:
+    - Fixed duplication bug for belts and other things in speed zones
     - Fixed module-category-defaults breaking speed zones (Thanks Gnavianus)
     - Fixes landfill and foundations being unbuildable on panglia water (Thanks Nycia_von_Kriztorvz)
     - Fixed weight of panglia_crusher (by Erofitskiy)

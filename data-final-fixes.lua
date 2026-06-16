@@ -18,6 +18,7 @@ for i, inserter in pairs(data.raw["inserter"]) do
     newinserter.subgroup = "panglia-sped-up-entities"
     if inserter.minable and inserter.minable.result then
       newinserter.placeable_by = {item = inserter.minable.result, count = 1}
+      newinserter.minable.mining_time = 0.0001
     end
     data:extend({newinserter})
   end
@@ -35,6 +36,7 @@ for i, belt in pairs(data.raw["transport-belt"]) do
     newbelt.subgroup = "panglia-sped-up-entities"
     if belt.minable and belt.minable.result then
       newbelt.placeable_by = {item = belt.minable.result, count = 1}
+      newbelt.minable.mining_time = 0.0001
     end
     data:extend({newbelt})
   end
@@ -70,6 +72,7 @@ for i, belt in pairs(data.raw["splitter"]) do
     newbelt.subgroup = "panglia-sped-up-entities"
     if belt.minable and belt.minable.result then
       newbelt.placeable_by = {item = belt.minable.result, count = 1}
+      newbelt.minable.mining_time = 0.0001
     end
     data:extend({newbelt})
   end

@@ -164,12 +164,9 @@ script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_e
                         force = entity.force,
                         direction = entity.direction,
                         fast_replace = true,
-                        raise_built = true,
-                        player = entity.last_user,
+                        spill = false,
+                        target = entity
                     }
-                    if new_entity then
-                        entity.destroy()
-                    end
                 end
             end
             -- make everything a military target for pangroots and egg monsters
@@ -177,7 +174,7 @@ script.on_event({defines.events.on_built_entity, defines.events.on_robot_built_e
                 entity.is_military_target = true
             end
         end
-        if entity and entity.valid and surface.name ~= "panglia" or (surface.name == "panglia" and #beacons == 0) then
+        if entity and entity.valid and (surface.name ~= "panglia" or (surface.name == "panglia" and #beacons == 0)) then
             if string.find(entity.name, "_panglia_fast_version") then
                 local new_entity = surface.create_entity{
                     --name = entity.original_name,
