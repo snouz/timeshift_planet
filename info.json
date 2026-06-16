@@ -10,6 +10,7 @@
     "base",
     "space-age",
     "panglia_planet_assets >= 0.1.3",
+    "PlanetsLib >= 1.12.1",
     "Moshine >= 1.1.0",
     "thinking_brain >= 1.2.3",
     "matter_printer >= 0.2.0",
@@ -18,7 +19,8 @@
     "snouz_long_electric_gun_turret >= 1.0.5",
     "snouz_space_platform_hull >= 1.0.1",
     "module-category-defaults",
-    "? canal-excavator >= 1.12"
+    "? canal-excavator >= 1.12",
+    "? Tiered-Solar-System"
   ],
   "space_travel_required": true
 }

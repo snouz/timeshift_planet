@@ -29,4 +29,4 @@ This is early access, the experience is probably not balanced yet.
 - Some rock textures use models by valterjherson1 (sketchfab, CC BY)
 - Sound ambiance by klankbeeld (CC BY)
 - Energy roots sound is "Black Smoke" by Silicon_Transmitter (CC BY-NC-SA)
-- Some code bit are from Gotlag's Flare Stack (MIT)
+- Some code bit are from Gotlag's Flare Stack (MIT), Panglia Orbit Patch (MIT) by xor50 and Kryzeth, Panglia Fix (MIT) by Nycia_von_Kriztorvz, Panglia Hidden Module Patch by Gnavianus

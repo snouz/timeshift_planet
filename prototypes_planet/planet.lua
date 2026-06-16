@@ -353,3 +353,19 @@ data:extend({
   },]]
 
 })
+
+PlanetsLib:update({
+  {
+    type = "planet",
+    name = "panglia",
+    subgroup = "satellites",
+    redrawn_connections_exclude = true,
+    draw_orbit = false,
+    orbit = {
+      parent = {type = "planet", name = "gleba"},
+      distance = 1.89,
+      orientation = 0.875,
+      sprite = {type = "sprite", filename = icons .. "starmap-planet-panglia-orbit.png", size = 500, scale = 0.25}
+    },
+  }
+})

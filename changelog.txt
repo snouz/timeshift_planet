@@ -6,6 +6,8 @@ Date: 2026-06-16
     - Fixed module-category-defaults breaking speed zones (Thanks Gnavianus)
     - Fixes landfill and foundations being unbuildable on panglia water (Thanks Nycia_von_Kriztorvz)
     - Fixed weight of panglia_crusher (by Erofitskiy)
+  Changes:
+    - Made Panglia an actual moon of Gleba (by xor50 and Kryzeth)
   Compatibility:
     - Added Canal Excavator compatibility (by Jurgyy)
   Locale:
