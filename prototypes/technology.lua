@@ -16,7 +16,7 @@ data:extend({
         use_icon_overlay_constant = true
       },
     },
-    prerequisites = {"agricultural-science-pack", "foundry"},
+    --[[prerequisites = {"agricultural-science-pack", "foundry"},
     unit =
     {
       count = 800,
@@ -28,6 +28,16 @@ data:extend({
         {"utility-science-pack", 1},
         {"space-science-pack", 1},
         {"agricultural-science-pack", 1}
+      },
+      time = 60
+    }]]
+    prerequisites = {"agricultural-science-pack", "foundry", "moshine-tech-data-extractor"},
+    unit =
+    {
+      count = 250,
+      ingredients =
+      {
+        {"datacell-raw-data", 1},
       },
       time = 60
     }

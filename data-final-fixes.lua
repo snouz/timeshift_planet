@@ -264,3 +264,18 @@ if data.raw["recipe"]["matter_printer-recycling"] and data.raw["recipe"]["matter
     }
   }
 end
+
+
+
+local function add_tech_unit(tech, count, time, ingredients)
+  if data.raw["technology"][tech] and count and time and ingredients then
+    data.raw["technology"][tech].unit =
+    {
+      count = count,
+      ingredients = ingredients,
+      time = time,
+    }
+  end
+end
+
+add_tech_unit("panglia_planet_discovery_panglia", 250, 60, {{"datacell-raw-data", 1}} )

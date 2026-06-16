@@ -173,6 +173,7 @@ data:extend({
     default_import_location = "panglia",
     random_tint_color = { 1.0, 0.83, 0.7, 1.0 },
     weight = 20*kg,
+    auto_recycle = false,
   },
 
   {
@@ -270,6 +271,7 @@ data:extend({
       branbalitepics(3),
       branbalitepics(4),
     },
+    auto_recycle = false,
   },
   {
     type = "fluid",
@@ -337,6 +339,7 @@ data:extend({
     drop_sound = item_sounds.resource_inventory_move,
     stack_size = 100,
     weight = 1 * kg,
+    auto_recycle = false,
   },
 
 
@@ -377,6 +380,7 @@ data:extend({
     results = {
       { type = "item", name = "panglia_dust", amount = 1 }
     },
+    auto_recycle = false,
     --icon_size = 64,
     --order = "zz[panglia_crushing]",
   },

@@ -1,13 +1,15 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.6
 Date: 2026-06-16
+  Changes:
+    - Locked Panglia behind data archeology, requires 250 datacell [raw data] to unlock
+    - Made Panglia an actual moon of Gleba (by xor50 and Kryzeth)
+    - Removed some recycling for panglite fiber, branbalite and entropy dust
   Bugfixes:
     - Fixed duplication bug for belts and other things in speed zones
     - Fixed module-category-defaults breaking speed zones (Thanks Gnavianus)
     - Fixes landfill and foundations being unbuildable on panglia water (Thanks Nycia_von_Kriztorvz)
-    - Fixed weight of panglia_crusher (by Erofitskiy)
-  Changes:
-    - Made Panglia an actual moon of Gleba (by xor50 and Kryzeth)
+    - Fixed panglia_crusher rocket capacity of 10k instead of 10 (by Erofitskiy)
   Compatibility:
     - Added Canal Excavator compatibility (by Jurgyy)
   Locale:
@@ -16,6 +18,7 @@ Date: 2026-06-16
     - Changes to Russian (by umbraphile & Erofitskiy)
     - Added Simplified Chinese by Guard42
     - Added German by Schlumpf8
+    - Fixed some missing strings
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.5
 Date: 2025-10-23
