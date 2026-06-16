@@ -2,10 +2,16 @@
 Version: 0.5.6
 Date: 2026-06-
   Bugfixes:
-    - Fixed module-category-defaults breaking speed zones (Thanks Gnavianus and Nycia_von_Kriztorvz)
+    - Fixed module-category-defaults breaking speed zones (Thanks Gnavianus)
     - Fixes landfill and foundations being unbuildable on panglia water (Thanks Nycia_von_Kriztorvz)
+    - Fixed weight of panglia_crusher (by Erofitskiy)
   Compatibility:
-    - Added Canal Excavator compatibility (Jurgyy)
+    - Added Canal Excavator compatibility (by Jurgyy)
+  Locale:
+    - Changed name Mixed dust to High-entropy dust and added some descriptions (by Erofitskiy)
+    - Added Polish by S3BA
+    - Changes to Russian (by umbraphile & Erofitskiy)
+    - Added Simplified Chinese by Guard42
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.5
 Date: 2025-10-23
