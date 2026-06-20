@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.5.
+Version: 0.5.8
+Date: 2026-06-20
+  Bugfixes:
+    - Fixed belts and inserter in speed zones being un-upgradable in blueprints (fix by GalahadLafayette)
+---------------------------------------------------------------------------------------------------
+Version: 0.5.7
 Date: 2026-06-17
   Bugfixes:
     - Fixed crash with RU locale change

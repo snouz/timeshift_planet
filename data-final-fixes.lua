@@ -16,6 +16,9 @@ for i, inserter in pairs(data.raw["inserter"]) do
     newinserter.extension_speed = inserter.extension_speed * beacon_multiplier
     newinserter.hidden = true
     newinserter.subgroup = "panglia-sped-up-entities"
+    if inserter.next_upgrade then
+      newinserter.next_upgrade = inserter.next_upgrade .. "_panglia_fast_version"
+    end
     if inserter.minable and inserter.minable.result then
       newinserter.placeable_by = {item = inserter.minable.result, count = 1}
       newinserter.minable.mining_time = 0.0001
@@ -34,6 +37,9 @@ for i, belt in pairs(data.raw["transport-belt"]) do
     newbelt.speed = belt.speed * beacon_multiplier
     newbelt.hidden = true
     newbelt.subgroup = "panglia-sped-up-entities"
+    if newbelt.next_upgrade then
+      newbelt.next_upgrade = belt.next_upgrade .. "_panglia_fast_version"
+    end
     if belt.minable and belt.minable.result then
       newbelt.placeable_by = {item = belt.minable.result, count = 1}
       newbelt.minable.mining_time = 0.0001
@@ -70,6 +76,9 @@ for i, belt in pairs(data.raw["splitter"]) do
     newbelt.speed = belt.speed * beacon_multiplier
     newbelt.hidden = true
     newbelt.subgroup = "panglia-sped-up-entities"
+    if newbelt.next_upgrade then
+      newbelt.next_upgrade = belt.next_upgrade .. "_panglia_fast_version"
+    end
     if belt.minable and belt.minable.result then
       newbelt.placeable_by = {item = belt.minable.result, count = 1}
       newbelt.minable.mining_time = 0.0001
