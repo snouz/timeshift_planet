@@ -1,6 +1,21 @@
 local seconds_interval = 15
 local number_of_turret_vars = 16
 
+script.on_configuration_changed(function(event)
+    local surface = game.get_surface("panglia")
+    if not surface then return end
+
+    for _, entity in pairs(surface.find_entities_filtered{name = "panglia_hidden_beacon"}) do
+        if entity.valid then
+            local inventory = entity.get_module_inventory()
+            if inventory and inventory.can_insert{name = "panglia_hidden_beacon_module"} then
+                inventory.insert{name = "panglia_hidden_beacon_module", count = 1}
+            else
+                log("Could not insert module into beacon at " .. serpent.line(entity.position))
+            end
+        end
+    end
+end)
 
 script.on_event(defines.events.on_chunk_generated, function(event)
     local surface = event.surface

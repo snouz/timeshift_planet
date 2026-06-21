@@ -4,6 +4,7 @@ Date: 2026-06-21
   Bugfixes:
     - Fixed belts and inserter in speed zones being un-upgradable in blueprints (fix by GalahadLafayette)
     - Fixed planet specific recipes icons (when planets have a larger image size e.g. maraxsis) (in submod)
+    - Panglia hidden beacons will be repopulated on load if for some reason they were removed
   Balancing:
     - Removed Neodymium and Silicon from other planets recipes (in submod)
 ---------------------------------------------------------------------------------------------------
