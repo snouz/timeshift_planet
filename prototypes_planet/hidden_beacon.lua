@@ -170,15 +170,3 @@ data:extend({
     auto_recycle = false,
   },
 })
-
-if data.raw["furnace"]["matter_printer"] then
-  data.raw["furnace"]["matter_printer"].allowed_module_categories = {"panglia_module","efficiency","speed","quality"}
-end
-
-if data.raw["furnace"]["simulation_chamber"] then
-  data.raw["furnace"]["simulation_chamber"].allowed_module_categories = {"panglia_module","efficiency","speed","quality"}
-end
-
-if data.raw["beacon"]["panglia_hidden_beacon"] then
-  data.raw["beacon"]["panglia_hidden_beacon"].allowed_module_categories = {"panglia_module"}
-end
