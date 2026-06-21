@@ -1,8 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.8
-Date: 2026-06-20
+Date: 2026-06-21
   Bugfixes:
     - Fixed belts and inserter in speed zones being un-upgradable in blueprints (fix by GalahadLafayette)
+    - Fixed planet specific recipes icons (when planets have a larger image size e.g. maraxsis) (in submod)
+  Balancing:
+    - Removed Neodymium and Silicon from other planets recipes (in submod)
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.7
 Date: 2026-06-17
