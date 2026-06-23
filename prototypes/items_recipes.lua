@@ -759,7 +759,7 @@ data:extend({
     icon = icons .. "mutated_monster_egg.png",
     subgroup = "panglia-processes",
     order = "c[cloning]-dd",
-    hidden = true,
+    --hidden = true,
     inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
     pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
     drop_sound = space_age_item_sounds.agriculture_inventory_move,

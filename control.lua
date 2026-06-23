@@ -1,6 +1,13 @@
 local seconds_interval = 15
 local number_of_turret_vars = 16
 
+if script.active_mods["wret-beacon-rebalance-mod"] then 
+    local function on_load_setup()
+        remote.call("wr-beacon-rebalance", "add_whitelisted_beacon", "panglia_hidden_beacon")
+    end
+    script.on_load(on_load_setup)
+end
+
 script.on_configuration_changed(function(event)
     local surface = game.get_surface("panglia")
     if not surface then return end
