@@ -84,7 +84,7 @@ data:extend({
     icon = icons .. "panglia_igneous_rock_to_lava.png",
     subgroup = "panglia-processes",
     order = "a[base]-bb",
-    category = "metallurgy",
+    categories = {"metallurgy"},
     enabled = false,
     auto_recycle = false,
     energy_required = 1 * beacon_multiplier,
@@ -143,7 +143,7 @@ data:extend({
     --icon = icons .. "panglia_panglite_multiplication.png",
     --subgroup = "panglia-processes",
     --order = "a[base]-cc",
-    category = "smelting",
+    categories = {"smelting"},
     enabled = false,
     auto_recycle = false,
     energy_required = 1 * beacon_multiplier,
@@ -180,13 +180,9 @@ data:extend({
     type = "recipe",
     name = "panglia_panglite_fiber",
     icon = icons .. "panglia_panglite_fiber.png",
-    --subgroup = "panglia-processes",
-    --category = "chemistry",
     subgroup = "panglia-processes",
     order = "a[base]-ff",
-    --category = "centrifuging",
-    category = "electromagnetics",
-    additional_categories = {"centrifuging"},
+    categories = {"electromagnetics", "centrifuging"},
     enabled = false,
     auto_recycle = false,
     energy_required = 5 * beacon_multiplier,
@@ -204,6 +200,7 @@ data:extend({
     always_show_made_in = true,
     allow_productivity = false,
     show_amount_in_title = false,
+    sort_item_ingredients = false,
     crafting_machine_tint =
     {
       primary = {240, 168, 56, 255}, -- #f0a938ff
@@ -285,6 +282,8 @@ data:extend({
     heat_capacity = "0.2kJ",
     base_color = {82, 199, 238},
     flow_color = {82, 199, 238},
+    visualization_color = {82, 199, 238},
+    draw_as_glow = true,
     --order = "a[fluid]-a[water]-c[panglia_branbalite_slurry]",
     auto_barrel = true,
     fuel_value = "1MJ",
@@ -295,7 +294,7 @@ data:extend({
     icon = icons .. "panglia_branbalite_slurry_recipe.png",
     subgroup = "panglia-processes",
     order = "a[base]-ee",
-    category = "organic-or-chemistry",
+    categories = {"organic", "chemistry"},
     energy_required = 1,
     ingredients = {
       {type = "item", name = "panglia_branbalite", amount = 1},
@@ -362,7 +361,7 @@ data:extend({
     type = "recipe",
     name = "panglia_dust",
     --icon = icons .. "panglia_dust.png",
-    category = "panglia_crushing",
+    categories = {"panglia_crushing"},
     subgroup = "panglia-processes",
     order = "a[base]-ff",
     enabled = false,
@@ -400,7 +399,7 @@ data:extend({
     icon = icons .. "panglia_branbalite_slurry_to_lubricant.png",
     subgroup = "panglia-processes",
     order = "b[otherres]-aa",
-    category = "oil-processing",
+    categories = {"oil-processing"},
     enabled = false,
     energy_required = 0.5 * beacon_multiplier,
     ingredients = {
@@ -422,12 +421,13 @@ data:extend({
     allow_productivity = true,
     allow_decomposition = false,
     surface_conditions = panglia_only,
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "panglia_branbalite_slurry_to_rocket_fuel",
     icon = icons .. "panglia_branbalite_slurry_to_rocket_fuel.png",
-    category = "chemistry-or-cryogenics",
+    categories = {"chemistry", "cryogenics"},
     subgroup = "panglia-processes",
     order = "b[otherres]-ab",
     auto_recycle = false,
@@ -452,12 +452,13 @@ data:extend({
     },
     allow_decomposition = false,
     surface_conditions = panglia_only,
+    auto_recycle = false,
   },
   {
     type = "recipe",
     name = "panglia_advanced_circuit_from_panglite_fiber",
     icon = icons .. "panglia_advanced_circuit_from_panglite_fiber.png",
-    category = "electronics",
+    categories = {"crafting", "electromagnetics"},
     subgroup = "panglia-processes",
     order = "b[otherres]-ac",
     auto_recycle = false,
@@ -466,8 +467,8 @@ data:extend({
     energy_required = 0.5 * beacon_multiplier,
     ingredients =
     {
-      {type = "item", name = "electronic-circuit", amount = 2},
       {type = "item", name = "panglia_panglite_fiber", amount = 2},
+      {type = "item", name = "electronic-circuit", amount = 2},
       {type = "item", name = "copper-cable", amount = 4}
     },
     results = {
@@ -476,6 +477,8 @@ data:extend({
     main_product = "advanced-circuit",
     allow_decomposition = false,
     surface_conditions = panglia_only,
+    sort_item_ingredients = false,
+    auto_recycle = false,
   },
   {
     type = "recipe",
@@ -484,8 +487,7 @@ data:extend({
     subgroup = "panglia-processes",
     order = "b[otherres]-ad",
     energy_required = 0.1 * beacon_multiplier,
-    --category = "crafting-with-fluid",
-    category = "chemistry",
+    categories = {"chemistry"},
     ingredients = {
       {type = "item", name = "panglia_panglite_fiber", amount = 1},
       {type = "fluid", name = "steam", amount = 10},
@@ -497,6 +499,7 @@ data:extend({
     enabled = false,
     show_amount_in_title = false,
     --always_show_made_in = true,
+    auto_recycle = false,
     surface_conditions = panglia_only,
   },
 
@@ -507,7 +510,7 @@ data:extend({
     icon = icons .. "panglia_branbalite_slurry_to_crudeoil.png",
     subgroup = "panglia-processes",
     order = "b[otherres]-aa",
-    category = "oil-processing",
+    categories = {"oil-processing"},
     enabled = false,
     energy_required = 0.5 * beacon_multiplier,
     ingredients = {
@@ -559,12 +562,12 @@ data:extend({
     --subgroup = "panglia-processes",
     --order = "b[otherres]-bb",
     energy_required = 0.5 * beacon_multiplier,
-    category = "metallurgy",
+    categories = {"metallurgy"},
     ingredients =
     {
+      {type = "item", name = "panglia_panglite", amount = 5},
       {type = "fluid", name = "lava", amount = 10},
       {type = "fluid", name = "lubricant", amount = 10},
-      {type = "item", name = "panglia_panglite", amount = 5},
     },
     results = {
       {type = "item", name = "panglia_universe_precursor_volcanic", amount = 1}
@@ -579,6 +582,7 @@ data:extend({
     allow_productivity = true,
     enabled = false,
     surface_conditions = panglia_only,
+    sort_item_ingredients = false,
   },
   {
     type = "recipe",
@@ -587,12 +591,12 @@ data:extend({
     subgroup = "panglia-processes",
     order = "b[otherres]-bc",
     energy_required = 0.5 * beacon_multiplier,
-    category = "chemistry",
+    categories = {"chemistry"},
     ingredients =
     {
-      {type = "fluid", name = "panglia_branbalite_slurry", amount = 2},
-      {type = "item", name = "panglia_panglite_fiber", amount = 2},
       {type = "item", name = "panglia_dust", amount = 50},
+      {type = "item", name = "panglia_panglite_fiber", amount = 2},
+      {type = "fluid", name = "panglia_branbalite_slurry", amount = 2},
     },
     results = {
       {type = "item", name = "universe_precursor", amount = 1}
@@ -607,6 +611,8 @@ data:extend({
     allow_productivity = true,
     enabled = false,
     surface_conditions = panglia_only,
+    sort_item_ingredients = false,
+    auto_recycle = false,
   },
 
   {
@@ -614,7 +620,7 @@ data:extend({
     name = "panglia_universe_precursor_volcanic_result",
     --localised_name = {"", {"recipe-name.cosmic_incubator_recipe"}, " (", {"space-location-name." .. planet.name}, ")"},
     icon = icons .. "panglia_universe_precursor_volcanic_result.png",
-    category = "cosmic_incubator",
+    categories = {"cosmic_incubator"},
     subgroup = "matter_printer_recipes",
     order = "aaa",
     enabled = false,
@@ -623,10 +629,9 @@ data:extend({
       {type = "item", name = "panglia_universe_precursor_volcanic", amount = 1}
     },
     results = {
-      {type = "item", name = "panglia_igneous_rock", amount_min = 0, amount_max = 300, probability = 1},
-      {type = "item", name = "uranium-238", amount_min = 0, amount_max = 25, probability = 0.4, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "solid-fuel", amount_min = 0, amount_max = 50, probability = 0.4, show_details_in_recipe_tooltip = false},
-      --{type = "item", name = "calcite", amount_min = 0, amount_max = 42, probability = 0.4},
+      {type = "item", name = "panglia_igneous_rock", amount_min = 0, amount_max = 300, independent_probability = 1},
+      {type = "item", name = "uranium-238", amount_min = 0, amount_max = 25, independent_probability = 0.4, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "solid-fuel", amount_min = 0, amount_max = 50, independent_probability = 0.4, show_details_in_recipe_tooltip = false},
     },
     surface_conditions = panglia_only,
     allow_productivity = false,
@@ -649,7 +654,7 @@ data:extend({
     name = "panglia_universe_precursor_2_result",
     --localised_name = {"", {"recipe-name.cosmic_incubator_recipe"}, " (", {"space-location-name." .. planet.name}, ")"},
     icon = icons .. "panglia_universe_precursor_2_result.png",
-    category = "cosmic_incubator",
+    categories = {"cosmic_incubator"},
     subgroup = "matter_printer_recipes",
     order = "aaa",
     enabled = true,
@@ -658,13 +663,13 @@ data:extend({
       {type = "item", name = "universe_precursor", amount = 1}
     },
     results = {
-      {type = "item", name = "silicon", amount_min = 0, amount_max = 75, probability = 0.3, show_details_in_recipe_tooltip = false},
-      --{type = "item", name = "solid-fuel", amount_min = 0, amount_max = 15, probability = 0.3, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "holmium-ore", amount_min = 0, amount_max = 3, probability = 0.2, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "tungsten-ore", amount_min = 0, amount_max = 6, probability = 0.1, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "sulfur", amount_min = 0, amount_max = 25, probability = 0.25, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "calcite", amount_min = 0, amount_max = 6, probability = 0.07, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "lithium", amount_min = 0, amount_max = 6, probability = 0.07, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "silicon", amount_min = 0, amount_max = 75, independent_probability = 0.3, show_details_in_recipe_tooltip = false},
+      --{type = "item", name = "solid-fuel", amount_min = 0, amount_max = 15, independent_probability = 0.3, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "holmium-ore", amount_min = 0, amount_max = 3, independent_probability = 0.2, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "tungsten-ore", amount_min = 0, amount_max = 6, independent_probability = 0.1, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "sulfur", amount_min = 0, amount_max = 25, independent_probability = 0.25, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "calcite", amount_min = 0, amount_max = 6, independent_probability = 0.07, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "lithium", amount_min = 0, amount_max = 6, independent_probability = 0.07, show_details_in_recipe_tooltip = false},
     },
     surface_conditions = panglia_only,
     allow_productivity = false,
@@ -683,9 +688,8 @@ data:extend({
 -------------------- datacells
 
 data:extend({
-
   {
-    type = "tool",
+    type = "item",
     name = "datacell-dna-raw",
     icon = icons .. "datacell-dna-raw.png",
     subgroup = "moshine-datacells",
@@ -693,10 +697,10 @@ data:extend({
     inventory_move_sound = item_sounds.metal_small_inventory_move,
     pick_sound = item_sounds.metal_small_inventory_pickup,
     drop_sound = item_sounds.metal_small_inventory_move,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
+    --durability = 1,
+    --durability_description_key = "description.science-pack-remaining-amount-key",
+    --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
+    --durability_description_value = "description.science-pack-remaining-amount-value",
     stack_size = 40,
     default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
@@ -709,7 +713,7 @@ data:extend({
     icon = icons .. "datacell-dna-raw.png",
     subgroup = "moshine-datacells",
     order = "b[panglia]-bb",
-    category = "cloning",
+    categories = {"cloning"},
     energy_required = 1 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "datacell-empty", amount = 1},
@@ -717,15 +721,15 @@ data:extend({
     },
     results = 
     {
-      {type = "item", name = "datacell-dna-raw", amount = 1, probability = 0.01},
-      {type = "item", name = "datacell-empty", amount = 1, probability = 0.99},
+      {type = "item", name = "datacell-dna-raw", amount = 1, shared_probability = {min = 0, max = 0.01}},
+      {type = "item", name = "datacell-empty", amount = 1, shared_probability = {min = 0.01, max = 1}},
     },
     main_product = "datacell-dna-raw",
     allow_productivity = true,
     enabled = false,
   },
   {
-    type = "tool",
+    type = "item",
     name = "datacell-dna-sequenced",
     icon = icons .. "datacell-dna-sequenced.png",
     subgroup = "moshine-datacells",
@@ -733,10 +737,10 @@ data:extend({
     inventory_move_sound = item_sounds.metal_small_inventory_move,
     pick_sound = item_sounds.metal_small_inventory_pickup,
     drop_sound = item_sounds.metal_small_inventory_move,
-    durability = 1,
-    durability_description_key = "description.science-pack-remaining-amount-key",
-    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    durability_description_value = "description.science-pack-remaining-amount-value",
+    --durability = 1,
+    --durability_description_key = "description.science-pack-remaining-amount-key",
+    --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
+    --durability_description_value = "description.science-pack-remaining-amount-value",
     stack_size = 40,
     default_import_location = "panglia",
     weight = 5*kg
@@ -769,6 +773,7 @@ data:extend({
     weight = 5*kg,
     spoil_ticks = 15 * 60, -- 15s
     --spoil_result = "spoilage",
+    auto_recycle = false,
     spoil_to_trigger_result =
     {
       items_per_trigger = 1,
@@ -834,29 +839,25 @@ data:extend({
     icon = icons .. "panglia_cloned_specimen_body_0_recipe.png",
     subgroup = "panglia-processes",
     order = "c[cloning]-ee",
-    category = "cloning",
+    categories = {"cloning"},
     energy_required = 30 * beacon_multiplier,
     ingredients = {
-      --{type = "item", name = "datacell-empty", amount = 1},
-      {type = "item", name = "uranium-235", amount = 1},
+      {type = "item", name = "datacell-dna-sequenced", amount = 1},
       {type = "item", name = "bioflux", amount = 1},
-      {type = "item", name = "datacell-dna-sequenced", amount = 1}
-      --TODO add DNA source
+      {type = "item", name = "uranium-235", amount = 1},
     },
     results = {
-      {type = "item", name = "datacell-dna-raw", amount = 1, probability = 1},
-      --{type = "item", name = "datacell-empty", amount = 1, probability = 0.99}
-      {type = "item", name = "uranium-238", amount = 1, probability = 1, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1, probability = 0.05},
-      {type = "item", name = "mutated_monster_egg", amount = 1, probability = 0.95},
+      {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1, shared_probability = {min = 0, max = 0.05}, always_fresh = true},
+      {type = "item", name = "mutated_monster_egg", amount = 1, shared_probability = {min = 0.05, max = 1}, always_fresh = true},
+      {type = "item", name = "datacell-dna-raw", amount = 1, independent_probability = 1},
+      {type = "item", name = "uranium-238", amount = 1, independent_probability = 1, show_details_in_recipe_tooltip = false},
     },
     main_product = "panglia_cloned_specimen_body_0",
     allow_productivity = false,
     enabled = false,
     surface_conditions = panglia_only,
     auto_recycle = false,
-    result_is_always_fresh = true,
-    reset_freshness_on_craft = true,
+    sort_item_ingredients = false,
   },
 
 
@@ -888,15 +889,15 @@ data:extend({
     icon = icons .. "panglia_cloned_specimen_body_1_recipe.png",
     subgroup = "panglia-processes",
     order = "c[cloning]-gg",
-    category = "simulation_chamber",
+    categories = {"simulation_chamber"},
     energy_required = 30 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1},
     },
     results = 
     {
-      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, probability = 0.9},
-      {type = "item", name = "spoilage", amount = 2, probability = 1, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, shared_probability = {min = 0, max = 0.9}, always_fresh = true},
+      {type = "item", name = "spoilage", amount = 2, shared_probability = {min = 0.9, max = 1}, show_details_in_recipe_tooltip = false},
     },
     main_product = "panglia_cloned_specimen_body_1",
     allow_productivity = false,
@@ -909,8 +910,8 @@ data:extend({
     },
     surface_conditions = panglia_only,
     auto_recycle = false,
-    result_is_always_fresh = true,
-    reset_freshness_on_craft = true,
+    --result_is_always_fresh = true,
+    --reset_freshness_on_craft = true,
   },
   {
     type = "item",
@@ -934,7 +935,7 @@ data:extend({
     type = "recipe",
     name = "panglia_cloned_specimen_body_2",
     icon = icons .. "panglia_cloned_specimen_body_2_recipe.png",
-    category = "simulation_chamber",
+    categories = {"simulation_chamber"},
     subgroup = "panglia-processes",
     order = "c[cloning]-ii",
     energy_required = 60 * beacon_multiplier,
@@ -943,8 +944,8 @@ data:extend({
     },
     results = 
     {
-      {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1, probability = 0.8},
-      {type = "item", name = "spoilage", amount = 1, probability = 0.5, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1, shared_probability = {min = 0, max = 0.8}, always_fresh = true},
+      {type = "item", name = "spoilage", amount = 1, shared_probability = {min = 0.8, max = 1}, show_details_in_recipe_tooltip = false},
     },
     main_product = "panglia_cloned_specimen_body_2",
     allow_productivity = true,
@@ -959,8 +960,8 @@ data:extend({
     hide_from_player_crafting = true,
     surface_conditions = panglia_only,
     auto_recycle = false,
-    result_is_always_fresh = true,
-    reset_freshness_on_craft = true,
+    --result_is_always_fresh = true,
+    --reset_freshness_on_craft = true,
   },
   {
     type = "item",
@@ -983,7 +984,7 @@ data:extend({
     type = "recipe",
     name = "panglia_cloned_specimen_body_3",
     icon = icons .. "panglia_cloned_specimen_body_3_recipe.png",
-    category = "simulation_chamber",
+    categories = {"simulation_chamber"},
     subgroup = "panglia-processes",
     order = "c[cloning]-kk",
     energy_required = 30 * beacon_multiplier,
@@ -992,8 +993,8 @@ data:extend({
     },
     results = 
     {
-      {type = "item", name = "panglia_cloned_specimen_body_3_genius", amount = 1, probability = 0.1, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "panglia_cloned_specimen_body_3", amount = 1, probability = 0.9},
+      {type = "item", name = "panglia_cloned_specimen_body_3_genius", amount = 1, shared_probability = {min = 0, max = 0.1}, always_fresh = true, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "panglia_cloned_specimen_body_3", amount = 1, shared_probability = {min = 0.1, max = 1}, always_fresh = true},
     },
     main_product = "panglia_cloned_specimen_body_3",
     allow_productivity = true,
@@ -1008,8 +1009,8 @@ data:extend({
     hide_from_player_crafting = true,
     surface_conditions = panglia_only,
     auto_recycle = false,
-    result_is_always_fresh = true,
-    reset_freshness_on_craft = true,
+    --result_is_always_fresh = true,
+    --reset_freshness_on_craft = true,
   },
 
   {
@@ -1067,13 +1068,13 @@ data:extend({
     subgroup = "panglia-processes",
     order = "b[otherres]-nn",
     energy_required = 2 * beacon_multiplier,
-    category = "thinkingbrain",
+    categories = {"thinkingbrain"},
     ingredients =
     {
-      {type = "item", name = "quantum-processor", amount = 1},
       {type = "item", name = "panglia_cloned_specimen_body_3", amount = 1},
-      {type = "item", name = "processing-unit", amount = 1},
       {type = "item", name = "panglia_panglite", amount = 5},
+      {type = "item", name = "quantum-processor", amount = 1},
+      {type = "item", name = "processing-unit", amount = 1},
     },
     results = {
       {type = "item", name = "panglia_sentient_processor", amount = 1}
@@ -1083,6 +1084,7 @@ data:extend({
     enabled = false,
     surface_conditions = panglia_only,
     auto_recycle = false,
+    sort_item_ingredients = false,
   },
 
 })

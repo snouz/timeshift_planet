@@ -164,7 +164,7 @@ function pangliacrushing.incinerateRecipe(item, category, weight)
       name = category .. "-" .. item.name .. "-panglia_crushing",
       localised_name = "(" .. category .. ") " .. item.name:gsub("^%l", string.upper) .. " crushing",
       icons = newicons,
-      category = "panglia_crushing",
+      categories = {"panglia_crushing"},
       enabled = true,
       hide_from_player_crafting = true,
       hide_from_signal_gui = true,

@@ -553,7 +553,7 @@ data:extend({
           sheets = {
             {
               variation_count = 1,
-              filenames = {"__panglia_planet__/graphics/entity/plant/processing-grid-process-dna/processing-grid-process-dna.png"},
+              filenames = {"__panglia_planet_assets__/graphics/entity/plant/processing-grid-process-dna/processing-grid-process-dna.png"},
               width = 128,
               height = 128,
               lines_per_file = 25,

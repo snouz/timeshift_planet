@@ -27,7 +27,7 @@ data:extend({
     planet = "panglia",
     sound =
     {
-      filename = "__panglia_planet__/sounds/mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal.ogg",
+      filename = "__panglia_planet_assets__/sounds/mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal.ogg",
       volume = 1,
     }
   },

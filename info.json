@@ -1,26 +1,25 @@
 {
   "name": "panglia_planet",
-  "title": "Panglia Planet BETA4",
+  "title": "Panglia Planet BETA5",
   "description": "Panglia is a lush alien world with powerful roots, strange materials and antilinear zones. Unique buildings, items, rewards, techs, music, challenges... it's a followup to Moshine",
   "author": "snouz",
   "homepage": "https://github.com/snouz/timeshift_planet",
-  "version": "0.5.9",
-  "factorio_version": "2.0",
+  "version": "0.5.11",
+  "factorio_version": "2.1",
   "dependencies": [
     "base",
     "space-age",
-    "panglia_planet_assets >= 0.1.3",
-    "PlanetsLib >= 1.12.1",
+    "panglia_planet_assets >= 0.1.5",
     "Moshine >= 1.1.0",
     "thinking_brain >= 1.2.3",
     "matter_printer >= 0.2.0",
     "Cloning-vat-building >= 1.0.4",
-    "snouz_better_asteroid_collector >= 1.0.2",
-    "snouz_long_electric_gun_turret >= 1.0.5",
-    "snouz_space_platform_hull >= 1.0.1",
+    "PlanetsLib >= 1.12.1",
     "module-category-defaults",
-    "? canal-excavator >= 1.12",
-    "? Tiered-Solar-System"
+    "+ snouz_better_asteroid_collector >= 1.0.2",
+    "+ snouz_long_electric_gun_turret >= 1.0.5",
+    "+ snouz_space_platform_hull >= 1.0.1",
+    "? canal-excavator >= 1.12"
   ],
   "space_travel_required": true
 }

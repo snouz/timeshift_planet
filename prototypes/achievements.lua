@@ -1,4 +1,4 @@
-local ach = "__panglia_planet__/graphics/achievement/"
+local ach = "__panglia_planet_assets__/graphics/achievement/"
 
 data:extend({
   {

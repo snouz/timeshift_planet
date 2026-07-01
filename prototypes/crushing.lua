@@ -49,15 +49,14 @@ data:extend({
     type = "recipe",
     name = "panglia_crusher",
     energy_required = 10,
-    category = "crafting",
+    categories = {"crafting"},
     ingredients =
     {
+      {type = "item", name = "panglia_panglite_fiber", amount = 10},
+      {type = "item", name = "advanced-circuit", amount = 5},
       {type = "item", name = "steel-furnace", amount = 1},
       {type = "item", name = "crusher", amount = 1},
       {type = "item", name = "chemical-plant", amount = 1},
-
-      {type = "item", name = "advanced-circuit", amount = 5},
-      {type = "item", name = "panglia_panglite_fiber", amount = 10},
     },
     --surface_conditions = {{ property = "moshine-exclusive", min = 1, max = 1}},
     results = {{type = "item", name = "panglia_crusher", amount = 1}},
@@ -65,6 +64,7 @@ data:extend({
     enabled = false,
     auto_recycle = false,
     surface_conditions = panglia_only,
+    sort_item_ingredients = false,
   },
 
 
@@ -92,7 +92,7 @@ data:extend({
     icon_draw_specification = {shift = {0, -0.1}},
     icons_positioning =
     {
-      {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.8}}
+      {inventory_index = defines.inventory.crafter_modules, shift = {0, 0.8}}
     },
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     effect_receiver = {uses_module_effects = false, uses_beacon_effects = true, uses_surface_effects = true},

@@ -1,6 +1,6 @@
 icons = "__panglia_planet__/graphics/icons/"
-entity = "__panglia_planet__/graphics/entity/"
-techicons = "__panglia_planet__/graphics/technology/"
+entity = "__panglia_planet_assets__/graphics/entity/"
+techicons = "__panglia_planet_assets__/graphics/technology/"
 sounds = "__panglia_planet_assets__/sounds/"
 tssounds = "__panglia_planet_assets__/sounds/"
 

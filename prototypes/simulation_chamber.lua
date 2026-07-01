@@ -29,12 +29,12 @@ data:extend(
     type = "recipe",
     name = "simulation_chamber",
     energy_required = 1,
-    category = "crafting-with-fluid",
+    categories = {"crafting-with-fluid"},
     ingredients =
     {
       {type = "item", name = "data-processor", amount = 1},
-      {type = "item", name = "ai-tier-10", amount = 1},
       {type = "item", name = "cloning-vat", amount = 1},
+      {type = "item", name = "ai-tier-10", amount = 1},
       {type = "fluid", name = "panglia_branbalite_slurry", amount = 120},
       -- TOADD core 10
     },
@@ -44,6 +44,7 @@ data:extend(
     enabled = false,
     auto_recycle = true,
     surface_conditions = panglia_only,
+    sort_item_ingredients = false,
   },
 
 
@@ -103,7 +104,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.4,
     --module_slots = 3,
-    allowed_effects = {"speed", "pollution", "quality"},
+    allowed_effects = {"speed", "pollution"},
     source_inventory_size = 1,
     result_inventory_size = 6,
     crafting_speed = 0.1,
@@ -237,3 +238,7 @@ data:extend(
     surface_conditions = panglia_only,
   },
 })
+
+if mods["quality"] then
+  table.insert(data.raw["furnace"]["simulation_chamber"].allowed_effects, "quality")
+end

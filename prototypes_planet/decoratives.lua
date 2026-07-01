@@ -351,7 +351,7 @@ data:extend({
         {type = "item", name = "iron-ore", amount_min = 0, amount_max = 41},
         {type = "item", name = "copper-ore", amount_min = 0, amount_max = 25},
         {type = "item", name = "stone", amount_min = 0, amount_max = 17},
-        {type = "item", name = "uranium-238", amount_min = 0, amount_max = 10, probability = 0.4},
+        {type = "item", name = "uranium-238", amount_min = 0, amount_max = 10, independent_probability = 0.4},
 
       }
     },

@@ -58,7 +58,7 @@ data:extend({
     research_trigger =
     {
       type = "mine-entity",
-      entity = "panglia_branbalite_plant"
+      entities = {"panglia_branbalite_plant"},
     },
   },
 
@@ -78,7 +78,7 @@ data:extend({
     research_trigger =
     {
       type = "mine-entity",
-      entity = "panglia-huge-panglite-rock"
+      entities = {"panglia-huge-panglite-rock"}
     }
   },
 
@@ -142,7 +142,7 @@ data:extend({
     research_trigger =
     {
       type = "mine-entity",
-      entity = "panglia-huge-igneous-rock"
+      entities = {"panglia-huge-igneous-rock"},
     },
   },
 

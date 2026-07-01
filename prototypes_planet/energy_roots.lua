@@ -1,7 +1,7 @@
 local resource_autoplace = require("resource-autoplace")
 require ("__base__.prototypes.entity.pipecovers")
 require ("circuit-connector-sprites")
-require ("__base__.prototypes.entity.assemblerpipes")
+--require ("__base__.prototypes.entity.assemblerpipes")
 require ("__base__.prototypes.entity.laser-sounds")
 require ("__base__.prototypes.entity.enemy-constants")
 require ("__base__.prototypes.entity.spawner-animation")
@@ -18,7 +18,7 @@ require ("__base__.prototypes.entity.biter-animations")
 require ("__base__.prototypes.entity.spitter-animations")
 require ("__base__.prototypes.entity.spawner-animation")
 
-local biter_ai_settings = require ("__base__.prototypes.entity.biter-ai-settings")
+--local biter_ai_settings = require ("__base__.prototypes.entity.biter-ai-settings")
 local enemy_autoplace = require ("__base__.prototypes.entity.enemy-autoplace-utils")
 local sounds = require ("__base__.prototypes.entity.sounds")
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
@@ -805,12 +805,12 @@ data:extend(
 })
 
 
-local function make_chain_tesla_beams(start_name, bounce_name, sound, damage)
+local function make_chain_tesla_beams(start_name, bounce_name, sounds, damage)
   data:extend(
   {
-    make_tesla_beam(start_name, sound, damage),
-    make_tesla_beam_chain(bounce_name, sound, damage)
+    make_tesla_beam(start_name, sounds.start, damage),
+    make_tesla_beam_chain(bounce_name, sounds.chain, damage)
   })
 end
 
-make_chain_tesla_beams("chain-energy_roots_tesla_turret-beam-start", "chain-energy_roots_tesla_turret-beam-bounce", true, 10)
+make_chain_tesla_beams("chain-energy_roots_tesla_turret-beam-start", "chain-energy_roots_tesla_turret-beam-bounce", space_age_sounds.tesla_turret_beam, 10)

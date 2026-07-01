@@ -14,3 +14,16 @@ make datacell with sentient processor for latest techs
 (make defense drone)
 
 computer recipe tints
+
+
+
+
+change name to panglia moon
+
+switch all assets to assets mod
+
+
+
+
+MOSHINE:
+Add submod for beacons that cool computers

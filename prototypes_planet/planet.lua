@@ -1,6 +1,6 @@
 local resource_autoplace = require("resource-autoplace")
 resource_autoplace.initialize_patch_set("hidden_beacon", true)
-
+lutpath = "__panglia_planet_assets__/graphics/lut/"
 
 local planet_map_gen = require("__space-age__/prototypes/planet/planet-map-gen")
 
@@ -198,8 +198,8 @@ data:extend({
     type = "planet",
     name = "panglia",
     icon = icons .. "planet-panglia.png",
-    starmap_icon = icons .. "starmap-planet-panglia.png",
-    starmap_icon_size = 2048,
+    starmap_icon = "__panglia_planet_assets__/graphics/space/starmap-planet-panglia.png",
+    starmap_icon_size = 512,
 
     gravity_pull = 5,
     distance = 22,
@@ -300,15 +300,15 @@ data:extend({
         --{0.80, "__space-age__/graphics/lut/vulcanus-1-day.png"},
         --{0.0, "__panglia_planet__/graphics/lut/identity-lut.png"},
         --{0.5, "__core__/graphics/color_luts/lut-night.png"},
-        {0.00, "__panglia_planet__/graphics/lut/panglia-day2-lut.png"},
-        {0.20, "__panglia_planet__/graphics/lut/panglia-day1-lut.png"},
-        {0.35, "__panglia_planet__/graphics/lut/panglia-afternoon1-lut.png"},
-        {0.40, "__panglia_planet__/graphics/lut/panglia-afternoon2-lut.png"},
-        {0.45, "__panglia_planet__/graphics/lut/panglia-night-lut.png"},
-        {0.55, "__panglia_planet__/graphics/lut/panglia-night-lut.png"},
-        {0.65, "__panglia_planet__/graphics/lut/panglia-dawn1-lut.png"},
-        {0.75, "__panglia_planet__/graphics/lut/panglia-dawn2-lut.png"},
-        {0.90, "__panglia_planet__/graphics/lut/panglia-day1-lut.png"},
+        {0.00, lutpath .. "panglia-day2-lut.png"},
+        {0.20, lutpath .. "panglia-day1-lut.png"},
+        {0.35, lutpath .. "panglia-afternoon1-lut.png"},
+        {0.40, lutpath .. "panglia-afternoon2-lut.png"},
+        {0.45, lutpath .. "panglia-night-lut.png"},
+        {0.55, lutpath .. "panglia-night-lut.png"},
+        {0.65, lutpath .. "panglia-dawn1-lut.png"},
+        {0.75, lutpath .. "panglia-dawn2-lut.png"},
+        {0.90, lutpath .. "panglia-day1-lut.png"},
       },
 
       terrain_tint_effect =
@@ -360,12 +360,129 @@ PlanetsLib:update({
     name = "panglia",
     subgroup = "satellites",
     redrawn_connections_exclude = true,
+    cosmic_social_distancing_ignore = true, -- not sure why it doesn't work without this
     draw_orbit = false,
     orbit = {
       parent = {type = "planet", name = "gleba"},
-      distance = 1.89,
-      orientation = 0.875,
-      sprite = {type = "sprite", filename = icons .. "starmap-planet-panglia-orbit.png", size = 500, scale = 0.25}
+      distance = 2.55,
+      orientation = 0.28761,
+      sprite = {type = "sprite", filename = "__panglia_planet_assets__/graphics/space/starmap-planet-panglia-orbit.png", size = 685, scale = 0.25}
     },
   }
 })
+
+
+data.raw.planet["panglia"].platform_surface_render_parameters = util.table.deepcopy(data.raw.planet["nauvis"].platform_surface_render_parameters)
+data.raw.planet["panglia"].platform_surface_render_parameters.platform_backdrop =
+{
+  emission_scales_with_shadow = false,
+  radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.radius * 0.7,
+  rotation_seconds = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.rotation_seconds / 1.8,
+  light_radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.light_radius * 0.75,
+  cloudiness = 0.1,
+  surface_vertical_offset = 0.1,
+  cloud_vertical_offset = 0.07,
+  specular_intensity = 0.8,
+  specular_color = {0.95, 0.83, 0.52, 1},
+  atmosphere_color = {0.07, 0.057, 0.55, 0.018},
+  cloud_flow_intensity = 1.5,
+  cloud_panning_rate = 0.1,
+  planet_axis = {3.0, 13.0},
+  planet_axis_deviation_amplitude = {10.0, 10.0},
+  planet_axis_deviation_seconds = {890.5/1.8, 753.7/1.8},
+  position = {-400, 270},
+  parallax_strength = {0.95, 0.95},
+  light_direction = {-0.42, 0.23, 0.4},
+  light_intensity_contrast = 0.4,
+  light_radius = 5,
+  hero_clouds_are_emissive = true,
+  hero_clouds =
+  {
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.2, 0.5}},
+      position_deviation = {-0.05, -0.3},
+      rotation_deviation = 100.0,
+      starting_frame_offset = 0,
+      size = {0.7, 0.7}
+    },
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.21, 0.7}},
+      position_deviation = {0.05, -0.2},
+      rotation_deviation = 1.0,
+      starting_frame_offset = 24,
+      size = {0.4, 0.4}
+    },
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.21, 0.9}},
+      position_deviation = {-0.05, -0.4},
+      rotation_deviation = 1.0,
+      starting_frame_offset = 32,
+      size = {0.5, 0.5}
+    },
+    {
+      sprite_index = 1,
+      rotate_with_planet = false,
+      positions = {{0.21, 0.9}},
+      position_deviation = {-0.05, -0.4},
+      rotation_deviation = 1.0,
+      starting_frame_offset = 64,
+      size = {0.6, 0.6}
+    }
+  },
+  hero_cloud_texture_1 = util.sprite_load("__panglia_planet_assets__/graphics/space/planet-lightning",{
+    frame_count = 12,
+    frame_sequence = {1,2,3,4,5,6,7,8,9,10,11,12,
+    12,12,12,12,12,12,12,12,12,12,
+    12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,},
+    --12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12},
+  animation_speed = 0.3
+  }),
+  planet_surface =
+  {
+    filename = "__panglia_planet_assets__/graphics/space/panglia.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_normal = nil,
+  --[[{
+    filename = "__space-age__/graphics/space/gleba-normal.png",
+    width = 2048,
+    height = 1024
+  },]]
+  planet_emission =
+  {
+    filename = "__panglia_planet_assets__/graphics/space/panglia-emission.png",
+    width = 2048,
+    height = 1024
+  },
+  planet_reflectivity =
+  {
+    filename = "__space-age__/graphics/space/gleba-reflectivity.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud =
+  {
+    filename = "__panglia_planet_assets__/graphics/space/panglia-cloud.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_normal =
+  {
+    filename = "__space-age__/graphics/space/fulgora-cloud-normal.png",
+    width = 2048,
+    height = 1024
+  },
+  global_cloud_flow =
+  {
+    filename = "__space-age__/graphics/space/fulgora-cloud-flow.png",
+    width = 2048,
+    height = 1024
+  }
+}

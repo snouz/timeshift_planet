@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.11
+Date: 2026-07-01
+  Bugfixes:
+    - Fixed that recycling LDS would give panglite
+    - Removed potential exploit of recycling mutated monster egg
+    - Removed recycling recipes for mixed dust
+  Info:
+    - Moved all remaining graphics (except icons) and sounds to assets mod
+  Compatibility:
+    - Fixed Panglia's orbit when Rabbasca is present (thanks Kryzeth)
+---------------------------------------------------------------------------------------------------
+Version: 0.5.10
+Date: 2026-06-30
+  Changes:
+    - Sorted recipe ingredients and results (new in 2.1)
+    - Now works without quality (new in 2.1)
+    - Asteroid collector MK2, Space platform hull and focused gun turrets are now "recommended" mods (activated by default but optional) (new in 2.1)
+---------------------------------------------------------------------------------------------------
 Version: 0.5.9
-Date: 2026-06-
+Date: 2026-06-25
+  Info:
+    - Updated to 2.1
+  Changes:
+    - Recipes have linked probability results (no more duplicate or empty results (new in 2.1)
+  Graphics:
+    - Added planet space backdrop
+    - Branbalite slurry now glows (new in 2.1)
   Compatibility:
     - Added compatibility with Beacon Rebalance
 ---------------------------------------------------------------------------------------------------
