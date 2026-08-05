@@ -9,7 +9,7 @@ function make_musictrack(name, type)
       type = "ambient-sound",
       name = name,
       track_type = track_type,
-      planet = "panglia",
+      planets = {"panglia"},
       sound =
       {
         filename = musicpath .. name .. ".ogg",
@@ -24,7 +24,7 @@ data:extend({
     type = "ambient-sound",
     name = "mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal",
     track_type = "hero-track",
-    planet = "panglia",
+    planets = {"panglia"},
     sound =
     {
       filename = "__panglia_planet_assets__/sounds/mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal.ogg",
