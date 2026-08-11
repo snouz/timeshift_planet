@@ -1,11 +1,11 @@
-icons = "__panglia_planet__/graphics/icons/"
-entity = "__panglia_planet_assets__/graphics/entity/"
-techicons = "__panglia_planet_assets__/graphics/technology/"
-sounds = "__panglia_planet_assets__/sounds/"
-tssounds = "__panglia_planet_assets__/sounds/"
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
 
-beacon_multiplier = 50
-panglia_only = {{property = "pressure", min = 1401, max = 1401}}
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 
 require "prototypes_planet.hidden_beacon"
 require "prototypes_planet.terrain"

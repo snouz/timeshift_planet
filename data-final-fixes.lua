@@ -1,9 +1,19 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
+
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
+
+
+
 if data.raw["lab"]["neural_computer"] then
   table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-raw")
   table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-sequenced")
 end
 
-local icons = "__panglia_planet__/graphics/icons/"
 
 for i, inserter in pairs(data.raw["inserter"]) do
   if not string.find(inserter.name, "_panglia_fast_version") then
@@ -238,6 +248,7 @@ data.raw["technology"]["panglia_worker-robots-speed"].unit =
     {"datacell-raw-data", 1},
     {"datacell-ai-model-data", 1},
     {"datacell-solved-equation", 1},
+    {"datacell-cosmic-data", 1},
     {"datacell-dna-sequenced", 1},
   },
   time = 6000
@@ -288,3 +299,5 @@ local function add_tech_unit(tech, count, time, ingredients)
 end
 
 add_tech_unit("panglia_planet_discovery_panglia", 250, 60, {{"datacell-raw-data", 1}} )
+add_tech_unit("matter_printer-technology", 300, 10*500, {{"datacell-raw-data", 1},{"datacell-cosmic-data-outsignal", 1}} )
+add_tech_unit("panglia_universe_precursor_volcanic", 500, 10*500, {{"datacell-raw-data", 1},{"datacell-cosmic-data-outsignal", 1},{"datacell-cosmic-data", 1}} )

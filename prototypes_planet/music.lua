@@ -1,3 +1,12 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
+
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
+
 local musicpath = sounds .. "ambient/"
 local vol = 0.7
 
@@ -9,7 +18,7 @@ function make_musictrack(name, type)
       type = "ambient-sound",
       name = name,
       track_type = track_type,
-      planet = "panglia",
+      planets = {"panglia"},
       sound =
       {
         filename = musicpath .. name .. ".ogg",
@@ -24,7 +33,7 @@ data:extend({
     type = "ambient-sound",
     name = "mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal",
     track_type = "hero-track",
-    planet = "panglia",
+    planets = {"panglia"},
     sound =
     {
       filename = "__panglia_planet_assets__/sounds/mashup_Serat_Distant_Fields_Pablo_Enver_FF9_Branbal.ogg",

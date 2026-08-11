@@ -1,4 +1,11 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
 
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 
 
 data:extend({
@@ -162,7 +169,7 @@ data:extend({
         recipe = "panglia_universe_precursor_volcanic_result"
       },
     },
-    prerequisites = {"panglia_igneous_rock_to_lava", "matter_printer-technology", "panglia_branbalite_slurry_to_lubricant"},
+    prerequisites = {"panglia_igneous_rock_to_lava", "matter_printer-technology", "panglia_branbalite_slurry_to_lubricant", "moshine-tech-cosmicscanner-construction5"},
     unit =
     {
       count = 800,
@@ -366,7 +373,11 @@ data:extend({
 
 
 
-
+--    ██████  ███    ██  █████  
+--    ██   ██ ████   ██ ██   ██ 
+--    ██   ██ ██ ██  ██ ███████ 
+--    ██   ██ ██  ██ ██ ██   ██ 
+--    ██████  ██   ████ ██   ██ 
 
 
   {
@@ -484,7 +495,11 @@ data:extend({
 
 
 
-
+--    ██████  ███████ ██     ██  █████  ██████  ██████  ███████ 
+--    ██   ██ ██      ██     ██ ██   ██ ██   ██ ██   ██ ██      
+--    ██████  █████   ██  █  ██ ███████ ██████  ██   ██ ███████ 
+--    ██   ██ ██      ██ ███ ██ ██   ██ ██   ██ ██   ██      ██ 
+--    ██   ██ ███████  ███ ███  ██   ██ ██   ██ ██████  ███████ 
 
   {
     type = "technology",
@@ -576,6 +591,7 @@ data:extend({
 if data.raw["technology"]["matter_printer-technology"] then
   table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_advanced_optics_nanotech")
   table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_panglite_multiplication")
+  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "moshine-tech-cosmic-data-outsignal-creation")
 end
   --table.insert(data.raw["technology"]["panglia_crusher"].effects, {type = "unlock-recipe", recipe = "panglia_universe_precursor"})
 
@@ -591,18 +607,3 @@ end
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"panglia_simulation_matrix"}
 end
-
-
-
---table.insert(data.raw["technology"]["panglia_advanced_optics_nanotech"].prerequisites, "planet-discovery-moshine")
---data.raw["technology"]["panglia_advanced_optics_nanotech"].research_trigger = {
---  type = "craft-item",
---  item = "glass",
---  count = 10
---}
-
-
-
---if mods["moshine"] then
---  table.insert(data.raw["technology"]["panglia_planet_discovery_panglia"].prerequisites, "panglia_simulation_matrix")
---end

@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.5.13
+Date: 2026-08-
+  Info:
+    - Requires Moshine 1.2
+  Balancing:
+    - Added out_signal.data as requirement for 
+  Gui:
+    - Changed datacell stylization to follow Moshine's changes
+  Compatibility:
+    - Removed some global variables to increase compatibility
+---------------------------------------------------------------------------------------------------
+Version: 0.5.12
+Date: 2026-08-05
+  Bugfixes:
+    - Hotfix for a breaking change in Factorio 2.1.13
+---------------------------------------------------------------------------------------------------
 Version: 0.5.11
 Date: 2026-07-01
   Bugfixes:

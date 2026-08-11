@@ -26,4 +26,4 @@ switch all assets to assets mod
 
 
 MOSHINE:
-Add submod for beacons that cool computers
+smaller beacon use ice, bigger use shields

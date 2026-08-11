@@ -1,3 +1,12 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
+
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
+
 local resource_autoplace = require("resource-autoplace")
 resource_autoplace.initialize_patch_set("hidden_beacon", true)
 lutpath = "__panglia_planet_assets__/graphics/lut/"

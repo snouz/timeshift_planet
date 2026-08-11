@@ -1,3 +1,10 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local tssounds = "__panglia_planet_assets__/sounds/"
+
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 
 require ("circuit-connector-sprites")
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
@@ -58,7 +65,6 @@ data:extend({
       {type = "item", name = "crusher", amount = 1},
       {type = "item", name = "chemical-plant", amount = 1},
     },
-    --surface_conditions = {{ property = "moshine-exclusive", min = 1, max = 1}},
     results = {{type = "item", name = "panglia_crusher", amount = 1}},
     allow_productivity = false,
     enabled = false,
@@ -139,8 +145,6 @@ data:extend({
             animation_speed = 0.5,
             repeat_count = 48,
             scale = 0.5,
-            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
           {
             filename = entity .. "crusher/crusher-base-shadow.png",
@@ -150,8 +154,6 @@ data:extend({
             repeat_count = 48,
             scale = 0.5,
             draw_as_shadow = true,
-            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
           {
             filename = "__space-age__/graphics/entity/crusher/crusher-horizontal.png",
@@ -161,7 +163,6 @@ data:extend({
             repeat_count = 48,
             scale = 0.5,
             shift = util.by_pixel(2.5 +3, -5.0 -4.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
           {
             filename = entity .. "crusher/crusher-base-top.png",
@@ -170,8 +171,6 @@ data:extend({
             animation_speed = 0.5,
             repeat_count = 48,
             scale = 0.5,
-            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
         }
       },
@@ -184,8 +183,6 @@ data:extend({
             animation_speed = 0.5,
             repeat_count = 48,
             scale = 0.5,
-            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
           {
             filename = entity .. "crusher/crusher-base-shadow.png",
@@ -195,8 +192,6 @@ data:extend({
             repeat_count = 48,
             scale = 0.5,
             draw_as_shadow = true,
-            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
           {
             filename = "__space-age__/graphics/entity/crusher/crusher-horizontal.png",
@@ -207,7 +202,6 @@ data:extend({
             frame_count = 48,
             scale = 0.5,
             shift = util.by_pixel(2.5 +3, -5.0 -4.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
           {
             filename = entity .. "crusher/crusher-base-top.png",
@@ -216,124 +210,9 @@ data:extend({
             animation_speed = 0.5,
             repeat_count = 48,
             scale = 0.5,
-            --shift = util.by_pixel(2.5 -3, -5.0 +0.5),
-            --tint = {120,190,100}, --TEMPORARY
           },
         }
       }
     }
-    --[[graphics_set = 
-    {
-      animation =
-      {
-        layers =
-        {
-          {
-            filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
-            priority = "high",
-            width = 239,
-            height = 219,
-            shift = util.by_pixel(0.75, 5.75),
-            scale = 0.5
-          },
-          {
-            filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
-            priority = "high",
-            width = 227,
-            height = 171,
-            draw_as_shadow = true,
-            shift = util.by_pixel(11.25, 7.75),
-            scale = 0.5
-          }
-        }
-      },
-      working_visualisations =
-      {
-        {
-          fadeout = true,
-          animation =
-          {
-            layers =
-            {
-              {
-                filename = "__base__/graphics/entity/electric-furnace/electric-furnace-heater.png",
-                priority = "high",
-                width = 60,
-                height = 56,
-                frame_count = 12,
-                animation_speed = 0.5,
-                draw_as_glow = true,
-                shift = util.by_pixel(1.75, 32.75),
-                scale = 0.5
-              },
-              {
-                filename = "__base__/graphics/entity/electric-furnace/electric-furnace-light.png",
-                blend_mode = "additive",
-                width = 202,
-                height = 202,
-                repeat_count = 12,
-                draw_as_glow = true,
-                shift = util.by_pixel(1, 0),
-                scale = 0.5,
-              },
-            }
-          },
-        },
-        {
-          fadeout = true,
-          animation =
-          {
-            filename = "__base__/graphics/entity/electric-furnace/electric-furnace-ground-light.png",
-            blend_mode = "additive",
-            width = 166,
-            height = 124,
-            draw_as_light = true,
-            shift = util.by_pixel(3, 69),
-            scale = 0.5,
-          },
-        },
-        {
-          animation =
-          {
-            filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
-            priority = "high",
-            width = 37,
-            height = 25,
-            frame_count = 4,
-            animation_speed = 0.5,
-            shift = util.by_pixel(-20.5, -18.5),
-            scale = 0.5
-          }
-        },
-        {
-          animation =
-          {
-            filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
-            priority = "high",
-            width = 23,
-            height = 15,
-            frame_count = 4,
-            animation_speed = 0.5,
-            shift = util.by_pixel(3.5, -38),
-            scale = 0.5
-          }
-        }
-      },
-      water_reflection =
-      {
-        pictures =
-        {
-          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-reflection.png",
-          priority = "extra-high",
-          width = 24,
-          height = 24,
-          shift = util.by_pixel(5, 40),
-          variation_count = 1,
-          scale = 5
-        },
-        rotate = false,
-        orientation_to_variation = false
-      }
-    }]]
   },
 })

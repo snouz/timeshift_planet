@@ -1,3 +1,12 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local datacellicons = "__Moshine__/graphics/icons/data/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
+
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 local item_sounds = require("__base__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")
 local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
@@ -13,12 +22,6 @@ local minutes = 60 * seconds
 
 data:extend({
 
-  {
-    type = "item-subgroup",
-    name = "moshine-datacells",
-    group = "intermediate-products",
-    order = "pb"
-  },
   {
     type = "item-subgroup",
     name = "panglia-processes",
@@ -503,30 +506,12 @@ data:extend({
     surface_conditions = panglia_only,
   },
 
-    --[[
-  {
-    type = "recipe",
-    name = "panglia_branbalite_slurry_to_crudeoil",
-    icon = icons .. "panglia_branbalite_slurry_to_crudeoil.png",
-    subgroup = "panglia-processes",
-    order = "b[otherres]-aa",
-    categories = {"oil-processing"},
-    enabled = false,
-    energy_required = 0.5 * beacon_multiplier,
-    ingredients = {
-      {type = "fluid", name = "panglia_branbalite_slurry", amount = 65},
-      {type = "fluid", name = "steam", amount = 35}
-    },
-    results = {
-      {type = "fluid", name = "crude-oil", amount = 90},
-      {type = "fluid", name = "water", amount = 10, show_details_in_recipe_tooltip = false}
-    },
-    main_product = "crude-oil",
-    allow_productivity = true,
-    allow_decomposition = false,
-    surface_conditions = panglia_only,
-  },
-]]
+--    ███    ███  █████  ████████ ████████ ███████ ██████      ██████  ██████  ██ ███    ██ ████████ ███████ ██████  
+--    ████  ████ ██   ██    ██       ██    ██      ██   ██     ██   ██ ██   ██ ██ ████   ██    ██    ██      ██   ██ 
+--    ██ ████ ██ ███████    ██       ██    █████   ██████      ██████  ██████  ██ ██ ██  ██    ██    █████   ██████  
+--    ██  ██  ██ ██   ██    ██       ██    ██      ██   ██     ██      ██   ██ ██ ██  ██ ██    ██    ██      ██   ██ 
+--    ██      ██ ██   ██    ██       ██    ███████ ██   ██     ██      ██   ██ ██ ██   ████    ██    ███████ ██   ██ 
+
   {
     type = "item",
     name = "panglia_universe_precursor_volcanic",
@@ -541,20 +526,6 @@ data:extend({
     random_tint_color = item_tints.iron_rust,
     weight = 50*kg,
   },
-  --[[{
-    type = "item",
-    name = "panglia_universe_precursor_2",
-    icon = icons .. "panglia_universe_precursor_2.png",
-    subgroup = "panglia-processes",
-    order = "b[otherres]-bb",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
-    stack_size = 20,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    weight = 50*kg,
-  },]]
   {
     type = "recipe",
     name = "panglia_universe_precursor_volcanic",
@@ -684,14 +655,17 @@ data:extend({
 
 })
 
-
--------------------- datacells
+--    ██████   █████  ████████  █████   ██████ ███████ ██      ██      ███████ 
+--    ██   ██ ██   ██    ██    ██   ██ ██      ██      ██      ██      ██      
+--    ██   ██ ███████    ██    ███████ ██      █████   ██      ██      ███████ 
+--    ██   ██ ██   ██    ██    ██   ██ ██      ██      ██      ██           ██ 
+--    ██████  ██   ██    ██    ██   ██  ██████ ███████ ███████ ███████ ███████ 
 
 data:extend({
   {
     type = "item",
     name = "datacell-dna-raw",
-    icon = icons .. "datacell-dna-raw.png",
+    icon = datacellicons .. "datacell-dna-raw.png",
     subgroup = "moshine-datacells",
     order = "b[panglia]-aa",
     inventory_move_sound = item_sounds.metal_small_inventory_move,
@@ -710,7 +684,7 @@ data:extend({
   {
     type = "recipe",
     name = "datacell-dna-raw",
-    icon = icons .. "datacell-dna-raw.png",
+    icon = datacellicons .. "datacell-dna-raw.png",
     subgroup = "moshine-datacells",
     order = "b[panglia]-bb",
     categories = {"cloning"},
@@ -731,7 +705,7 @@ data:extend({
   {
     type = "item",
     name = "datacell-dna-sequenced",
-    icon = icons .. "datacell-dna-sequenced.png",
+    icon = datacellicons .. "datacell-dna-unfolded.png",
     subgroup = "moshine-datacells",
     order = "b[panglia]-cc",
     inventory_move_sound = item_sounds.metal_small_inventory_move,
@@ -810,27 +784,16 @@ data:extend({
                       as_enemy = true,
                       offset_deviation = {{-1, -1}, {1, 1}},
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-  },
-})
+} } } } } } } },},})
 
 
 
 
-
-
-
-
-
-
------------------------------- Brains
+--    ██████  ██████   █████  ██ ███    ██ ███████ 
+--    ██   ██ ██   ██ ██   ██ ██ ████   ██ ██      
+--    ██████  ██████  ███████ ██ ██ ██  ██ ███████ 
+--    ██   ██ ██   ██ ██   ██ ██ ██  ██ ██      ██ 
+--    ██████  ██   ██ ██   ██ ██ ██   ████ ███████ 
 
 data:extend({
   {

@@ -1,6 +1,15 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
+
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
+
 local resource_autoplace = require("resource-autoplace")
 resource_autoplace.initialize_patch_set("panglia_hidden_beacon", true)
-
+local icons = "__panglia_planet__/graphics/icons/"
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local item_sounds = require("__base__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")

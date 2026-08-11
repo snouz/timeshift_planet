@@ -1,4 +1,11 @@
+local icons = "__panglia_planet__/graphics/icons/"
+local entity = "__panglia_planet_assets__/graphics/entity/"
+local techicons = "__panglia_planet_assets__/graphics/technology/"
+local sounds = "__panglia_planet_assets__/sounds/"
+local tssounds = "__panglia_planet_assets__/sounds/"
 
+local beacon_multiplier = 50
+local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 if data.raw["lab"]["neural_computer"] then
   table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-raw")
   table.insert(data.raw["lab"]["neural_computer"].inputs, "datacell-dna-sequenced")
@@ -161,7 +168,7 @@ end
 
 
 
-data.raw["item"]["datacell-empty"].subgroup = "moshine-datacells"
+--[[data.raw["item"]["datacell-empty"].subgroup = "moshine-datacells"
 data.raw["item"]["datacell-empty"].order = "a[moshine]-aa"
 data.raw["item"]["datacell-raw-data"].subgroup = "moshine-datacells"
 data.raw["item"]["datacell-raw-data"].order = "a[moshine]-bb"
@@ -181,7 +188,7 @@ data.raw["recipe"]["datacell-equation"].subgroup = "moshine-datacells"
 data.raw["recipe"]["datacell-equation"].order = "a[moshine]-de"
 
 data.raw["item"]["datacell-solved-equation"].subgroup = "moshine-datacells"
-data.raw["item"]["datacell-solved-equation"].order = "a[moshine]-ee"
+data.raw["item"]["datacell-solved-equation"].order = "a[moshine]-ee"]]
 
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].unit =

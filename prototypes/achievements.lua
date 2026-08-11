@@ -30,7 +30,7 @@ data:extend({
   {
     type = "produce-achievement",
     name = "panglia_produce_cloned_specimen_body_2",
-    order = "p[panglia]-ccd",
+    order = "p[panglia]-ddd",
     item_product = "panglia_cloned_specimen_body_2",
     amount = 1,
     limited_to_one_game = true,
@@ -40,7 +40,7 @@ data:extend({
   {
     type = "build-entity-achievement",
     name = "panglia_build-thinking-brain",
-    order = "p[panglia]-ddd",
+    order = "p[panglia]-eee",
     to_build = "thinking-brain",
     icon = ach .. "panglia_build-thinking-brain.png",
     icon_size = 128
@@ -48,7 +48,7 @@ data:extend({
   {
     type = "produce-achievement",
     name = "panglia_produce-sentient-processors",
-    order = "p[panglia]-eee",
+    order = "p[panglia]-fff",
     item_product = "panglia_sentient_processor",
     amount = 500,
     limited_to_one_game = true,
