@@ -1,20 +1,14 @@
 local icons = "__panglia_planet__/graphics/icons/"
 local entity = "__panglia_planet_assets__/graphics/entity/"
-local techicons = "__panglia_planet_assets__/graphics/technology/"
 local tssounds = "__panglia_planet_assets__/sounds/"
 
-local beacon_multiplier = 50
 local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
-
 
 require ("util")
 require ("__base__.prototypes.entity.pipecovers")
 require ("circuit-connector-sprites")
-local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
-
-local sounds = require("__base__.prototypes.entity.sounds")
 local item_sounds = require("__base__.prototypes.item_sounds")
 local ent_size = 6
 

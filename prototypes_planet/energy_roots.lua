@@ -1,36 +1,21 @@
 local icons = "__panglia_planet__/graphics/icons/"
 local entity = "__panglia_planet_assets__/graphics/entity/"
-local techicons = "__panglia_planet_assets__/graphics/technology/"
 local tssounds = "__panglia_planet_assets__/sounds/"
-
-local beacon_multiplier = 50
-local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 
 local resource_autoplace = require("resource-autoplace")
 require ("__base__.prototypes.entity.pipecovers")
 require ("circuit-connector-sprites")
---require ("__base__.prototypes.entity.assemblerpipes")
 require ("__base__.prototypes.entity.laser-sounds")
 require ("__base__.prototypes.entity.enemy-constants")
 require ("__base__.prototypes.entity.spawner-animation")
 require ("__base__.prototypes.entity.character-animations")
 require ("__base__.prototypes.entity.entity-util")
 require ("__base__.prototypes.entity.spidertron-animations")
-local simulations = require("__base__.prototypes.factoriopedia-simulations")
-local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
-local procession_audio_catalogue_types = require("__base__/prototypes/planet/procession-audio-catalogue-types")
-
 
 require ("__base__.prototypes.entity.enemy-constants")
 require ("__base__.prototypes.entity.biter-animations")
 require ("__base__.prototypes.entity.spitter-animations")
 require ("__base__.prototypes.entity.spawner-animation")
-
---local biter_ai_settings = require ("__base__.prototypes.entity.biter-ai-settings")
-local enemy_autoplace = require ("__base__.prototypes.entity.enemy-autoplace-utils")
-local sounds = require ("__base__.prototypes.entity.sounds")
-local hit_effects = require ("__base__.prototypes.entity.hit-effects")
-local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
 require("__space-age__.prototypes.entity.beams")
 
@@ -41,8 +26,6 @@ local hit_effects = require("__base__.prototypes.entity.hit-effects")
 
 local util = require('util')
 
-local rocket_turret_shift = -20
-local tesla_turret_shift = -26
 
 local emptyturretanim = {
   filename = "__core__/graphics/empty.png",

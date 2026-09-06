@@ -1,9 +1,5 @@
 local icons = "__panglia_planet__/graphics/icons/"
-local datacellicons = "__Moshine__/graphics/icons/data/"
-local entity = "__panglia_planet_assets__/graphics/entity/"
-local techicons = "__panglia_planet_assets__/graphics/technology/"
-local sounds = "__panglia_planet_assets__/sounds/"
-local tssounds = "__panglia_planet_assets__/sounds/"
+local datacellicons = "__panglia_planet__/graphics/icons/data/"
 
 local beacon_multiplier = 50
 local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
@@ -675,11 +671,11 @@ data:extend({
     --durability_description_key = "description.science-pack-remaining-amount-key",
     --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     --durability_description_value = "description.science-pack-remaining-amount-value",
-    stack_size = 40,
+    stack_size = 200,
     default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
     plant_result = "processing-grid-process-dna",
-    weight = 5*kg,
+    weight = 0.5*kg,
   },
   {
     type = "recipe",
@@ -701,6 +697,7 @@ data:extend({
     main_product = "datacell-dna-raw",
     allow_productivity = true,
     enabled = false,
+    crafting_machine_tint = {primary = util.color("#48001e")},
   },
   {
     type = "item",
@@ -715,9 +712,90 @@ data:extend({
     --durability_description_key = "description.science-pack-remaining-amount-key",
     --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     --durability_description_value = "description.science-pack-remaining-amount-value",
-    stack_size = 40,
+    stack_size = 200,
     default_import_location = "panglia",
-    weight = 5*kg
+    weight = 0.5*kg
+  },
+
+  --[[{
+    type = "recipe",
+    name = "cosmic-data-outsignal-creation",
+    icon = "__Moshine__/graphics/icons/data/cosmic-data-outsignal.png",
+    categories = {"data-processing"},
+    subgroup = "moshine-datacells",
+    order = "a[moshine]-da",
+    --hide_from_player_crafting = true,
+    energy_required = 0.5,
+    ingredients = {
+      {type = "fluid", name = "raw-data", amount = 150},
+      {type = "fluid", name = "solved-equation-data", amount = 40},
+      {type = "item", name = "space-science-pack", amount = 1},
+    },
+    results = {{type = "fluid", name = "cosmic-data-outsignal", amount = 1}},
+    allow_productivity = false,
+    auto_recycle = false,
+    enabled = false,
+    crafting_machine_tint = {primary = {197,8,181}}, --#260d7f
+  },]]
+
+  {
+    type = "item",
+    name = "datacell-timewarp_data",
+    icon = datacellicons .. "datacell-timewarp_data.png",
+    subgroup = "moshine-datacells",
+    order = "b[panglia]-dd",
+    inventory_move_sound = item_sounds.metal_small_inventory_move,
+    pick_sound = item_sounds.metal_small_inventory_pickup,
+    drop_sound = item_sounds.metal_small_inventory_move,
+    --durability = 1,
+    --durability_description_key = "description.science-pack-remaining-amount-key",
+    --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
+    --durability_description_value = "description.science-pack-remaining-amount-value",
+    stack_size = 200,
+    default_import_location = "panglia",
+    weight = 0.5*kg
+  },
+  {
+    type = "recipe",
+    name = "datacell-timewarp_data",
+    icon =  datacellicons .. "datacell-timewarp_data.png",
+    categories = {"data-processing"},
+    subgroup = "moshine-datacells",
+    order = "b[panglia]-de",
+    hide_from_player_crafting = true,
+    energy_required = 1,
+    ingredients = {
+      {type = "item", name = "datacell-empty", amount = 1, ignored_by_stats = 1},
+      {type = "fluid", name = "timewarp_data", amount = 100, ignored_by_stats = 100},
+    },
+    results = {{type = "item", name = "datacell-timewarp_data", amount = 1, ignored_by_stats = 1}},
+    allow_productivity = false,
+    auto_recycle = false,
+    enabled = false,
+    crafting_machine_tint = {primary = util.color("#00ffff")},
+  },
+  {
+    type = "recipe",
+    name = "datacell-remove-timewarp_data",
+    icon = datacellicons .. "datacell-timewarp_data-remove.png",
+    categories = {"data-processing"},
+    subgroup = "moshine-datacells",
+    order = "b[panglia]-df",
+    hide_from_player_crafting = true,
+    hide_from_stats = true,
+    energy_required = 1,
+    ingredients = {
+      {type = "item", name = "datacell-timewarp_data", amount = 1, ignored_by_stats = 1},
+    },
+    results = {
+      {type = "item", name = "datacell-empty", amount = 1, ignored_by_stats = 1},
+      {type = "fluid", name = "timewarp_data", amount = 100, ignored_by_stats = 100},
+    },
+    allow_productivity = false,
+    auto_recycle = false,
+    enabled = false,
+    hide_from_player_crafting = true,
+    crafting_machine_tint = {primary = util.color("#00ffff")},
   },
 
 })

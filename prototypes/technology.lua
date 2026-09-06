@@ -1,11 +1,4 @@
-local icons = "__panglia_planet__/graphics/icons/"
-local entity = "__panglia_planet_assets__/graphics/entity/"
 local techicons = "__panglia_planet_assets__/graphics/technology/"
-local sounds = "__panglia_planet_assets__/sounds/"
-local tssounds = "__panglia_planet_assets__/sounds/"
-
-local beacon_multiplier = 50
-local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 
 
 data:extend({
@@ -475,7 +468,7 @@ data:extend({
         recipe = "panglia_sentient_processor"
       },
     },
-    prerequisites = {"thinking-brain-technology", "quantum-processor"},
+    prerequisites = {"panglia_planet_discovery_panglia"},
     unit =
     {
       count = 200,
@@ -490,7 +483,46 @@ data:extend({
       time = 1008*500,
     }
   },
+--    ████████ ██ ███    ███ ███████     ██     ██  █████  ██████  ██████  
+--       ██    ██ ████  ████ ██          ██     ██ ██   ██ ██   ██ ██   ██ 
+--       ██    ██ ██ ████ ██ █████       ██  █  ██ ███████ ██████  ██████  
+--       ██    ██ ██  ██  ██ ██          ██ ███ ██ ██   ██ ██   ██ ██      
+--       ██    ██ ██      ██ ███████      ███ ███  ██   ██ ██   ██ ██      
 
+
+
+
+  {
+    type = "technology",
+    name = "panglia_tech_timewarp_data",
+    icon = techicons .. "panglia_tech_timewarp_data.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_timewarp_data_maker"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "datacell-timewarp_data"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "datacell-remove-timewarp_data"
+      },
+    },
+    prerequisites = {"panglia_planet_discovery_panglia"},
+    unit =
+    {
+      count = 200,
+      ingredients =
+      {
+        {"datacell-raw-data", 1},
+      },
+      time = 100,
+    }
+  },
 
 
 

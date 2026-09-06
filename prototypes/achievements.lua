@@ -55,12 +55,4 @@ data:extend({
     icon = ach .. "panglia_produce-sentient-processors.png",
     icon_size = 128
   },
-  --[[{
-    type = "research-achievement",
-    name = "research-moshine-tech-ai-tier-10",
-    order = "p[panglia]-eee",
-    technology = "thinking-brain-technology",
-    icon = "__Moshine__/graphics/achievement/research-moshine-tech-ai-tier-10.png",
-    icon_size = 128
-  },]]
 })

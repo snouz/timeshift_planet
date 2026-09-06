@@ -1,28 +1,15 @@
-local icons = "__panglia_planet__/graphics/icons/"
-local entity = "__panglia_planet_assets__/graphics/entity/"
-local techicons = "__panglia_planet_assets__/graphics/technology/"
-local sounds = "__panglia_planet_assets__/sounds/"
-local tssounds = "__panglia_planet_assets__/sounds/"
-
-local beacon_multiplier = 50
-local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
-
-
 local terrain = "__panglia_planet_assets__/graphics/terrain/"
 
 local tile_trigger_effects = require("__space-age__.prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
 local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
-local space_age_tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
-local tile_lightening = 28
-vulcanus_tile_offset = 40
-local resource_autoplace = require("resource-autoplace")
+local vulcanus_tile_offset = 40
 
 local function transition_masks()
   return {
@@ -407,15 +394,11 @@ data:extend({
 
 
 
-
-
-
-
-
-
---------------------
--- VULCANUS TILES --
---------------------
+--    ██    ██ ██    ██ ██       ██████  █████  ███    ██ ██    ██ ███████     ████████ ██ ██      ███████ ███████ 
+--    ██    ██ ██    ██ ██      ██      ██   ██ ████   ██ ██    ██ ██             ██    ██ ██      ██      ██      
+--    ██    ██ ██    ██ ██      ██      ███████ ██ ██  ██ ██    ██ ███████        ██    ██ ██      █████   ███████ 
+--     ██  ██  ██    ██ ██      ██      ██   ██ ██  ██ ██ ██    ██      ██        ██    ██ ██      ██           ██ 
+--      ████    ██████  ███████  ██████ ██   ██ ██   ████  ██████  ███████        ██    ██ ███████ ███████ ███████ 
 
 
   ----------- CLIFF TILE
@@ -980,11 +963,11 @@ data:extend({
 
 
 
-
-
------------------
--- GLEBA TILES --
------------------
+--     ██████  ██      ███████ ██████   █████      ████████ ██ ██      ███████ ███████ 
+--    ██       ██      ██      ██   ██ ██   ██        ██    ██ ██      ██      ██      
+--    ██   ███ ██      █████   ██████  ███████        ██    ██ ██      █████   ███████ 
+--    ██    ██ ██      ██      ██   ██ ██   ██        ██    ██ ██      ██           ██ 
+--     ██████  ███████ ███████ ██████  ██   ██        ██    ██ ███████ ███████ ███████ 
 
 data:extend({
   {
@@ -1221,7 +1204,11 @@ data:extend({
   },
 
 
-
+--    ████████ ██ ███    ███ ███████     ███████  ██████  ███    ██ ███████ 
+--       ██    ██ ████  ████ ██             ███  ██    ██ ████   ██ ██      
+--       ██    ██ ██ ████ ██ █████         ███   ██    ██ ██ ██  ██ █████   
+--       ██    ██ ██  ██  ██ ██           ███    ██    ██ ██  ██ ██ ██      
+--       ██    ██ ██      ██ ███████     ███████  ██████  ██   ████ ███████ 
 
 
   {
@@ -1281,12 +1268,13 @@ data:extend({
 
 
 
+  { type = "collision-layer", order = "40", name = "panglia_hidden_beacon_tile" },
   {
     type = "tile",
     name = "panglia_hidden_beacon_tile",
     order = "c[artificial]-d[machinery]",
     subgroup = "panglia-tiles",
-    collision_mask = tile_collision_masks.ground(),
+    collision_mask = {layers={ground_tile=true, panglia_hidden_beacon_tile=true}},
     --autoplace = { probability_expression = "fulgora_tile_ruin_machinery" },
     --[[autoplace = resource_autoplace.resource_autoplace_settings
     {

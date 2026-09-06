@@ -1,22 +1,13 @@
 local icons = "__panglia_planet__/graphics/icons/"
-local entity = "__panglia_planet_assets__/graphics/entity/"
-local techicons = "__panglia_planet_assets__/graphics/technology/"
-local sounds = "__panglia_planet_assets__/sounds/"
 local tssounds = "__panglia_planet_assets__/sounds/"
-
-local beacon_multiplier = 50
-local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 
 local decora = "__panglia_planet_assets__/graphics/decorative/"
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
-local base_sounds = require ("__base__.prototypes.entity.sounds")
 local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
 local space_age_tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
-local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local decorative_trigger_effects = require("__base__.prototypes.decorative.decorative-trigger-effects")
 local decal_tile_layer = 255
 local decal_opacity_over_water = 0.4
-local water_decal_opacity_over_water = 0.7
 
 function get_decal_pictures_withglow(file_path, size_class, image_size, amount, tint, tint_as_overlay, scale)
   local pictures  = {}
@@ -220,6 +211,8 @@ data:extend({
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     mining_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
+    open_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
+    close_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
     render_layer = "object",
     max_health = 2000,
@@ -278,6 +271,8 @@ data:extend({
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     mining_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
+    open_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
+    close_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
     --pictures = bigrockpics,
     pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "big-panglite-rock/big-panglite-rock", frame_count = 27}}),

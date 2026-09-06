@@ -1,13 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.5.13
-Date: 2026-08-
-  Info:
-    - Requires Moshine 1.2
+Version: 0.6.0
+Date: 2026-09-
+  Features:
+    - Added "Timewarp analyzer" entity and technology
+    - Added "time_flow.data" data-fluid, and corresponding recipes/items
+  Changes:
+    - Changed name of "Universe incubator" to "Simuverse" (in submod)
   Balancing:
-    - Added out_signal.data as requirement for 
+    - Added out_signal.data as requirement for the simuverse
+    - Space platform hull repair speed raised to 1.5 from 0.1 (base wall: 2) (in submod)
   Gui:
-    - Changed datacell stylization to follow Moshine's changes
+    - Changed datacell stylization and icons to follow Moshine 1.2's changes
+    - Changed Panglia's description
+    - Changed name of "antilinear zones" or "time anomalies" to "timewarp"
+    - Changed name of "Universe incubator" to "Simuverse" (in submod)
   Compatibility:
+    - Requires Moshine 1.2.7 and matter_printer 0.2.3
     - Removed some global variables to increase compatibility
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.12

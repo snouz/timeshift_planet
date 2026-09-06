@@ -1,22 +1,10 @@
 local icons = "__panglia_planet__/graphics/icons/"
 local entity = "__panglia_planet_assets__/graphics/entity/"
-local techicons = "__panglia_planet_assets__/graphics/technology/"
-local sounds = "__panglia_planet_assets__/sounds/"
-local tssounds = "__panglia_planet_assets__/sounds/"
-
-local beacon_multiplier = 50
-local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 require("__base__.prototypes.particles")
-
-local item_sounds = require("__base__.prototypes.item_sounds")
-local item_tints = require("__base__.prototypes.item-tints")
-local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 
 local seconds = 60
 local minutes = 60 * seconds
 
-
-local particle_animations = require("__base__.prototypes.particle-animations")
 
 local function gleba_tree_variations(name, variation_count, per_row, scale_multiplier, width, height, shift, reflection_shift)
   variation_count = variation_count or 5
@@ -505,7 +493,7 @@ data:extend({
   {
     type = "plant",
     name = "processing-grid-process-dna",
-    icon = icons .. "processing-grid-process-dna.png",
+    icon = "__panglia_planet__/graphics/icons/data/processing-grid-process-dna.png",
     flags = {"placeable-neutral"},
     minable =
     {

@@ -24,6 +24,4 @@ switch all assets to assets mod
 
 
 
-
-MOSHINE:
-smaller beacon use ice, bigger use shields
+ok, followup problem: how do I destroy excess igneous rock on panglia? Its unrecyclable. I've tried inserting it into the timezone, the panderoots and the water, none works. Am I really supposed to be melting it and voiding the lava?
