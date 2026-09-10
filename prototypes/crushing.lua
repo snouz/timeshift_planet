@@ -72,8 +72,6 @@ data:extend({
 
 
 
-
-
   {
     type = "furnace",
     name = "panglia_crusher",

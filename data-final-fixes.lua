@@ -173,7 +173,7 @@ function pangliacrushing.incinerateRecipe(item, category, weight)
     {
       type = "recipe",
       name = category .. "-" .. item.name .. "-panglia_crushing",
-      localised_name = "(" .. category .. ") " .. item.name:gsub("^%l", string.upper) .. " crushing",
+      localised_name = {"recipe-name.panglia_crushing_dynamic_recipe", {"item-name."..item.name}},
       icons = newicons,
       categories = {"panglia_crushing"},
       enabled = true,
@@ -181,6 +181,11 @@ function pangliacrushing.incinerateRecipe(item, category, weight)
       hide_from_signal_gui = true,
       hidden = true,
       hidden_in_factoriopedia = true,
+      allow_decomposition = false,
+      allow_as_intermediate = false,
+      always_show_made_in = true,
+      hide_from_signal_gui = false,
+      allow_quality = false,
       -- this is now done through incinerator crafting speed
       -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
       energy_required = number_from_weight,
@@ -217,7 +222,9 @@ pangliacrushing.category_list = {
 for _, cat in pairs(pangliacrushing.category_list) do
   if data.raw[cat] then
     for _, proto in pairs(data.raw[cat]) do
-      pangliacrushing.incinerateRecipe(proto, cat)
+      if proto.name ~= "panglia_dust" then
+        pangliacrushing.incinerateRecipe(proto, cat)
+      end
     end
   end
 end

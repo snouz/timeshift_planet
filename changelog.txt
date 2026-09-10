@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.6.1
+Date: 2026-09-10
+  Balancing:
+    - Crushing mixed dust now gives 25% mixed dust (so you can void mixed dust by putting it back)
+    - You can burn Branbalite now (gives 11MJ)
+  Locale:
+    - German locale update by Schlumpf8
+  Gui:
+    - Mixed dust making: allow_decomposition = false, always_show_made_in = true, allow_quality = false, hide_from_signal_gui = true
+    - Mixed dust making use actual item names
+    - New icons for mixed dust recipes and timewarp
+    - Recipe for mixed dust re-processing separate and visible
+  Compatibility:
+    - Prevent the Quality condenser from being built on Panglia
+---------------------------------------------------------------------------------------------------
 Version: 0.6.0
 Date: 2026-09-09
   Features:

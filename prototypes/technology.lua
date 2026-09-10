@@ -292,6 +292,10 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "panglia_dust",
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "item-panglia_dust-panglia_crushing",
       }
     },
     prerequisites = {"matter_printer-technology", "panglia_branbalite_slurry", "panglia_advanced_circuit_from_panglite_fiber"},

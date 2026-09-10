@@ -253,8 +253,9 @@ data:extend({
     stack_size = 10,
     default_import_location = "panglia",
     --random_tint_color = item_tints.iron_rust,
-    fuel_value = "1MJ",
-    fuel_category = "panglia_branbalite",
+    fuel_value = "11MJ",
+    --fuel_category = "panglia_branbalite",
+    fuel_category = "chemical",
     plant_result = "panglia_branbalite_plant",
     place_result = "panglia_branbalite_plant",
     spoil_ticks = 90 * minute,
@@ -352,6 +353,7 @@ data:extend({
     hide_from_signal_gui = true,
     hidden = true,
     hidden_in_factoriopedia = true,
+    allow_as_intermediate = false,
     default_import_location = "panglia",
     weight = 1*kg,
   },
@@ -362,7 +364,7 @@ data:extend({
     --icon = icons .. "panglia_dust.png",
     categories = {"panglia_crushing"},
     subgroup = "panglia-processes",
-    order = "a[base]-ff",
+    order = "a[base]-ff1",
     enabled = false,
     --hide_from_player_crafting = true,
     --hide_from_signal_gui = true,
@@ -370,6 +372,11 @@ data:extend({
     --hidden_in_factoriopedia = true,
     -- this is now done through incinerator crafting speed
     -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
+    allow_decomposition = false,
+    allow_as_intermediate = false,
+    always_show_made_in = true,
+    hide_from_signal_gui = false,
+    allow_quality = false,
     energy_required = 1,
     always_show_made_in = true,
     ingredients = {
@@ -382,6 +389,38 @@ data:extend({
     --icon_size = 64,
     --order = "zz[panglia_crushing]",
   },
+
+  {
+    type = "recipe",
+    name = "item-panglia_dust-panglia_crushing",
+    icon = icons .. "panglia_dust-recycling.png",
+    categories = {"panglia_crushing"},
+    subgroup = "panglia-processes",
+    order = "a[base]-ff2",
+    enabled = false,
+    --hide_from_player_crafting = true,
+    --hide_from_signal_gui = true,
+    --hidden = true,
+    --hidden_in_factoriopedia = true,
+    -- this is now done through incinerator crafting speed
+    -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
+    allow_decomposition = false,
+    allow_as_intermediate = false,
+    always_show_made_in = true,
+    hide_from_signal_gui = false,
+    allow_quality = false,
+    energy_required = 0.5,
+    always_show_made_in = true,
+    ingredients = {
+      { type = "item", name = "panglia_dust", amount = 1 },
+    },
+    results = {{ type = "item", name = "panglia_dust", amount = 1, independent_probability = 0.25 }},
+    auto_recycle = false,
+  },
+
+
+
+  
 
 })
 

@@ -30,6 +30,7 @@ end
 
 
 function prevent_from_panglia(entity)
+  if not entity then return end
   if not entity.surface_conditions then
     entity.surface_conditions = {}
   end
@@ -40,4 +41,7 @@ for _, entity in pairs(data.raw["beacon"]) do
   --if not (entity.name == "ring-teleporter") and not (entity.name == "kr-planetary-teleporter") then
     prevent_from_panglia(entity)
   --end
+end
+if data.raw["assembling-machine"]["quality-condenser"] then
+  prevent_from_panglia(data.raw["assembling-machine"]["quality-condenser"])
 end
