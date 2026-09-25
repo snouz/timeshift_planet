@@ -37,6 +37,7 @@ data:extend(
     {
       {type = "item", name = "data-processor", amount = 1},
       {type = "item", name = "panglia_dna_scanner", amount = 1},
+      {type = "item", name = "cloning-vat", amount = 1},
       {type = "item", name = "ai-tier-10", amount = 1},
       {type = "fluid", name = "panglia_branbalite_slurry", amount = 120},
       -- TOADD core 10

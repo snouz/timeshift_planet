@@ -357,6 +357,34 @@ data:extend({
 
 
 
+
+  {
+    type = "technology",
+    name = "panglia_panglite_glass",
+    icon = techicons .. "panglia_panglite_glass.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_panglite_glass"
+      },
+    },
+    prerequisites = {"panglia_planet_discovery_panglia"},
+    unit =
+    {
+      count = 400,
+      ingredients =
+      {
+        {"datacell-raw-data", 1},
+        {"datacell-equation", 1},
+      },
+      time = 60
+    }
+  },
+
+
+
   {
     type = "technology",
     name = "panglia_advanced_optics_nanotech",
@@ -367,6 +395,14 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "panglia_dna_scanner"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "datacell-dna-raw"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "datacell-remove-dna-raw"
       },
       {
         type = "unlock-recipe",
@@ -389,11 +425,11 @@ data:extend({
         recipe = "panglia_collect_dna_pentapod"
       },
     },
-    prerequisites = {"panglia_planet_discovery_panglia", "moshine-tech-data-processor-building"},
+    prerequisites = {"moshine-tech-3d-data-storage", "panglia_panglite_glass", "laser-turret"},
     research_trigger =
     {
       type = "craft-item",
-      item = "panglia_panglite",
+      item = "panglia_panglite_glass",
       count = 100,
     }
   },
@@ -401,16 +437,12 @@ data:extend({
   {
     type = "technology",
     name = "panglia_collect_dna_fish",
+    order = "a-fish",
     icon = techicons .. "panglia_collect_dna_fish.png",
     icon_size = 256,
-    effects =
-    {
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "datacell-dna-raw"
-      --},
-    },
+    effects = {},
     prerequisites = {"panglia_advanced_optics_nanotech"},
+    essential = true,
     research_trigger =
     {
       type = "scripted",
@@ -424,15 +456,11 @@ data:extend({
     type = "technology",
     name = "panglia_collect_dna_biter",
     icon = techicons .. "panglia_collect_dna_biter.png",
+    order = "b-biter",
     icon_size = 256,
-    effects =
-    {
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "datacell-dna-raw"
-      --},
-    },
+    effects = {},
     prerequisites = {"panglia_advanced_optics_nanotech"},
+    essential = true,
     research_trigger =
     {
       type = "scripted",
@@ -444,16 +472,12 @@ data:extend({
   {
     type = "technology",
     name = "panglia_collect_dna_demolisher",
+    order = "c-demolisher",
     icon = techicons .. "panglia_collect_dna_demolisher.png",
     icon_size = 256,
-    effects =
-    {
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "datacell-dna-raw"
-      --},
-    },
+    effects = {},
     prerequisites = {"panglia_advanced_optics_nanotech"},
+    essential = true,
     research_trigger =
     {
       type = "scripted",
@@ -465,16 +489,12 @@ data:extend({
   {
     type = "technology",
     name = "panglia_collect_dna_pentapod",
+    order = "d-pentapod",
     icon = techicons .. "panglia_collect_dna_pentapod.png",
     icon_size = 256,
-    effects =
-    {
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "datacell-dna-raw"
-      --},
-    },
+    effects = {},
     prerequisites = {"panglia_advanced_optics_nanotech"},
+    essential = true,
     research_trigger =
     {
       type = "scripted",
@@ -743,18 +763,18 @@ if data.raw["technology"]["matter_printer-technology"] then
   table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_advanced_optics_nanotech")
   table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_panglite_multiplication")
   table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "moshine-tech-cosmic-data-outsignal-creation")
-  table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_tech_timewarp_data")
+  --table.insert(data.raw["technology"]["matter_printer-technology"].prerequisites, "panglia_tech_timewarp_data")
 end
   --table.insert(data.raw["technology"]["panglia_crusher"].effects, {type = "unlock-recipe", recipe = "panglia_universe_precursor"})
 
---[[if data.raw["technology"]["cloning-vat-technology"] then
+if data.raw["technology"]["cloning-vat-technology"] then
   table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_branbalite_slurry")
   table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_advanced_optics_nanotech")
-  table.insert(data.raw["technology"]["panglia_simulation_chamber"].prerequisites, "cloning-vat-technology")
-  table.insert(data.raw["technology"]["cloning-vat-technology"].effects,
-    {type = "unlock-recipe", recipe = "datacell-dna-raw"}
-  )
-end]]
+  table.insert(data.raw["technology"]["panglia_dna_manipulation"].prerequisites, "cloning-vat-technology")
+  --table.insert(data.raw["technology"]["cloning-vat-technology"].effects,
+  --  {type = "unlock-recipe", recipe = "datacell-dna-raw"}
+  --)
+end
 
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"panglia_simulation_matrix"}

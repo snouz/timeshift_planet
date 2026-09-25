@@ -165,6 +165,56 @@ data:extend({
     allow_quality = false,
   },
 
+
+  {
+    type = "item",
+    name = "panglia_panglite_glass",
+    icon = icons .. "panglia_panglite_glass-1.png",
+    subgroup = "panglia-processes",
+    order = "a[base]-cd",
+    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
+    pick_sound = item_sounds.metal_barrel_inventory_pickup,
+    drop_sound = item_sounds.metal_barrel_inventory_move,
+    stack_size = 50,
+    default_import_location = "panglia",
+    random_tint_color = { 1.0, 0.83, 0.7, 1.0 },
+    weight = 20*kg,
+    auto_recycle = false,
+    pictures =
+    {
+      {size = 64, filename = icons .. "panglia_panglite_glass-1.png", scale = 0.5},
+      --{size = 64, filename = icons .. "panglia_panglite_glass-2.png", scale = 0.5},
+      --{size = 64, filename = icons .. "panglia_panglite_glass-3.png", scale = 0.5},
+      --{size = 64, filename = icons .. "panglia_panglite_glass-4.png", scale = 0.5},
+      --{size = 64, filename = icons .. "panglia_panglite_glass-5.png", scale = 0.5},
+      --{size = 64, filename = icons .. "panglia_panglite_glass-6.png", scale = 0.5},
+    },
+  },
+
+  {
+    type = "recipe",
+    name = "panglia_panglite_glass",
+    --icon = icons .. "panglia_panglite_multiplication.png",
+    --subgroup = "panglia-processes",
+    --order = "a[base]-cc",
+    categories = {"metallurgy"},
+    always_show_made_in = true,
+    enabled = false,
+    auto_recycle = false,
+    energy_required = 10,
+    ingredients = {
+      {type = "item", name = "panglia_panglite", amount = 1},
+      {type = "item", name = "glass", amount = 1},
+    },
+    results = {
+      {type = "item", name = "panglia_panglite_glass", amount = 1},
+    },
+    allow_productivity = true,
+    show_amount_in_title = false,
+    surface_conditions = panglia_only,
+    allow_quality = false,
+  },
+
   {
     type = "item",
     name = "panglia_panglite_fiber",
@@ -245,6 +295,7 @@ local function branbalitepics(num)
   }
 end
 
+
 data:extend({
 
   {
@@ -261,9 +312,9 @@ data:extend({
     --random_tint_color = item_tints.iron_rust,
     fuel_value = "11MJ",
     --fuel_category = "panglia_branbalite",
-    fuel_categories = {"chemical"},
+    --fuel_categories = {"chemical"},
     plant_result = "panglia_branbalite_plant",
-    place_result = "panglia_branbalite_plant",
+    --place_result = "panglia_branbalite_plant",
     spoil_ticks = 90 * minute,
     spoil_result = "spoilage",
     weight = 10*kg,
@@ -276,6 +327,14 @@ data:extend({
     },
     auto_recycle = false,
   },
+
+})
+
+if helpers.compare_versions(mods["base"], "2.1.20") >= 0 then
+  data.raw.item["panglia_branbalite"].fuel_categories = {"chemical"}
+end
+
+data:extend({
   {
     type = "fluid",
     name = "panglia_branbalite_slurry",

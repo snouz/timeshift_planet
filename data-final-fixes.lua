@@ -300,8 +300,11 @@ local function add_tech_unit(tech, count, time, ingredients)
   end
 end
 
+
+
 add_tech_unit("panglia_planet_discovery_panglia", 250, 60, {{"datacell-raw-data", 1}} )
 add_tech_unit("panglia_tech_timewarp_data",       600, 120, {{"datacell-raw-data", 1}})
+add_tech_unit("panglia_panglite_glass",           400, 60, {{"datacell-raw-data", 1}, {"datacell-equation", 1},} )
 add_tech_unit("matter_printer-technology",        300, 10*500, {{"datacell-raw-data", 1},{"datacell-cosmic-data-outsignal", 1},{"datacell-timewarp_data", 1}} )
 add_tech_unit("panglia_universe_precursor_volcanic", 500, 10*500, {{"datacell-raw-data", 1},{"datacell-cosmic-data-outsignal", 1},{"datacell-cosmic-data", 1},{"datacell-timewarp_data", 1}} )
 

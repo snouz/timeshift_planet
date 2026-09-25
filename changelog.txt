@@ -2,24 +2,28 @@
 Version: 0.7.0
 Date: 2026-09-
   Features:
-    - Added Microscale factory to analyze DNA (with animation, light, sounds...)
+    - Added Panglite glass and its tech
+    - Added Nanoscale Plant to analyze DNA (with animation, light, sounds...)
     - Demolishers drop a scale on death
     - Biters and biter nests have a chance to drop biter DNA sample
     - Raw dna data is created with Demolisher scale, fish, biter dna, biter eggs or pentapod egg
-    - Added 4 techs: you have to bring all 4 DNA types to research unfolded DNA
-  Changes:
-    - Removed cloning vat submod requirement; simulation chamber now requires Microscale factory
+    - Added 4 techs: you have to bring all 4 DNA types to Nanoscale Plant to research unfolded DNA
   Balancing:
     - Dust re-crushing voids only 1/2 of dust instead of 3/4
+    - Simulation chamber now requires Nanoscale Plant
+    - Moved some techs around to fit the changes
   Graphics:
     - Added Panderoots glow animation
     - Added Panderoots custom pipe connections
+    - Changed some tech icons
+    - New planet icon
   Gui:
     - Panglite recipe always shows it's made in furnaces
-  Bugfixes:
-    - Fixed breaking change in 2.1.20
+  Compatibility:
+    - Fixed breaking change in 2.1.20 (fluid categories) but keeping compatibility with previous 2.1 versions
   Locale:
     - Update of Chinese locale by ChuijkYahus
+    - Changed some descriptions
     - Fixed missing dust crushing recipe key
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.1

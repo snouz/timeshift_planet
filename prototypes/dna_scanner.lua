@@ -32,7 +32,11 @@ local make_simulation = function(name)
 end
 
 
-
+--     ██████  ██████   █████  ██████  ██   ██ ██  ██████ ███████ 
+--    ██       ██   ██ ██   ██ ██   ██ ██   ██ ██ ██      ██      
+--    ██   ███ ██████  ███████ ██████  ███████ ██ ██      ███████ 
+--    ██    ██ ██   ██ ██   ██ ██      ██   ██ ██ ██           ██ 
+--     ██████  ██   ██ ██   ██ ██      ██   ██ ██  ██████ ███████ 
 
 empty = {filename = "__panglia_planet_assets__/graphics/empty.png", size = 1}
 
@@ -329,6 +333,11 @@ local graphicsset =
   }
 }
 
+--    ██ ████████ ███████ ███    ███ 
+--    ██    ██    ██      ████  ████ 
+--    ██    ██    █████   ██ ████ ██ 
+--    ██    ██    ██      ██  ██  ██ 
+--    ██    ██    ███████ ██      ██ 
 
 data:extend({
 
@@ -353,7 +362,10 @@ data:extend({
     categories = {"crafting"},
     ingredients =
     {
-      {type = "item", name = "panglia_panglite", amount = 10},
+      {type = "item", name = "data-processor", amount = 1},
+      {type = "item", name = "laser-turret", amount = 4},
+      {type = "item", name = "3d-data-storage", amount = 40},
+      {type = "item", name = "panglia_panglite_glass", amount = 10},
     },
     results = {{type = "item", name = entityname, amount = 1}},
     allow_productivity = false,
@@ -362,6 +374,12 @@ data:extend({
     surface_conditions = panglia_only,
     sort_item_ingredients = false,
   },
+
+--    ███████ ███    ██ ████████ ██ ████████ ██    ██ 
+--    ██      ████   ██    ██    ██    ██     ██  ██  
+--    █████   ██ ██  ██    ██    ██    ██      ████   
+--    ██      ██  ██ ██    ██    ██    ██       ██    
+--    ███████ ██   ████    ██    ██    ██       ██    
 
   {
     type = "corpse",
