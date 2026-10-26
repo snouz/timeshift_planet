@@ -207,7 +207,6 @@ data:extend({
         --{type = "item", name = "stone", amount_min = 0, amount_max = 3},
       },
     },
-    map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     mining_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
@@ -227,8 +226,8 @@ data:extend({
       order = "a[landscape]-c[rock]-a[huge]",
       probability_expression = "vulcanus_rock_huge"
     },
-    --pictures = hugerockpics,
     pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "huge-panglite-rock/huge-panglite-rock", frame_count = 28}}),
+    map_color = util.color("#555333"),
   },
 
   {
@@ -267,15 +266,14 @@ data:extend({
         percent = 100
       }
     },
-    map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     mining_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     open_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     close_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     impact_category = "stone",
-    --pictures = bigrockpics,
     pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "big-panglite-rock/big-panglite-rock", frame_count = 27}}),
+    map_color = util.color("#605e38"),
   },
 
 
@@ -299,7 +297,6 @@ data:extend({
         {type = "item", name = "panglia_igneous_rock", amount_min = 26, amount_max = 153},
       },
     },
-    map_color = {137, 118, 95},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = sound_variations("__space-age__/sound/mining/mined-iceberg", 4, 0.7),
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-iceberg", 7, 0.5),
@@ -319,8 +316,8 @@ data:extend({
       probability_expression = "0.1 * (vulcanus_elev <= 0) * (vulcanus_elev > 2)\z
                                 + 0.005 * min(1, max(lava_basalts_range, lava_mountains_range, lava_hot_basalts_range, lava_hot_mountains_range))"
     },
-    --pictures = hugerockpics,
     pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "huge-igneous-rock/huge-igneous-rock", frame_count = 17}}),
+    map_color = util.color("#9d5225"),
   },
 
   {
@@ -335,10 +332,6 @@ data:extend({
     damaged_trigger_effect = hit_effects.rock(),
     render_layer = "object",
     max_health = 300,
-    --[[autoplace = {
-      order = "a[landscape]-c[rock]-b[big]",
-      probability_expression = "vulcanus_rock_big"
-    },]]
     autoplace = {
       order = "a[rock]-a[huge]",
       probability_expression = "icebergs * 0.003",
@@ -366,14 +359,12 @@ data:extend({
         percent = 100
       }
     },
-    map_color = {135, 128, 71},
     count_as_rock_for_filtered_deconstruction = true,
-    --mined_sound = sound_variations(tssounds .. "panglite", 8, 0.7),
     mined_sound = sound_variations("__space-age__/sound/mining/mined-iceberg", 4, 0.7),
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-iceberg", 7, 0.5),
     impact_category = "stone",
-    --pictures = bigrockpics,
     pictures = spritesheets_to_pictures_panglia_lights({{path = decora .. "panglia-big-rock/panglia-big-rock", frame_count = 25}}),
+    map_color = util.color("#335342"),
   },
 
   {
@@ -399,7 +390,7 @@ data:extend({
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
-    tile_layer =  decal_tile_layer -1,
+    tile_layer = decal_tile_layer -1,
     autoplace = {
       order = "d[ground-surface]-f[cracked-rock]-b[cold]",
       probability_expression = "vulcanus_rock_decal_large"
@@ -413,14 +404,13 @@ data:extend({
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
-    tile_layer =  decal_tile_layer -4,
+    tile_layer = decal_tile_layer -4,
     walking_sound = base_tile_sounds.walking.pebble,
     autoplace = {
       order = "d[ground-surface]-g[cracks]-b[cold]-a[large]",
       probability_expression = "vulcanus_crack_decal_large"
     },
     pictures = get_decal_pictures(decora .. "vulcanus-cracks-cold/vulcanus-cracks-cold-", "huge-", 256, 20)
-    --pictures = rocksdecals,
   },
   {
     name = "panglia-vulcanus-crack-decal-huge-warm",
@@ -812,7 +802,7 @@ data:extend({
       placement_density = 2,
       probability_expression = "vulcanus_rock_cluster"
     },
-    pictures = get_decal_pictures(decora .. "tiny-panglite-rock-cluster/tiny-panglite-rock-cluster-", "", 128, 8,tintable_rock_tint,true)
+    pictures = get_decal_pictures(decora .. "tiny-panglite-rock-cluster/tiny-panglite-rock-cluster-", "", 128, 8,tintable_rock_tint,true),
   },
 
 

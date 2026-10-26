@@ -165,7 +165,8 @@ data:extend({
       {inventory_index = defines.inventory.beacon_modules, shift = {0, 0}, multi_row_initial_height_modifier = -0.3, max_icons_per_row = 2}
     },
     --map_color = util.color("#00ffff22"),
-    map_color = util.color("#7d19c055"),
+    --map_color = util.color("#7d19c055"),
+    map_color = util.color("#b49c4a55"),
   },
 
 

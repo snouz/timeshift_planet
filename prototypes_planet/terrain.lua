@@ -216,13 +216,12 @@ data:extend({
     {
       mod_name = "__panglia_planet_assets__",
       name = "cliff-panglia",
-      map_color = {58, 48, 43}, --3a302b
       suffix = "panglia",
       subfolder = "panglia",
       scale = 1.0,
       has_lower_layer = false,
       sprite_size_multiplier = 2,
-      --factoriopedia_simulation = simulations.factoriopedia_cliff_vulcanus
+      map_color = util.color("#34342b"),
     }
   ),
 
@@ -428,10 +427,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {49,42,32},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 2,
-    absorptions_per_second = tile_pollution.lava,
+    map_color = util.color("#3a352a"),
   },
   
   ----------- WARM CRACKS
@@ -462,10 +458,7 @@ data:extend({
     walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {100,133,23},
-    walking_speed_modifier = .6,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
+    map_color = util.color("#2f341e"),
   },
   {
     type = "tile",
@@ -494,10 +487,7 @@ data:extend({
     walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {62,67,48},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava
+    map_color = util.color("#353730"),
   },
   ----------- COLD CRACKS
   {
@@ -526,10 +516,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {104,125,69},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava
+    map_color = util.color("#494b35"),
   },
   ----------- COLD LAVA FLAT
   {
@@ -558,10 +545,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {59,59,48},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 2,
-    absorptions_per_second = tile_pollution.lava
+    map_color = util.color("#36352b"),
 
   },
   ----------- ASH SAND
@@ -591,13 +575,9 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {61,62,58}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
     can_be_part_of_blueprint = false,
-
-    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
+    map_color = util.color("#373a33"),
   },
   {
     type = "tile",
@@ -625,13 +605,9 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {68,72,65},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
     can_be_part_of_blueprint = false,
-
-    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
+    map_color = util.color("#464a43"),
   },
   ----------- ASH SAND
   {
@@ -660,13 +636,9 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {54,52,52},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
     can_be_part_of_blueprint = false,
-
-    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
+    map_color = util.color("#323832"),
   },
   ----------- PUMICE
   {
@@ -695,10 +667,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {43,43,37},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava
+    map_color = util.color("#2d2e27"),
   },
   ----------- SMOOTH STONE
   {
@@ -727,10 +696,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {40,38,36},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava
+    map_color = util.color("#262622"),
 
   },
   ----------- SMOOTH STONE WARM
@@ -762,11 +728,8 @@ data:extend({
     walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {90,103,32}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
-
+    map_color = util.color("#292a21"),
   },
   {
     type = "tile",
@@ -794,10 +757,8 @@ data:extend({
     walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {113,113,71},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava
+    absorptions_per_second = tile_pollution.lava,
+    map_color = util.color("#27261e"),
   },
   {
     type = "tile",
@@ -825,10 +786,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {29,33,27}, -- changed from (2 2 2) to satisfy TerrainColorsVersusResourceColors test
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 2,
-    absorptions_per_second = tile_pollution.lava,
+    map_color = util.color("#1d1f1a"),
   },
   {
     type = "tile",
@@ -857,10 +815,7 @@ data:extend({
     walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
     driving_sound = base_tile_sounds.driving.stone,
-    map_color = {45,48,29},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
+    map_color = util.color("#1f201d"),
   },
   {
     type = "tile",
@@ -889,10 +844,7 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {69,73,66},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
+    map_color = util.color("#2b2a21"),
   },
   {
     type = "tile",
@@ -921,10 +873,7 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    map_color = {62,62,59},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
+    map_color = util.color("#2f2c26"),
   },
 
   {
@@ -953,10 +902,7 @@ data:extend({
     walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
     driving_sound = base_tile_sounds.driving.sand,
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.lava,
-    map_color = {52,56,49},
+    map_color = util.color("#34372f"),
   },
 
 })
@@ -994,11 +940,8 @@ data:extend({
     transitions_between_transitions = lava_stone_transitions_between_transitions,
     walking_sound = tile_sounds.walking.soft_bark,
     landing_steps_sound = tile_sounds.landing.bark,
-    map_color={69, 82, 58},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.gleba,
-    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
+    map_color = util.color("#414c38"),
   },
   {
     type = "tile",
@@ -1024,11 +967,8 @@ data:extend({
     transitions_between_transitions = lava_stone_transitions_between_transitions,
     walking_sound = tile_sounds.walking.soft_bark,
     landing_steps_sound = tile_sounds.landing.bark,
-    map_color={86, 87, 56},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
-    absorptions_per_second = tile_pollution.gleba,
-    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
+    map_color = util.color("#55553b"),
   },
 
 
@@ -1040,6 +980,24 @@ data:extend({
     {
       shader_variation = "wetland-water",
       lightmap_alpha = 0, -- needed for water mask
+      
+      noise_textures =
+      {
+        {
+          filename = terrain .. "watercaustics.png",
+          size = 512
+        }
+      },
+      image_textures =
+      {
+        {
+          filename = terrain .. "wetland-dead-skin-shader.png",
+        }
+      },
+
+
+
+------------ for pre-2.1.22 versions
       textures =
       {
         {
@@ -1053,24 +1011,23 @@ data:extend({
           height = 512 * 4
         }
       },
+
       texture_variations_columns = 1,
       texture_variations_rows = 1,
       secondary_texture_variations_columns = 4,
       secondary_texture_variations_rows = 4,
 
-
+-------------------
+      
       animation_speed = 3.5,
       animation_scale = { 0.8, 0.8 },
       tick_scale = 6,
-
       specular_lightness = { 111, 126, 15 },
       foam_color = { 121, 14, 14 },
       foam_color_multiplier = 1,
-
       dark_threshold = { 0.3, 0.3 },
       reflection_threshold = { 1, 1 },
       specular_threshold = { 0.19, 0.25 },
-
       near_zoom = 1 / 16,
       far_zoom = 1 / 16,
     }
@@ -1085,8 +1042,6 @@ data:extend({
     autoplace = {probability_expression = "gleba_shallows_aux_2 + 2 * min(gleba_select(gleba_aux, 0.3, 0.7, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
     effect = "panglia-wetland-grey",
-    --effect_color = { 76, 70, 79 },
-    --effect_color_secondary = { 76, 70, 79 },
     effect_color = { 57, 58, 173 },
     effect_color_secondary = { 76, 70, 179 },
     particle_tints = tile_graphics.gleba_shallow_water_particle_tints,
@@ -1121,8 +1076,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    absorptions_per_second = tile_pollution.gleba_water,
-    map_color = {65,65,220},
+    map_color = util.color("#373889"),
   },
   {
     type = "tile",
@@ -1135,7 +1089,6 @@ data:extend({
     effect = "panglia-wetland-grey",
     effect_color = { 78, 75, 186 },
     effect_color_secondary = { 76, 70, 179 },
-    --map_color = {r = 51, g = 50, b = 156},
     particle_tints = tile_graphics.gleba_shallow_water_particle_tints,
     layer = 7,
     layer_group = "water-overlay",
@@ -1163,13 +1116,10 @@ data:extend({
       tile_sounds.ambient.insects_deep_mud({}),
       tile_sounds.ambient.night_insects,
     },
-    walking_speed_modifier = 0.8,
-    vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    absorptions_per_second = tile_pollution.gleba_water,
-    map_color = {70,70,221},
+    map_color = util.color("#3e3f90"),
   },
   {
     type = "tile",
@@ -1189,18 +1139,15 @@ data:extend({
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
       }
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
     walking_sound = tile_sounds.walking.soft_bark,
     landing_steps_sound = tile_sounds.landing.bark,
-    map_color={69, 63, 45},
-    walking_speed_modifier = 1,
-    vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.gleba,
-    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
+    map_color = util.color("#423e2b"),
   },
 
 
@@ -1210,91 +1157,19 @@ data:extend({
 --       ██    ██ ██  ██  ██ ██           ███    ██    ██ ██  ██ ██ ██      
 --       ██    ██ ██      ██ ███████     ███████  ██████  ██   ████ ███████ 
 
---[[
+
   {
-    type = "tile-effect",
-    name = "panglia_hidden_beacon_tile_effect",
-    shader = "water",
-    water =
-    {
-      shader_variation = "oil",
-      textures =
-      {
-        {
-          filename = terrain .. "oilNoise.png",
-          width = 512,
-          height = 512
-        },
-        {
-          filename = terrain .. "oil-ocean-deep-shader.png",
-          width = 512 * 4,
-          height = 512 * 2
-        },
-        --gradient map for thin film effect
-        {
-          filename = terrain .. "oilGradient.png",
-          width = 512,
-          height = 32
-        },
-        --specular highligts
-        {
-          filename = terrain .. "oil-ocean-deep-spec.png",
-          width = 512 * 4,
-          height = 512 * 2
-        },
-      },
-      texture_variations_columns = 1,
-      texture_variations_rows = 1,
-      secondary_texture_variations_columns = 4,
-      secondary_texture_variations_rows = 2,
-
-      specular_lightness = { 3, 3, 3 },
-      foam_color = {100,124,71},--647c47 --{140,60,60}, -- #4e3838ff,
-      foam_color_multiplier = 0.1,
-
-      animation_speed = 1.500,
-      animation_scale = {3, 3},
-
-      dark_threshold = {2.000, 2.000},
-      reflection_threshold = {5.00, 5.00},
-      specular_threshold = {0.000, 0.000},
-      tick_scale = 1.000,
-
-      near_zoom = 0.063,
-      far_zoom = 0.063,
-    }
+    type = "collision-layer",
+    name = "panglia_hidden_beacon_tile",
+    order = "40",
   },
-]]
-
-
-
-  { type = "collision-layer", order = "40", name = "panglia_hidden_beacon_tile" },
   {
     type = "tile",
     name = "panglia_hidden_beacon_tile",
     order = "c[artificial]-d[machinery]",
     subgroup = "panglia-tiles",
     collision_mask = {layers={ground_tile=true, panglia_hidden_beacon_tile=true}},
-    --autoplace = { probability_expression = "fulgora_tile_ruin_machinery" },
-    --[[autoplace = resource_autoplace.resource_autoplace_settings
-    {
-      name = "panglia_hidden_beacon",
-      order = "a",
-      base_density = 38,
-      has_starting_area_placement = true,
-      regular_rq_factor_multiplier = 3.10,
-      starting_rq_factor_multiplier = 1.5,
-      candidate_spot_count = 60,
-      --tile_restriction = autoplace_parameters.tile_restriction
-    },]]
     layer = 12,
-    --map_color={0, 0, 255},
-    --vehicle_friction_modifier = 4,
-    --absorptions_per_second = tile_pollution.fulgora,
-    --sprite_usage_surface = "panglia",
-    --effect = "panglia_hidden_beacon_tile_effect",
-    --effect_is_opaque = false,
-    --effect_color = {1,1,1,0.3},
     variants =
     {
       transition = transition_masks(),
@@ -1316,10 +1191,8 @@ data:extend({
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect(),
     walking_speed_modifier = 3,
-    vehicle_friction_modifier = 0.3,
-    --map_color = {33, 0, 37},
-    --map_color = util.color("#44d8d8"),
-    map_color = util.color("#5d009b"),
+    vehicle_friction_modifier = 0.1,
+    map_color = util.color("#95815e"),
   },
 
 })

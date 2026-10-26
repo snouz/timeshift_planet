@@ -1,6 +1,28 @@
+local icons = "__panglia_planet__/graphics/icons/"
 local datacellicons = "__panglia_planet__/graphics/icons/data/"
 
 data:extend({
+
+  {
+    type = "fluid",
+    name = "panglia_branbalite_slurry",
+    icon = icons .. "panglia_branbalite_slurry.png",
+    subgroup = "fluid",
+    order = "zzz[new-fluid]-s[panglia]-a[branbalite_slurry]",
+    default_temperature = 165,
+    max_temperature = 165,
+    gas_temperature = 165,
+    heat_capacity = "0.2kJ",
+    base_color = util.color("#52c7ee"),
+    flow_color = util.color("#52c7ee"),
+    visualization_color = util.color("#52c7ee"),
+    draw_as_glow = true,
+    auto_barrel = true,
+    fuel_value = "1MJ",
+  },
+
+
+  ---- DATA
   {
     type = "fluid",
     name = "timewarp_data",

@@ -222,7 +222,7 @@ end)
 script.on_event(prototypes.recipe["panglia_collect_dna_fish"].on_crafted_event, function(event)
   if not event.entity or not event.entity.valid then return end
   local force = event.entity.force
-  if not event.entity.force then return end
+  if not force then return end
   if force.technologies["panglia_advanced_optics_nanotech"].researched then
     if not force.technologies["panglia_collect_dna_fish"].researched then
       force.technologies["panglia_collect_dna_fish"].researched = true
@@ -235,7 +235,7 @@ end)
 script.on_event({prototypes.recipe["panglia_collect_dna_biter"].on_crafted_event,prototypes.recipe["panglia_collect_dna_biter_egg"].on_crafted_event}, function(event)
   if not event.entity or not event.entity.valid then return end
   local force = event.entity.force
-  if not event.entity.force then return end
+  if not force then return end
   if force.technologies["panglia_advanced_optics_nanotech"].researched then
     if not force.technologies["panglia_collect_dna_biter"].researched then
       force.technologies["panglia_collect_dna_biter"].researched = true
@@ -249,7 +249,7 @@ end)
 script.on_event(prototypes.recipe["panglia_collect_dna_demolisher"].on_crafted_event, function(event)
   if not event.entity or not event.entity.valid then return end
   local force = event.entity.force
-  if not event.entity.force then return end
+  if not force then return end
   if force.technologies["panglia_advanced_optics_nanotech"].researched then
     if not force.technologies["panglia_collect_dna_demolisher"].researched then
       force.technologies["panglia_collect_dna_demolisher"].researched = true
@@ -262,7 +262,7 @@ end)
 script.on_event(prototypes.recipe["panglia_collect_dna_pentapod"].on_crafted_event, function(event)
   if not event.entity or not event.entity.valid then return end
   local force = event.entity.force
-  if not event.entity.force then return end
+  if not force then return end
   if force.technologies["panglia_advanced_optics_nanotech"].researched then
     if not force.technologies["panglia_collect_dna_pentapod"].researched then
       force.technologies["panglia_collect_dna_pentapod"].researched = true
@@ -332,7 +332,7 @@ end)
 
 
 
-
+soundspath = "__panglia_planet_assets__/sounds/"
 
 
 -- DNA Builder phase transformation script
@@ -342,89 +342,65 @@ local required_clones = 100
 local PHASE_ONE = "panglia_dna_builder"
 local PHASE_TWO = "panglia_dna_builder_phasetwo"
 
-
+local destroy_filters = {
+  {filter = "name", name = PHASE_ONE},
+  {filter = "name", name = PHASE_TWO},
+}
 
 script.on_init(function()
   storage.panglia_dna_builder_progress = storage.panglia_dna_builder_progress or {}
+  storage.panglia_dna_builder_text_ids = storage.panglia_dna_builder_text_ids or {}
 end)
 
 script.on_configuration_changed(function()
   storage.panglia_dna_builder_progress = storage.panglia_dna_builder_progress or {}
+  storage.panglia_dna_builder_text_ids = storage.panglia_dna_builder_text_ids or {}
 end)
 
+local function create_or_update_countdown(entity, progress)
+  if not entity or not entity.valid then return end
+  local unit_number = entity.unit_number
+  local old_id = storage.panglia_dna_builder_text_ids[unit_number]
+  
+  if old_id then
+    local old_obj = rendering.get_object_by_id(old_id)
+    if old_obj then old_obj.destroy() end
+  end
 
---------------------------------------------------
--- Transform the entity while preserving position
---------------------------------------------------
+  if entity.name ~= PHASE_TWO then
+    storage.panglia_dna_builder_text_ids[unit_number] = nil
+    return
+  end
+
+  local remaining = required_clones - progress
+
+  local new_obj = rendering.draw_text({
+    text = remaining .. "/" .. required_clones,
+    surface = entity.surface,
+    target = entity,
+    target_offset = {0, 4.5},
+    color = {r = 1, g = 1, b = 1},
+    alignment = "center",
+    scale = 1,
+  })
+  storage.panglia_dna_builder_text_ids[unit_number] = new_obj.id
+end
 
 local function transform_entity(entity, new_name)
   if not entity or not entity.valid then return end
-
   local surface = entity.surface
-  local position = entity.position
-  local force = entity.force
-
   local new_entity = surface.create_entity({
-  name = new_name,
-  position = position,
-  force = force,
-  fast_replace = true,
-  create_build_effect_smoke = false,
+    name = new_name,
+    position = entity.position,
+    force = entity.force,
+    fast_replace = true,
+    direction = entity.direction,
+    create_build_effect_smoke = false,
   })
-
   entity.destroy()
-
   return new_entity
 end
 
--- PHASE 1 -> PHASE 2
--- Triggered by panglia_dna_validated
-
-script.on_event(prototypes.recipe["panglia_dna_builder_make_phasetwo"].on_crafted_event, function(event)
-  local entity = event.entity
-
-  if not entity or not entity.valid then return end
-
-  -- Only DNA Builders can be transformed by this recipe
-  if entity.name ~= PHASE_ONE then return end
-
-  local old_unit_number = entity.unit_number
-
-  -- Remove any old progress associated with this entity
-  storage.panglia_dna_builder_progress[old_unit_number] = nil
-
-  local new_entity = transform_entity(entity, PHASE_TWO)
-
-  if new_entity and new_entity.valid then
-    -- Start the 100-copy counter
-    storage.panglia_dna_builder_progress[new_entity.unit_number] = 0
-  end
-end)
-
-
--- PHASE 2 -> PHASE 1
--- Every cloning recipe increments the counter
-
-script.on_event(prototypes.recipe["panglia_cloned_specimen_body_0_dna_builder"].on_crafted_event, function(event)
-  local entity = event.entity
-  if not entity or not entity.valid then return end
-
-  -- Only phase-two DNA Builders count this recipe
-  if entity.name ~= PHASE_TWO then return end
-
-  local unit_number = entity.unit_number
-  local current_progress = (storage.panglia_dna_builder_progress[unit_number] or 0) + 1
-  storage.panglia_dna_builder_progress[unit_number] = current_progress
-
-  -- 100 clones completed
-  if current_progress >= required_clones then
-    storage.panglia_dna_builder_progress[unit_number] = nil
-    transform_entity(entity, PHASE_ONE)
-  end
-end)
-
-
--- Clean up progress when entity is removed
 local function on_entity_removed(event)
   local entity = event.entity
   if not entity.valid then return end
@@ -432,10 +408,84 @@ local function on_entity_removed(event)
   storage.panglia_dna_builder_progress[entity.unit_number] = nil
 end
 
-local destroy_filters = {
-  {filter = "name", name = PHASE_ONE},
-  {filter = "name", name = PHASE_TWO},
-}
+script.on_event(prototypes.recipe["panglia_dna_builder_make_phasetwo"].on_crafted_event, function(event)
+  local entity = event.entity
+
+  if not entity or not entity.valid then return end
+  if entity.name ~= PHASE_ONE then return end
+
+  local force = entity.force
+  if not force then return end
+
+  if not force.technologies["panglia_dna_manipulation_phasetwo_tech"].researched then
+    force.technologies["panglia_dna_manipulation_phasetwo_tech"].researched = true
+  end
+
+  local old_unit_number = entity.unit_number
+  storage.panglia_dna_builder_progress[old_unit_number] = nil
+  local new_entity = transform_entity(entity, PHASE_TWO)
+  if new_entity and new_entity.valid then
+    new_entity.clear_fluids()
+    storage.panglia_dna_builder_progress[new_entity.unit_number] = 0
+    create_or_update_countdown(new_entity, 0)
+    if new_entity.surface then
+      new_entity.surface.play_sound({
+        path = "panglia_dna_builder_switch_to_phase2",
+        position = new_entity.position,
+      })
+    end
+  end
+  
+end)
+
+
+script.on_event(prototypes.recipe["panglia_dna_candidate"].on_crafted_event, function(event)
+  local entity = event.entity
+  if not entity or not entity.valid then return end
+  local inventory = entity.get_inventory(defines.inventory.crafter_input)
+  if not inventory or not inventory.valid then return end
+  local count = inventory.get_item_count("panglia_dna_validated")
+  if count >= 0 then
+    entity.clear_fluids()
+  else
+    if math.random(10) == 1 then
+      entity.clear_fluids()
+    end
+  end
+end)
+
+script.on_event(prototypes.recipe["panglia_cloned_specimen_body_0"].on_crafted_event, function(event)
+  local entity = event.entity
+  if not entity or not entity.valid then return end
+  if entity.name ~= PHASE_TWO then return end
+  local unit_number = entity.unit_number
+  local current_progress = (storage.panglia_dna_builder_progress[unit_number] or 0) + 1
+  storage.panglia_dna_builder_progress[unit_number] = current_progress
+
+  if current_progress >= required_clones then
+    local text_id = storage.panglia_dna_builder_text_ids[unit_number]
+    if text_id then
+      local text_obj = rendering.get_object_by_id(text_id)
+      if text_obj then text_obj.destroy() end
+      storage.panglia_dna_builder_text_ids[unit_number] = nil
+    end
+    storage.panglia_dna_builder_progress[unit_number] = nil
+    local new_entity = transform_entity(entity, PHASE_ONE)
+    if new_entity and new_entity.valid then
+      new_entity.clear_fluids()
+      if new_entity.surface then
+        new_entity.surface.play_sound({
+          path = "panglia_dna_builder_switch_to_phase1",
+          position = new_entity.position,
+        })
+      end
+    end
+  else
+    create_or_update_countdown(entity, current_progress)
+  end
+end
+)
+
 
 script.on_event(defines.events.on_player_mined_entity, on_entity_removed, destroy_filters)
 script.on_event(defines.events.on_robot_mined_entity, on_entity_removed, destroy_filters)

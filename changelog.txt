@@ -1,8 +1,29 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.7.3
-Date: 2026-
+Version: 0.8.0
+Date: 2026-10-
+  Features:
+    - Added DNA builder building
+    - (The DNA builder has 2 phases: create new DNA, send to simchamber, if successful, send back to make phase 2 (for a batch of embryos))
+    - Added items dna candidate, dna validator, dna validated
+  Changes:
+    - DNA scanner is now a furnace, so no need to choose the recipe
+    - Changed embryo recipe
+    - 2 new technologies, Reworked technologies from raw dna to simulation chamber 2 (unlocks, price, icons, structure, requirements, descriptions...)
   Bugfixes:
     - Fixed missing key and icon for biter flesh residues
+    - Fixed mod breaking change in factorio 2.1.22
+    - Sentient Processor tech now requires mandatory synaptic assembler
+  Graphics:
+    - DNA scanner colors based on input
+    - Many tech icons redone
+    - Some icons reworked
+    - Icon variations for panglite glass
+    - Slightly modified Simulation chamber graphics
+    - Planet backdrop reworked (thanks Hanodest for the great tool)
+    - Modified map colors
+  Locale:
+    - Changed name of Branbalite/branbalite slurry into Gliate tree/Gliate leaves/Gliatine (Easier to memorize since it's in the name of the planet)
+    - Changed and added some descriptions
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.2
 Date: 2026-09-30

@@ -503,9 +503,6 @@ data:extend({
     }
   },
 
-
-
-
   {
     type = "technology",
     name = "panglia_dna_manipulation",
@@ -513,13 +510,20 @@ data:extend({
     icon_size = 256,
     effects =
     {
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "panglia_cloned_specimen_body_0"
-      --},
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_dna_builder"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_dna_candidate"
+      },
     },
-    prerequisites = {"panglia_collect_dna_fish", "panglia_collect_dna_biter", "panglia_collect_dna_demolisher", "panglia_collect_dna_pentapod",
-                     "moshine-tech-processing-grid", "uranium-processing"},
+    prerequisites = { "panglia_collect_dna_fish", 
+                      "panglia_collect_dna_biter", 
+                      "panglia_collect_dna_demolisher", 
+                      "panglia_collect_dna_pentapod",
+                      "moshine-tech-ai-tier-10"},
     unit =
     {
       count = 10,
@@ -527,9 +531,70 @@ data:extend({
       {
         {"datacell-ai-model-data", 1},
         {"datacell-solved-equation", 1},
-        {"datacell-dna-raw", 1},
+        {"datacell-dna-raw", 100},
       },
       time = 145*500
+    }
+  },
+
+
+  {
+    type = "technology",
+    name = "panglia_dna_manipulation_testing",
+    icon = techicons .. "panglia_dna_manipulation_testing.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "simulation_chamber"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_cloned_specimen_body_1_trial"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_dna_builder_make_phasetwo"
+      },
+    },
+    prerequisites = { "panglia_dna_manipulation"},
+    unit =
+    {
+      count = 15,
+      ingredients =
+      {
+        {"datacell-ai-model-data", 1},
+        {"datacell-solved-equation", 1},
+        {"datacell-dna-raw", 10},
+      },
+      time = 155*500
+    }
+  },
+
+
+  {
+    type = "technology",
+    name = "panglia_dna_manipulation_phasetwo_tech",
+    icon = techicons .. "panglia_dna_manipulation_phasetwo_tech.png",
+    icon_size = 256,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_cloned_specimen_body_0",
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "panglia_cloned_specimen_body_1",
+      },
+    },
+    prerequisites = {"panglia_dna_manipulation_testing"},
+    research_trigger =
+    {
+      type = "scripted",
+      trigger_description = {"description.panglia_dna_manipulation_phasetwo_tech"},
+      icon = icons .. "data/panglia_dna_manipulation_phasetwo_tech.png",
     }
   },
 
@@ -540,29 +605,22 @@ data:extend({
     icon_size = 256,
     effects =
     {
+      --{
+      --  type = "unlock-recipe",
+      --  recipe = "simulation_chamber"
+      --},
       {
         type = "unlock-recipe",
-        recipe = "simulation_chamber"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_1"
+        recipe = "panglia_cloned_specimen_body_2"
       },
     },
-    prerequisites = {"moshine-tech-ai-tier-10", "panglia_dna_manipulation", "matter_printer-technology"},
-    unit =
+    prerequisites = {"panglia_dna_manipulation_phasetwo_tech", "matter_printer-technology"},
+    research_trigger =
     {
-      count = 40,
-      ingredients =
-      {
-        {"datacell-ai-model-data", 1},
-        {"datacell-solved-equation", 1},
-        {"datacell-timewarp_data", 1},
-        {"datacell-dna-raw", 1},
-        {"datacell-dna-sequenced", 1},
-      },
-      time = 1658*500,
-    }
+      type = "craft-item",
+      item = "panglia_cloned_specimen_body_1",
+      count = 1,
+    },
   },
 
 
@@ -575,10 +633,6 @@ data:extend({
     {
       {
         type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_2"
-      },
-      {
-        type = "unlock-recipe",
         recipe = "panglia_cloned_specimen_body_3"
       },
     },
@@ -586,7 +640,7 @@ data:extend({
     research_trigger =
     {
       type = "craft-item",
-      item = "panglia_cloned_specimen_body_1",
+      item = "panglia_cloned_specimen_body_2",
       count = 1,
     },
   },
@@ -778,6 +832,7 @@ end
 
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"panglia_simulation_matrix"}
+  data.raw["technology"]["panglia_sentient_processor"].prerequisites = {"thinking-brain-technology"}
 end
 
 if data.raw["technology"]["snouz_long_electric_gun_turret"] and data.raw["technology"]["moshine-tech-processing-grid"] then

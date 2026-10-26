@@ -135,6 +135,7 @@ local graphicsset =
       frame_based_on_shift_animation_progress = true,
       render_layer = "object",
       secondary_draw_order = -9,
+      apply_recipe_tint = "primary",
       animation = 
       {
         layers = 
@@ -233,6 +234,7 @@ local graphicsset =
       frame_based_on_shift_animation_progress = false,
       render_layer = "object",
       secondary_draw_order = 8,
+      apply_recipe_tint = "primary",
       animation = 
       {
         layers = 
@@ -290,6 +292,7 @@ local graphicsset =
       frame_based_on_shift_animation_progress = true,
       render_layer = "object",
       secondary_draw_order = 10,
+      --apply_recipe_tint = "primary",
       animation = 
       {
         layers = 
@@ -408,7 +411,8 @@ data:extend({
     },
   },
   {
-    type = "assembling-machine",
+    --type = "assembling-machine",
+    type = "furnace",
     name = entityname,
     icon = "__panglia_planet__/graphics/icons/panglia_dna_scanner.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
@@ -420,9 +424,11 @@ data:extend({
     show_recipe_icon = false,
     icon_draw_specification = {shift = {0, 0}, scale = 1},
     resistances = {},
+    result_inventory_size = 1,
+    source_inventory_size = 1,
     fluid_boxes =
     {
-      {
+      --[[{
         production_type = "input",
         pipe_picture = pipe_connectors,
         volume = 20000,
@@ -433,7 +439,7 @@ data:extend({
         secondary_draw_orders = {east = -12, west = -12, north = -12, south = 4},
         render_layer = "object",
         max_pipeline_extent = 1000000,
-      },
+      },]]
       {
         production_type = "output",
         pipe_picture = pipe_connectors,

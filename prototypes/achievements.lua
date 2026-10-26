@@ -7,6 +7,7 @@ data:extend({
     order = "p[panglia]-aaa",
     surface = "panglia",
     icon = ach .. "panglia_visit-panglia.png",
+    limited_to_one_game = true,
     icon_size = 128,
   },
   {
@@ -15,6 +16,16 @@ data:extend({
     order = "p[panglia]-bbb",
     to_build = "matter_printer",
     icon = ach .. "panglia_build-matter_printer.png",
+    limited_to_one_game = true,
+    icon_size = 128
+  },
+  {
+    type = "research-achievement",
+    name = "panglia_dna_builder_make_phasetwo",
+    order = "p[panglia]-bbc",
+    technology = "panglia_dna_manipulation_phasetwo_tech",
+    limited_to_one_game = true,
+    icon = ach .. "panglia_dna_builder_make_phasetwo.png",
     icon_size = 128
   },
   {
@@ -43,6 +54,7 @@ data:extend({
     order = "p[panglia]-eee",
     to_build = "thinking-brain",
     icon = ach .. "panglia_build-thinking-brain.png",
+    limited_to_one_game = true,
     icon_size = 128
   },
   {

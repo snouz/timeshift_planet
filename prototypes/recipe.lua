@@ -12,84 +12,36 @@ local seconds = 60
 local minutes = 60 * seconds
 
 
-
-------------------------------------------------------
---------------------- SUB-GROUPS ---------------------
-------------------------------------------------------
-
-data:extend({
-
-  {
-    type = "item-subgroup",
-    name = "panglia-processes",
-    group = "intermediate-products",
-    order = "pc"
-  },
-  {
-    type = "item-subgroup",
-    name = "panglia-production-machine",
-    group = "production",
-    order = "e3"
-  },
-  {
-    type = "recipe-category",
-    name = "dna_scanning"
-  },
-  {
-    type = "recipe-category",
-    name = "dna_builder_1"
-  },
-  {
-    type = "recipe-category",
-    name = "dna_builder_2"
-  },
-  {
-    type = "recipe-category",
-    name = "simulation_chamber"
-  },
-  {
-    type = "fuel-category",
-    name = "panglia_branbalite"
-  },
-  {
-    type = "item-subgroup",
-    name = "panglia-sped-up-entities",
-    group = "other",
-    order = "zz"
-  },
-})
-
-
-
+local only_primary = {
+  primary = {r = 1, g = 1, b = 1, a = 1},
+  secondary = {r = 0, g = 0, b = 0, a = 0},
+  tertiary = {r = 0, g = 0, b = 0, a = 0},
+  quaternary = {r = 0, g = 0, b = 0, a = 0},
+}
+local only_secondary = {
+  primary = {r = 0, g = 0, b = 0, a = 0}, -- #ffa342ff
+  secondary = {r = 1, g = 1, b = 1, a = 1}, -- #ffb85fff
+  tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
+  quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
+}
+local only_tertiary = {
+  primary = {r = 0, g = 0, b = 0, a = 0},
+  secondary = {r = 0, g = 0, b = 0, a = 0},
+  tertiary = {r = 1, g = 1, b = 1, a = 1},
+  quaternary = {r = 0, g = 0, b = 0, a = 0},
+}
+local only_quaternary = {
+  primary = {r = 0, g = 0, b = 0, a = 0}, -- #ffa342ff
+  secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
+  tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
+  quaternary = {r = 1, g = 1, b = 1, a = 1}, -- #ff7e45ff
+}
 
 
 data:extend({
 
 
 
-  {
-    type = "item",
-    name = "panglia_igneous_rock",
-    icon = icons .. "panglia_igneous_rock-1.png",
-    subgroup = "panglia-processes",
-    order = "a[base]-aa",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
-    pictures =
-    {
-      {size = 64, filename = icons .. "panglia_igneous_rock-1.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_igneous_rock-2.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_igneous_rock-3.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_igneous_rock-4.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_igneous_rock-5.png", scale = 0.5},
-    },
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = { 217, 156, 111, 255 },
-    weight = 20*kg,
-    auto_recycle = false,
-  },
   {
     type = "recipe",
     name = "panglia_igneous_rock_to_lava",
@@ -120,36 +72,6 @@ data:extend({
     surface_conditions = panglia_only,
     allow_quality = false,
   },
-
-------------------------------------------------------
-------------- PANGLITE (circular rocks) --------------
-------------------------------------------------------
-
-  {
-    type = "item",
-    name = "panglia_panglite",
-    icon = icons .. "panglia_panglite-1.png",
-    subgroup = "panglia-processes",
-    order = "a[base]-cc",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = { 1.0, 0.83, 0.7, 1.0 },
-    weight = 20*kg,
-    auto_recycle = false,
-    pictures =
-    {
-      {size = 64, filename = icons .. "panglia_panglite-1.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_panglite-2.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_panglite-3.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_panglite-4.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_panglite-5.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_panglite-6.png", scale = 0.5},
-    },
-  },
-
   {
     type = "recipe",
     name = "panglia_panglite",
@@ -173,32 +95,6 @@ data:extend({
     show_amount_in_title = false,
     surface_conditions = panglia_only,
     allow_quality = false,
-  },
-
-
-  {
-    type = "item",
-    name = "panglia_panglite_glass",
-    icon = icons .. "panglia_panglite_glass-1.png",
-    subgroup = "panglia-processes",
-    order = "a[base]-cd",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = { 1.0, 0.83, 0.7, 1.0 },
-    weight = 20*kg,
-    auto_recycle = false,
-    pictures =
-    {
-      {size = 64, filename = icons .. "panglia_panglite_glass-1.png", scale = 0.5},
-      --{size = 64, filename = icons .. "panglia_panglite_glass-2.png", scale = 0.5},
-      --{size = 64, filename = icons .. "panglia_panglite_glass-3.png", scale = 0.5},
-      --{size = 64, filename = icons .. "panglia_panglite_glass-4.png", scale = 0.5},
-      --{size = 64, filename = icons .. "panglia_panglite_glass-5.png", scale = 0.5},
-      --{size = 64, filename = icons .. "panglia_panglite_glass-6.png", scale = 0.5},
-    },
   },
 
   {
@@ -226,21 +122,6 @@ data:extend({
     allow_quality = false,
   },
 
-  {
-    type = "item",
-    name = "panglia_panglite_fiber",
-    icon = icons .. "panglia_panglite_fiber.png",
-    subgroup = "panglia-processes",
-    order = "a[base]-ee",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = { 1.0, 0.83, 0.7, 1.0 },
-    weight = 20*kg,
-    auto_recycle = false,
-  },
 
   {
     type = "recipe",
@@ -277,94 +158,6 @@ data:extend({
     },
     surface_conditions = panglia_only,
   },
-
-})
-
-------------------------------------------------------
----------- BRANBALITE (cyan plant/slurry) ------------
-------------------------------------------------------
-
-
-local function branbalitepics(num)
-  return 
-  {
-    layers =
-    {
-      {
-        size = 64,
-        filename = icons .. "panglia_branbalite_" .. num .. ".png",
-        scale = 0.5,
-      },
-      {
-        draw_as_light = true,
-        blend_mode = "additive",
-        size = 64,
-        filename = icons .. "panglia_branbalite_light_" .. num .. ".png",
-        scale = 0.5,
-        --tint = {0.3, 0.3, 0.3, 0.3}
-      }
-    }
-  }
-end
-
-
-data:extend({
-
-  {
-    type = "item",
-    name = "panglia_branbalite", -- is fruit AND seed
-    icon = icons .. "panglia_branbalite_1.png",
-    subgroup = "panglia-processes",
-    order = "a[base]-dd",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 10,
-    default_import_location = "panglia",
-    --random_tint_color = item_tints.iron_rust,
-    fuel_value = "11MJ",
-    --fuel_category = "panglia_branbalite",
-    --fuel_categories = {"chemical"},
-    plant_result = "panglia_branbalite_plant",
-    --place_result = "panglia_branbalite_plant",
-    spoil_ticks = 90 * minute,
-    spoil_result = "spoilage",
-    weight = 10*kg,
-    pictures =
-    {
-      branbalitepics(1),
-      branbalitepics(2),
-      branbalitepics(3),
-      branbalitepics(4),
-    },
-    auto_recycle = false,
-  },
-
-})
-
-if helpers.compare_versions(mods["base"], "2.1.20") >= 0 then
-  data.raw.item["panglia_branbalite"].fuel_categories = {"chemical"}
-end
-
-data:extend({
-  {
-    type = "fluid",
-    name = "panglia_branbalite_slurry",
-    icon = icons .. "panglia_branbalite_slurry.png",
-    subgroup = "fluid",
-    order = "zzz[new-fluid]-s[panglia]-a[branbalite_slurry]",
-    default_temperature = 165,
-    max_temperature = 165,
-    gas_temperature = 165,
-    heat_capacity = "0.2kJ",
-    base_color = {82, 199, 238},
-    flow_color = {82, 199, 238},
-    visualization_color = {82, 199, 238},
-    draw_as_glow = true,
-    --order = "a[fluid]-a[water]-c[panglia_branbalite_slurry]",
-    auto_barrel = true,
-    fuel_value = "1MJ",
-  },
   {
     type = "recipe",
     name = "panglia_branbalite_slurry",
@@ -393,48 +186,6 @@ data:extend({
       quaternary = {82, 199, 238},
     },
   },
-
-
-
-  ------DUST
-  {
-    type = "item",
-    name = "panglia_dust",
-    icon = icons .. "panglia_dust.png",
-    icon_size = 64,
-    pictures =
-    {
-      {size = 64, filename = icons .. "panglia_dust.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_dust_2.png", scale = 0.5},
-      {size = 64, filename = icons .. "panglia_dust_3.png", scale = 0.5},
-    },
-    subgroup = "panglia-processes",
-    order = "a[base]-ff",
-    inventory_move_sound = item_sounds.resource_inventory_move,
-    pick_sound = item_sounds.resource_inventory_pickup,
-    drop_sound = item_sounds.resource_inventory_move,
-    stack_size = 100,
-    weight = 1 * kg,
-    auto_recycle = false,
-  },
-
-
-  {
-    type = "item",
-    name = "panglia_dummy_anything_sign",
-    icon = icons .. "panglia_dummy_anything_sign.png",
-    subgroup = "panglia-processes",
-    order = "b[otherres]-bd",
-    stack_size = 1,
-    hide_from_player_crafting = true,
-    hide_from_signal_gui = true,
-    hidden = true,
-    hidden_in_factoriopedia = true,
-    allow_as_intermediate = false,
-    default_import_location = "panglia",
-    weight = 1*kg,
-  },
-
   {
     type = "recipe",
     name = "panglia_dust",
@@ -443,12 +194,6 @@ data:extend({
     subgroup = "panglia-processes",
     order = "a[base]-ff1",
     enabled = false,
-    --hide_from_player_crafting = true,
-    --hide_from_signal_gui = true,
-    --hidden = true,
-    --hidden_in_factoriopedia = true,
-    -- this is now done through incinerator crafting speed
-    -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
     allow_decomposition = false,
     allow_as_intermediate = false,
     always_show_made_in = true,
@@ -463,8 +208,6 @@ data:extend({
       { type = "item", name = "panglia_dust", amount = 1 }
     },
     auto_recycle = false,
-    --icon_size = 64,
-    --order = "zz[panglia_crushing]",
   },
 
   {
@@ -475,12 +218,6 @@ data:extend({
     subgroup = "panglia-processes",
     order = "a[base]-ff2",
     enabled = false,
-    --hide_from_player_crafting = true,
-    --hide_from_signal_gui = true,
-    --hidden = true,
-    --hidden_in_factoriopedia = true,
-    -- this is now done through incinerator crafting speed
-    -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
     allow_decomposition = false,
     allow_as_intermediate = false,
     always_show_made_in = true,
@@ -494,19 +231,6 @@ data:extend({
     results = {{ type = "item", name = "panglia_dust", amount = 1, independent_probability = 0.5 }},
     auto_recycle = false,
   },
-
-
-
-  
-
-})
-
-
---- OTHER RESOURCES
-
-data:extend({
-
-
 
   {
     type = "recipe",
@@ -613,12 +337,10 @@ data:extend({
     allow_productivity = true,
     enabled = false,
     show_amount_in_title = false,
-    --always_show_made_in = true,
     auto_recycle = false,
     allow_decomposition = false,
     surface_conditions = panglia_only,
   },
-
 --    ███    ███  █████  ████████ ████████ ███████ ██████      ██████  ██████  ██ ███    ██ ████████ ███████ ██████  
 --    ████  ████ ██   ██    ██       ██    ██      ██   ██     ██   ██ ██   ██ ██ ████   ██    ██    ██      ██   ██ 
 --    ██ ████ ██ ███████    ██       ██    █████   ██████      ██████  ██████  ██ ██ ██  ██    ██    █████   ██████  
@@ -626,25 +348,8 @@ data:extend({
 --    ██      ██ ██   ██    ██       ██    ███████ ██   ██     ██      ██   ██ ██ ██   ████    ██    ███████ ██   ██ 
 
   {
-    type = "item",
-    name = "panglia_universe_precursor_volcanic",
-    icon = icons .. "panglia_universe_precursor_volcanic.png",
-    subgroup = "panglia-processes",
-    order = "b[otherres]-bb",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
-    stack_size = 20,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    weight = 50*kg,
-  },
-  {
     type = "recipe",
     name = "panglia_universe_precursor_volcanic",
-    --icon = icons .. "panglia_universe_precursor_1.png",
-    --subgroup = "panglia-processes",
-    --order = "b[otherres]-bb",
     energy_required = 0.5 * beacon_multiplier,
     categories = {"metallurgy"},
     ingredients =
@@ -672,7 +377,6 @@ data:extend({
   {
     type = "recipe",
     name = "panglia_universe_precursor",
-    --icon = icons .. "panglia_universe_precursor_2.png",
     subgroup = "panglia-processes",
     order = "b[otherres]-bc",
     energy_required = 0.5 * beacon_multiplier,
@@ -721,11 +425,8 @@ data:extend({
     },
     surface_conditions = panglia_only,
     allow_productivity = false,
-    --allow_inserter_overload = true,
-    --overload_multiplier = 1000,
     auto_recycle = false,
     allow_decomposition = false,
-    --hidden = true,
     hide_from_player_crafting = true,
     hidden_in_factoriopedia = false,
     crafting_machine_tint =
@@ -760,17 +461,11 @@ data:extend({
     },
     surface_conditions = panglia_only,
     allow_productivity = false,
-    --allow_inserter_overload = true,
-    --overload_multiplier = 1000,
     auto_recycle = false,
     allow_decomposition = false,
-    --hidden = true,
     hide_from_player_crafting = true,
     hidden_in_factoriopedia = false,
   },
-
-
-
 
 --    ██████  ███    ██  █████  
 --    ██   ██ ████   ██ ██   ██ 
@@ -778,103 +473,6 @@ data:extend({
 --    ██   ██ ██  ██ ██ ██   ██ 
 --    ██████  ██   ████ ██   ██ 
 
-  {
-    type = "smoke-with-trigger",
-    name = "biter_dna_sample_decomposition",
-    icon = icons .. "biter_dna_sample-waste.png",
-    animation = {
-      filename = entity .. "dna/biter_dna_sample_decomposition.png",
-      flags = {"corpse-decay"},
-      priority = "high",
-      width = 64,
-      height = 64,
-      frame_count = 16,
-      animation_speed = 1/60,
-      scale = 0.25,
-      --blend_mode = "normal",
-      --tint = opts.tint
-    },
-    render_layer = "above-tiles",
-    affected_by_wind = false,
-    movement_slow_down_factor = 1,
-    duration = 16*60,
-    fade_away_duration = 120,
-    show_when_smoke_off = true,
-    start_scale = 0.25,
-    end_scale = 0.25,
-    hidden = true,
-    hidden_in_factoriopedia = true,
-  },
-
-
-  {
-    type = "item",
-    name = "biter_dna_sample",
-    icon = icons .. "biter_dna_sample.png",
-    pictures =
-    {
-      { filename = icons .. "biter_dna_sample.png", size = 64, scale = 0.5 },
-      { filename = icons .. "biter_dna_sample-1.png", size = 64, scale = 0.5 },
-      { filename = icons .. "biter_dna_sample-2.png", size = 64, scale = 0.5 },
-    },
-    --subgroup = "moshine-processes",
-    default_import_location = "nauvis",
-    --order = "iii",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_move,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 20,
-    weight = 1*kg,
-    auto_recycle = false,
-    spoil_ticks = 8 * minute,
-    spoil_to_trigger_result =
-    {
-      items_per_trigger = 1, -- per 5 items the trigger is run
-      trigger =
-      {
-        type = "direct",
-        action_delivery =
-        {
-          type = "instant",
-          source_effects =
-          {
-            {
-              type = "create-smoke",
-              show_in_tooltip = false,
-              show_details_in_tooltip = false,
-              entity_name = "biter_dna_sample_decomposition",
-              initial_height = 0
-            },
-          }
-        }
-      }
-    }
-  },
-
-
-  {
-    type = "item",
-    name = "demolisher_dna_scale",
-    icon = icons .. "demolisher_dna_scale.png",
-    pictures =
-    {
-      { filename = icons .. "demolisher_dna_scale.png", size = 64, scale = 1.5 },
-      { filename = icons .. "demolisher_dna_scale-1.png", size = 64, scale = 1.5 },
-      { filename = icons .. "demolisher_dna_scale-2.png", size = 64, scale = 1.5 },
-      { filename = icons .. "demolisher_dna_scale.png", size = 64, scale = 1.7 },
-      { filename = icons .. "demolisher_dna_scale-1.png", size = 64, scale = 1.7 },
-      { filename = icons .. "demolisher_dna_scale-2.png", size = 64, scale = 1.7 },
-    },
-    --subgroup = "moshine-processes",
-    default_import_location = "vulcanus",
-    --order = "iii",
-    inventory_move_sound = item_sounds.rock_inventory_move,
-    pick_sound = item_sounds.rock_inventory_move,
-    drop_sound = item_sounds.rock_inventory_move,
-    stack_size = 1,
-    auto_recycle = false,
-    weight = 50*kg,
-  },
 
 
 --panglia_collect_dna_fish
@@ -896,17 +494,13 @@ data:extend({
     },
     results = 
     {
-      --{type = "item", name = "datacell-dna-raw", amount = 1, shared_probability = {min = 0, max = 0.01}},
-      --{type = "item", name = "datacell-empty", amount = 1, shared_probability = {min = 0.01, max = 1}},
-
       {type = "fluid", name = "dna_raw_data", amount_min = 12, amount_max = 30},
       {type = "item", name = "spoilage", amount = 1},
     },
-    --main_product = "datacell-dna-raw",
     allow_productivity = true,
     enabled = false,
     sort_item_ingredients = false,
-    --crafting_machine_tint = {primary = util.color("#48001e")},
+    crafting_machine_tint = {primary = util.color("#f0f188"),secondary = util.color("#eeeecb")},
     raise_on_crafted = true,
     auto_recycle = false,
     allow_decomposition = false,
@@ -923,13 +517,10 @@ data:extend({
     categories = {"dna_scanning"},
     energy_required = 1,
     ingredients = {
-      --{type = "item", name = "datacell-empty", amount = 1},
       {type = "item", name = "biter_dna_sample", amount = 1},
     },
     results = 
     {
-     -- {type = "item", name = "datacell-dna-raw", amount = 1, shared_probability = {min = 0, max = 0.01}},
-      --{type = "item", name = "datacell-empty", amount = 1, shared_probability = {min = 0.01, max = 1}},
       {type = "fluid", name = "dna_raw_data", amount_min = 15, amount_max = 120},
       {type = "item", name = "spoilage", amount = 1},
     },
@@ -937,7 +528,7 @@ data:extend({
     allow_productivity = true,
     enabled = false,
     sort_item_ingredients = false,
-    --crafting_machine_tint = {primary = util.color("#48001e")},
+    crafting_machine_tint = {primary = util.color("#e39d51"),secondary = util.color("#eccaa5")},
     raise_on_crafted = true,
     auto_recycle = false,
     allow_decomposition = false,
@@ -953,13 +544,10 @@ data:extend({
     categories = {"dna_scanning"},
     energy_required = 30,
     ingredients = {
-      --{type = "item", name = "datacell-empty", amount = 1},
       {type = "item", name = "biter-egg", amount = 1},
     },
     results = 
     {
-     -- {type = "item", name = "datacell-dna-raw", amount = 1, shared_probability = {min = 0, max = 0.01}},
-      --{type = "item", name = "datacell-empty", amount = 1, shared_probability = {min = 0.01, max = 1}},
       {type = "fluid", name = "dna_raw_data", amount_min = 302, amount_max = 2780},
       {type = "item", name = "spoilage", amount = 1},
     },
@@ -967,7 +555,7 @@ data:extend({
     allow_productivity = true,
     enabled = false,
     sort_item_ingredients = false,
-    --crafting_machine_tint = {primary = util.color("#48001e")},
+    crafting_machine_tint = {primary = util.color("#eec34b"),secondary = util.color("#f1deaa")},
     raise_on_crafted = true,
     auto_recycle = false,
     allow_decomposition = false,
@@ -984,21 +572,17 @@ data:extend({
     categories = {"dna_scanning"},
     energy_required = 100,
     ingredients = {
-      --{type = "item", name = "datacell-empty", amount = 1},
       {type = "item", name = "demolisher_dna_scale", amount = 1},
     },
     results = 
     {
-     -- {type = "item", name = "datacell-dna-raw", amount = 1, shared_probability = {min = 0, max = 0.01}},
-      --{type = "item", name = "datacell-empty", amount = 1, shared_probability = {min = 0.01, max = 1}},
       {type = "fluid", name = "dna_raw_data", amount_min = 302, amount_max = 4780},
       {type = "item", name = "stone", amount_min = 17, amount_max = 32},
     },
-    --main_product = "datacell-dna-raw",
     allow_productivity = true,
     enabled = false,
     sort_item_ingredients = false,
-    --crafting_machine_tint = {primary = util.color("#48001e")},
+    crafting_machine_tint = {primary = util.color("#cf4018"),secondary = util.color("#e28065")},
     raise_on_crafted = true,
     auto_recycle = false,
     allow_decomposition = false,
@@ -1015,21 +599,17 @@ data:extend({
     categories = {"dna_scanning"},
     energy_required = 1,
     ingredients = {
-      --{type = "item", name = "datacell-empty", amount = 1},
       {type = "item", name = "pentapod-egg", amount = 1},
     },
     results = 
     {
-     -- {type = "item", name = "datacell-dna-raw", amount = 1, shared_probability = {min = 0, max = 0.01}},
-      --{type = "item", name = "datacell-empty", amount = 1, shared_probability = {min = 0.01, max = 1}},
       {type = "fluid", name = "dna_raw_data", amount = 100},
       {type = "item", name = "spoilage", amount = 1},
     },
-    --main_product = "datacell-dna-raw",
     allow_productivity = true,
     enabled = false,
     sort_item_ingredients = false,
-    --crafting_machine_tint = {primary = util.color("#48001e")},
+    crafting_machine_tint = {primary = util.color("#c1cd19"),secondary = util.color("#e4e99a")},
     raise_on_crafted = true,
     auto_recycle = false,
     allow_decomposition = false,
@@ -1038,65 +618,56 @@ data:extend({
 
 
 
-
-
-
-  {
-    type = "item",
-    name = "panglia_dna_candidate",
-    icon = icons .. "panglia_dna_candidate.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-ff",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 1 * minute,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 2*kg,
-  },
   {
     type = "recipe",
     name = "panglia_dna_candidate",
     categories = {"dna_builder_1"},
     always_show_made_in = true,
-    enabled = true,
+    enabled = false,
     auto_recycle = false,
     allow_decomposition = false,
-    energy_required = 2,
+    energy_required = 1 * beacon_multiplier,
     ingredients = {
-      {type = "fluid", name = "dna_raw_data", amount = 100},
+      {type = "fluid", name = "dna_raw_data", amount = 5},
     },
     results = {
       {type = "item", name = "panglia_dna_candidate", amount = 1},
     },
+    crafting_machine_tint = only_primary,
     allow_productivity = true,
     show_amount_in_title = false,
     surface_conditions = panglia_only,
     allow_quality = false,
+    raise_on_crafted = true,
+    overload_multiplier = 1,
+    allow_inserter_overload = false,
   },
-
-
-
-
-
   {
-    type = "item",
-    name = "panglia_dna_validated",
-    icon = icons .. "panglia_dna_validated.png",
-    subgroup = "panglia-processes",
-    order = "z[base]-cd",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    weight = 20*kg,
+    type = "recipe",
+    name = "panglia_dna_builder_make_phasetwo",
+    icon = icons .. "panglia_dna_builder_make_phasetwo.png",
+    order = "111",
+    categories = {"dna_builder_1"},
+    always_show_made_in = true,
+    enabled = false,
     auto_recycle = false,
+    allow_decomposition = false,
+    energy_required = 10 * beacon_multiplier,
+    ingredients = {
+      {type = "item", name = "panglia_dna_validated", amount = 1},
+    },
+    results = {},
+    crafting_machine_tint = only_secondary,
+    allow_productivity = true,
+    show_amount_in_title = false,
+    surface_conditions = panglia_only,
+    allow_quality = false,
+    raise_on_crafted = true,
+    overload_multiplier = 1,
+    allow_inserter_overload = false,
   },
+
+
   {
     type = "recipe",
     name = "panglia_cloned_specimen_body_1_trial",
@@ -1104,105 +675,49 @@ data:extend({
     subgroup = "panglia-processes",
     order = "c[cloning]-gg",
     categories = {"simulation_chamber"},
-    energy_required = 30 * beacon_multiplier,
+    energy_required = 1 * beacon_multiplier, --30 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_dna_candidate", amount = 1},
     },
     results = 
     {
-      {type = "item", name = "panglia_dna_validated", amount = 1, shared_probability = {min = 0, max = 0.1}},
-      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, shared_probability = {min = 0, max = 0.1}, always_fresh = true},
-      {type = "item", name = "spoilage", amount = 2, shared_probability = {min = 0.1, max = 1}, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "panglia_dna_validated", amount = 1, shared_probability = {min = 0, max = 0.5}},
+      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, shared_probability = {min = 0, max = 0.5}, always_fresh = true},
+      {type = "item", name = "spoilage", amount = 2, shared_probability = {min = 0.5, max = 1}, show_details_in_recipe_tooltip = false},
     },
     main_product = "panglia_dna_validated",
     allow_productivity = false,
-    enabled = true,
-    crafting_machine_tint = {
-      primary = {r = 1, g = 1, b = 1, a = 1}, -- #ffa342ff
-      secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
-      tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
-      quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
-    },
+    enabled = false,
+    crafting_machine_tint = only_primary,
     surface_conditions = panglia_only,
     auto_recycle = false,
     allow_decomposition = false,
-    --result_is_always_fresh = true,
-    --reset_freshness_on_craft = true,
   },
-  --[[{
-    type = "recipe",
-    name = "panglia_dna_validated",
-    icon = icons .. "panglia_dna_validation.png",
-    categories = {"cosmic_incubator"},
-    always_show_made_in = true,
-    enabled = true,
-    auto_recycle = false,
-    allow_decomposition = false,
-    energy_required = 1,
-    ingredients = {
-      {type = "item", name = "panglia_dna_candidate", amount = 1},
-    },
-    results = {
-      {type = "item", name = "panglia_dna_validated", amount = 1, shared_probability = {min = 0, max = 0.1}},
-      {type = "item", name = "spoilage", amount = 1, shared_probability = {min = 0.1, max = 1}},
-    },
-    allow_productivity = true,
-    show_amount_in_title = false,
-    surface_conditions = panglia_only,
-    allow_quality = false,
-  },]]
 
   {
     type = "recipe",
-    name = "panglia_dna_builder_make_phasetwo",
-    icon = icons .. "panglia_dna_builder_make_phasetwo.png",
-    categories = {"dna_builder_1"},
-    always_show_made_in = true,
-    enabled = true,
-    auto_recycle = false,
-    allow_decomposition = false,
-    energy_required = 1,
-    ingredients = {
-      {type = "item", name = "panglia_dna_validated", amount = 1},
-      {type = "fluid", name = "dna_raw_data", amount = 100},
-    },
-    results = {
-    },
-    allow_productivity = true,
-    show_amount_in_title = false,
-    surface_conditions = panglia_only,
-    allow_quality = false,
-    raise_on_crafted = true,
-  },
-
-
-
-  {
-    type = "recipe",
-    name = "panglia_cloned_specimen_body_0_dna_builder",
+    name = "panglia_cloned_specimen_body_0",
     categories = {"dna_builder_2"},
     always_show_made_in = true,
     enabled = true,
     auto_recycle = false,
     allow_decomposition = false,
-    energy_required = 1,
+    energy_required = 1 * beacon_multiplier,
     ingredients = {
-      {type = "fluid", name = "dna_raw_data", amount = 1},
+      {type = "fluid", name = "panglia_branbalite_slurry", amount = 15},
     },
     results = {
-      {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1},
+      {type = "item", name = "panglia_cloned_specimen_body_0", amount = 5},
     },
+    crafting_machine_tint = only_primary,
     allow_productivity = true,
     show_amount_in_title = false,
     surface_conditions = panglia_only,
     allow_quality = false,
     raise_on_crafted = true,
+    overload_multiplier = 1,
+    allow_inserter_overload = false,
   },
-
-
-
-
-
 
 --    ██████   █████  ████████  █████   ██████ ███████ ██      ██      ███████ 
 --    ██   ██ ██   ██    ██    ██   ██ ██      ██      ██      ██      ██      
@@ -1210,29 +725,6 @@ data:extend({
 --    ██   ██ ██   ██    ██    ██   ██ ██      ██      ██      ██           ██ 
 --    ██████  ██   ██    ██    ██   ██  ██████ ███████ ███████ ███████ ███████ 
 
-
-
-
-
-  {
-    type = "item",
-    name = "datacell-dna-raw",
-    icon = datacellicons .. "datacell-dna-raw.png",
-    subgroup = "moshine-datacells",
-    order = "b[panglia]-aa",
-    inventory_move_sound = item_sounds.metal_small_inventory_move,
-    pick_sound = item_sounds.metal_small_inventory_pickup,
-    drop_sound = item_sounds.metal_small_inventory_move,
-    --durability = 1,
-    --durability_description_key = "description.science-pack-remaining-amount-key",
-    --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    --durability_description_value = "description.science-pack-remaining-amount-value",
-    stack_size = 200,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    plant_result = "processing-grid-process-dna",
-    weight = 0.5*kg,
-  },
   {
     type = "recipe",
     name = "datacell-dna-raw",
@@ -1276,23 +768,6 @@ data:extend({
     enabled = false,
     hide_from_player_crafting = true,
     crafting_machine_tint = {primary = util.color("#48001e")},
-  },
-  {
-    type = "item",
-    name = "datacell-dna-sequenced",
-    icon = datacellicons .. "datacell-dna-unfolded.png",
-    subgroup = "moshine-datacells",
-    order = "b[panglia]-cc",
-    inventory_move_sound = item_sounds.metal_small_inventory_move,
-    pick_sound = item_sounds.metal_small_inventory_pickup,
-    drop_sound = item_sounds.metal_small_inventory_move,
-    --durability = 1,
-    --durability_description_key = "description.science-pack-remaining-amount-key",
-    --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    --durability_description_value = "description.science-pack-remaining-amount-value",
-    stack_size = 200,
-    default_import_location = "panglia",
-    weight = 0.5*kg
   },
   {
     type = "recipe",
@@ -1339,23 +814,6 @@ data:extend({
     crafting_machine_tint = {primary = util.color("#ffeeee")},
   },
   {
-    type = "item",
-    name = "datacell-timewarp_data",
-    icon = datacellicons .. "datacell-timewarp_data.png",
-    subgroup = "moshine-datacells",
-    order = "b[panglia]-dd",
-    inventory_move_sound = item_sounds.metal_small_inventory_move,
-    pick_sound = item_sounds.metal_small_inventory_pickup,
-    drop_sound = item_sounds.metal_small_inventory_move,
-    --durability = 1,
-    --durability_description_key = "description.science-pack-remaining-amount-key",
-    --factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
-    --durability_description_value = "description.science-pack-remaining-amount-value",
-    stack_size = 200,
-    default_import_location = "panglia",
-    weight = 0.5*kg
-  },
-  {
     type = "recipe",
     name = "datacell-timewarp_data",
     icon =  datacellicons .. "datacell-timewarp_data.png",
@@ -1399,82 +857,6 @@ data:extend({
     hide_from_player_crafting = true,
     crafting_machine_tint = {primary = util.color("#d699ff")},
   },
-})
-
---log(serpent.block(data.raw.unit["big-wriggler-pentapod-premature"]))
-
-local monster = table.deepcopy(data.raw.unit["big-wriggler-pentapod-premature"])
-monster.name = "panglia_monster_1"
-
-data:extend({monster})
-
------------------- mutants
-data:extend({
-  {
-    type = "item",
-    name = "mutated_monster_egg",
-    icon = icons .. "mutated_monster_egg.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-dd",
-    --hidden = true,
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    weight = 5*kg,
-    spoil_ticks = 15 * 60, -- 15s
-    --spoil_result = "spoilage",
-    auto_recycle = false,
-    spoil_to_trigger_result =
-    {
-      items_per_trigger = 1,
-      trigger =
-      {
-        type = "direct",
-        action_delivery =
-        {
-          type = "instant",
-          source_effects =
-          {
-            {
-              type = "create-entity",
-              entity_name = "panglia_monster_1",
-              affects_target = true,
-              show_in_tooltip = true,
-              as_enemy = true,
-              find_non_colliding_position = true,
-              abort_if_over_space = true,
-              offset_deviation = {{-5, -5}, {5, 5}},
-              non_colliding_fail_result =
-              {
-                type = "direct",
-                action_delivery =
-                {
-                  type = "instant",
-                  source_effects =
-                  {
-                    {
-                      type = "create-entity",
-                      entity_name = "panglia_monster_1",
-                      affects_target = true,
-                      show_in_tooltip = false,
-                      as_enemy = true,
-                      offset_deviation = {{-1, -1}, {1, 1}},
-                    }
-} } } } } } } },},})
-
-
-
-
---    ██████  ██████   █████  ██ ███    ██ ███████ 
---    ██   ██ ██   ██ ██   ██ ██ ████   ██ ██      
---    ██████  ██████  ███████ ██ ██ ██  ██ ███████ 
---    ██   ██ ██   ██ ██   ██ ██ ██  ██ ██      ██ 
---    ██████  ██   ██ ██   ██ ██ ██   ████ ███████ 
-
-data:extend({
   --[[
   {
     type = "recipe",
@@ -1508,27 +890,6 @@ data:extend({
 
 
   {
-    type = "item",
-    name = "panglia_cloned_specimen_body_0",
-    icon = icons .. "panglia_cloned_specimen_body_0.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-ff",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 1 * minute,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 2*kg,
-  },
-
-
-
-
-  {
     type = "recipe",
     name = "panglia_cloned_specimen_body_1",
     icon = icons .. "panglia_cloned_specimen_body_1_recipe.png",
@@ -1547,34 +908,10 @@ data:extend({
     main_product = "panglia_cloned_specimen_body_1",
     allow_productivity = false,
     enabled = false,
-    crafting_machine_tint = {
-      primary = {r = 1, g = 1, b = 1, a = 1}, -- #ffa342ff
-      secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
-      tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
-      quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
-    },
+    crafting_machine_tint = only_primary,
     surface_conditions = panglia_only,
     auto_recycle = false,
     allow_decomposition = false,
-    --result_is_always_fresh = true,
-    --reset_freshness_on_craft = true,
-  },
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_1",
-    icon = icons .. "panglia_cloned_specimen_body_1.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-hh",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 1 * minute,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 4*kg,
   },
 
 
@@ -1597,36 +934,11 @@ data:extend({
     main_product = "panglia_cloned_specimen_body_2",
     allow_productivity = true,
     enabled = false,
-    crafting_machine_tint = {
-      primary = {r = 0, g = 0, b = 0, a = 0},
-      secondary = {r = 0, g = 0, b = 0, a = 0},
-      tertiary = {r = 1, g = 1, b = 1, a = 1},
-      quaternary = {r = 0, g = 0, b = 0, a = 0},
-    },
-    --hidden = true,
+    crafting_machine_tint = only_tertiary,
     hide_from_player_crafting = true,
     surface_conditions = panglia_only,
     auto_recycle = false,
     allow_decomposition = false,
-    --result_is_always_fresh = true,
-    --reset_freshness_on_craft = true,
-  },
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_2",
-    icon = icons .. "panglia_cloned_specimen_body_2.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-jj",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 50*kg,
   },
 
   {
@@ -1648,71 +960,13 @@ data:extend({
     main_product = "panglia_cloned_specimen_body_3",
     allow_productivity = true,
     enabled = false,
-    crafting_machine_tint = {
-      primary = {r = 0, g = 0, b = 0, a = 0},
-      secondary = {r = 0, g = 0, b = 0, a = 0},
-      tertiary = {r = 0, g = 0, b = 0, a = 0},
-      quaternary = {r = 1, g = 1, b = 1, a = 1},
-    },
-    --hidden = true,
+    crafting_machine_tint = only_quaternary,
     hide_from_player_crafting = true,
     surface_conditions = panglia_only,
     auto_recycle = false,
     allow_decomposition = false,
-    --result_is_always_fresh = true,
-    --reset_freshness_on_craft = true,
   },
 
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_3_genius",
-    icon = icons .. "panglia_cloned_specimen_body_3_genius.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-ll",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 65*kg,
-  },
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_3",
-    icon = icons .. "panglia_cloned_specimen_body_3_dumb.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-mm",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 65*kg,
-  },
-
-
-  {
-    type = "item",
-    name = "panglia_sentient_processor",
-    icon = icons .. "panglia_sentient_processor.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-nn",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    weight = 10*kg,
-  },
   {
     type = "recipe",
     name = "panglia_sentient_processor",
@@ -1739,5 +993,4 @@ data:extend({
     allow_decomposition = false,
     sort_item_ingredients = false,
   },
-
 })

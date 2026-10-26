@@ -374,7 +374,7 @@ PlanetsLib:update({
 
 
 data.raw.planet["panglia"].platform_surface_render_parameters = util.table.deepcopy(data.raw.planet["nauvis"].platform_surface_render_parameters)
-data.raw.planet["panglia"].platform_surface_render_parameters.platform_backdrop =
+--[[data.raw.planet["panglia"].platform_surface_render_parameters.platform_backdrop =
 {
   emission_scales_with_shadow = false,
   radius = data.raw.planet["nauvis"].platform_surface_render_parameters.platform_backdrop.radius * 0.7,
@@ -451,11 +451,6 @@ data.raw.planet["panglia"].platform_surface_render_parameters.platform_backdrop 
     height = 1024
   },
   planet_normal = nil,
-  --[[{
-    filename = "__space-age__/graphics/space/gleba-normal.png",
-    width = 2048,
-    height = 1024
-  },]]
   planet_emission =
   {
     filename = "__panglia_planet_assets__/graphics/space/panglia-emission.png",
@@ -486,4 +481,112 @@ data.raw.planet["panglia"].platform_surface_render_parameters.platform_backdrop 
     width = 2048,
     height = 1024
   }
+}]]
+
+
+local vanilla_t = "__space-age__/graphics/space/"
+local panglia_t = "__panglia_planet_assets__/graphics/space/"
+
+
+
+data.raw.planet["panglia"].platform_surface_render_parameters.platform_backdrop =
+{
+  atmosphere_color = {
+    10,
+    19,
+    26,
+    23,
+  },
+  atmosphere_ray_light_color_1 = {
+    201,
+    156,
+    59,
+    255,
+  },
+  atmosphere_ray_light_color_2 = {
+    25.5,
+    21.49905,
+    12.900450000000001,
+    255,
+  },
+  atmosphere_thickness = 0.032,
+  cloud_flow_intensity = 0.06,
+  cloud_flow_seconds = 5,
+  cloud_normal_intensity = 0.06,
+  cloud_panning_rate = 0,
+  cloud_vertical_offset = 0,
+  cloudiness = 0.603,
+  emission_scalar = 4.304,
+  emission_scales_with_shadow = true,
+  global_cloud = {
+    filename = panglia_t .. "panglia-cloud.png",
+    width = 2048,
+    height = 1024,
+  },
+  global_cloud_flow = {
+    filename = panglia_t .. "panglia-cloud.png",
+    width = 2048,
+    height = 1024,
+  },
+  global_cloud_normal = {
+    filename = vanilla_t .. "fulgora-cloud-normal.png",
+    width = 2048,
+    height = 1024,
+  },
+  light_color = {
+    214,
+    247,
+    247,
+    255,
+  },
+  light_direction = {
+    -0.42000000000000004,
+    0.23000000000000004,
+    0.4,
+  },
+  light_intensity_contrast = 0.385,
+  light_radius = 7,
+  planet_axis = {
+    3,
+    13,
+  },
+  planet_axis_deviation_amplitude = {
+    10,
+    10,
+  },
+  planet_axis_deviation_seconds = {
+    494.72222222222223,
+    418.72222222222223,
+  },
+  planet_emission = {
+    filename = panglia_t .. "panglia-emission.png",
+    width = 2048,
+    height = 1024,
+  },
+  planet_normal = {
+    filename = panglia_t .. "panglia-normal.png",
+    width = 2048,
+    height = 1024,
+  },
+  planet_reflectivity = {
+    filename = vanilla_t .. "gleba-reflectivity.png",
+    width = 2048,
+    height = 1024,
+  },
+  planet_surface = {
+    filename = panglia_t .. "panglia.png",
+    width = 2048,
+    height = 1024,
+  },
+  radius = 420,
+  rotation_seconds = -366.6666666666667,
+  specular_color = {
+    38,
+    109,
+    78,
+    91,
+  },
+  specular_intensity = 0.373,
+  surface_normal_intensity = 0.328,
+  surface_vertical_offset = 0.098,
 }
