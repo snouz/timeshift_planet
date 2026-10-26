@@ -18,6 +18,50 @@ monster.name = "panglia_monster_1"
 
 data:extend({monster})
 
+local mutated_monster_egg_trigger_result = 
+{
+  items_per_trigger = 1,
+  trigger =
+  {
+    type = "direct",
+    action_delivery =
+    {
+      type = "instant",
+      source_effects =
+      {
+        {
+          type = "create-entity",
+          entity_name = "panglia_monster_1",
+          affects_target = true,
+          show_in_tooltip = true,
+          as_enemy = true,
+          find_non_colliding_position = true,
+          abort_if_over_space = true,
+          offset_deviation = {{-5, -5}, {5, 5}},
+          non_colliding_fail_result =
+          {
+            type = "direct",
+            action_delivery =
+            {
+              type = "instant",
+              source_effects =
+              {
+                {
+                  type = "create-entity",
+                  entity_name = "panglia_monster_1",
+                  affects_target = true,
+                  show_in_tooltip = false,
+                  as_enemy = true,
+                  offset_deviation = {{-1, -1}, {1, 1}},
+                }
+              } 
+            } 
+          } 
+        } 
+      } 
+    } 
+  } 
+}
 
 
 local function branbalitepics(num)
@@ -161,6 +205,25 @@ data:extend({
   },
   {
     type = "item",
+    name = "panglia_universe_precursor_volcanic",
+    icon = icons .. "panglia_universe_precursor_volcanic.png",
+    subgroup = "panglia-processes",
+    order = "b[otherres]-bb",
+    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
+    pick_sound = item_sounds.metal_barrel_inventory_pickup,
+    drop_sound = item_sounds.metal_barrel_inventory_move,
+    stack_size = 20,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    weight = 50*kg,
+  },
+--     ██████ ██████  ██    ██ ███████ ██   ██ ██ ███    ██  ██████  
+--    ██      ██   ██ ██    ██ ██      ██   ██ ██ ████   ██ ██       
+--    ██      ██████  ██    ██ ███████ ███████ ██ ██ ██  ██ ██   ███ 
+--    ██      ██   ██ ██    ██      ██ ██   ██ ██ ██  ██ ██ ██    ██ 
+--     ██████ ██   ██  ██████  ███████ ██   ██ ██ ██   ████  ██████  
+  {
+    type = "item",
     name = "panglia_dust",
     icon = icons .. "panglia_dust.png",
     icon_size = 64,
@@ -189,24 +252,35 @@ data:extend({
     hide_from_player_crafting = true,
     hide_from_signal_gui = true,
     hidden = true,
+    flags = {"hide-from-bonus-gui", "hide-from-fuel-tooltip", "hide-spoilage-bar-in-world", "hide-health-bar-in-world", "ignore-spoil-time-modifier"},
     hidden_in_factoriopedia = true,
     allow_as_intermediate = false,
     default_import_location = "panglia",
     weight = 1*kg,
   },
+
+--     ██████ ██       ██████  ███    ██ ██ ███    ██  ██████  
+--    ██      ██      ██    ██ ████   ██ ██ ████   ██ ██       
+--    ██      ██      ██    ██ ██ ██  ██ ██ ██ ██  ██ ██   ███ 
+--    ██      ██      ██    ██ ██  ██ ██ ██ ██  ██ ██ ██    ██ 
+--     ██████ ███████  ██████  ██   ████ ██ ██   ████  ██████  
+
   {
     type = "item",
-    name = "panglia_universe_precursor_volcanic",
-    icon = icons .. "panglia_universe_precursor_volcanic.png",
+    name = "panglia_dummy_dna_builder_phase2",
+    icon = icons .. "panglia_dummy_dna_builder_phase2.png",
     subgroup = "panglia-processes",
-    order = "b[otherres]-bb",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
-    stack_size = 20,
+    order = "c[cloning]-bdc",
+    stack_size = 1,
+    hide_from_player_crafting = true,
+    hide_from_signal_gui = true,
+    hidden = true,
+    flags = {"hide-from-bonus-gui", "hide-from-fuel-tooltip", "hide-spoilage-bar-in-world", "hide-health-bar-in-world", "ignore-spoil-time-modifier"},
+    hidden_in_factoriopedia = true,
+    allow_as_intermediate = false,
     default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    weight = 50*kg,
+    weight = 1*kg,
+    spoil_ticks = 1,
   },
   {
     type = "smoke-with-trigger",
@@ -245,9 +319,9 @@ data:extend({
       { filename = icons .. "biter_dna_sample-1.png", size = 64, scale = 0.5 },
       { filename = icons .. "biter_dna_sample-2.png", size = 64, scale = 0.5 },
     },
-    --subgroup = "moshine-processes",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-aaa",
     default_import_location = "nauvis",
-    --order = "iii",
     inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
     pick_sound = space_age_item_sounds.agriculture_inventory_move,
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
@@ -291,9 +365,9 @@ data:extend({
       { filename = icons .. "demolisher_dna_scale-1.png", size = 64, scale = 1.7 },
       { filename = icons .. "demolisher_dna_scale-2.png", size = 64, scale = 1.7 },
     },
-    --subgroup = "moshine-processes",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-aba",
     default_import_location = "vulcanus",
-    --order = "iii",
     inventory_move_sound = item_sounds.rock_inventory_move,
     pick_sound = item_sounds.rock_inventory_move,
     drop_sound = item_sounds.rock_inventory_move,
@@ -305,10 +379,17 @@ data:extend({
 
   {
     type = "item",
-    name = "panglia_dna_candidate",
-    icon = icons .. "panglia_dna_candidate.png",
+    name = "panglia_cloned_specimen_embryo_candidate",
+    icon = icons .. "panglia_cloned_specimen_embryo_candidate.png",
+    pictures =
+    {
+      { filename = icons .. "panglia_cloned_specimen_embryo_candidate_belt1.png", size = 64, scale = 0.5 },
+      { filename = icons .. "panglia_cloned_specimen_embryo_candidate_belt2.png", size = 64, scale = 0.5 },
+      { filename = icons .. "panglia_cloned_specimen_embryo_candidate_belt3.png", size = 64, scale = 0.5 },
+      { filename = icons .. "panglia_cloned_specimen_embryo_candidate_belt4.png", size = 64, scale = 0.5 },
+    },
     subgroup = "panglia-processes",
-    order = "c[cloning]-ff",
+    order = "c[cloning]-bbb",
     inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
     pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
@@ -320,39 +401,153 @@ data:extend({
     auto_recycle = false,
     weight = 2*kg,
   },
+
+  {
+    type = "item",
+    name = "panglia_cloned_specimen_embryo",
+    icon = icons .. "panglia_cloned_specimen_embryo.png",
+    pictures =
+    {
+      { filename = icons .. "panglia_cloned_specimen_embryo_belt1.png", size = 64, scale = 0.5 },
+      { filename = icons .. "panglia_cloned_specimen_embryo_belt2.png", size = 64, scale = 0.5 },
+      { filename = icons .. "panglia_cloned_specimen_embryo_belt3.png", size = 64, scale = 0.5 },
+      { filename = icons .. "panglia_cloned_specimen_embryo_belt4.png", size = 64, scale = 0.5 },
+    },
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bcb",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 50,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 1 * minute,
+    spoil_result = "spoilage",
+    auto_recycle = false,
+    weight = 2*kg,
+  },
+
   {
     type = "item",
     name = "panglia_dna_validated",
     icon = icons .. "panglia_dna_validated.png",
     subgroup = "panglia-processes",
-    order = "z[base]-cd",
-    inventory_move_sound = item_sounds.metal_barrel_inventory_move,
-    pick_sound = item_sounds.metal_barrel_inventory_pickup,
-    drop_sound = item_sounds.metal_barrel_inventory_move,
+    order = "c[cloning]-bdb",
+    inventory_move_sound = item_sounds.metal_small_inventory_move,
+    pick_sound = item_sounds.metal_small_inventory_pickup,
+    drop_sound = item_sounds.metal_small_inventory_move,
     stack_size = 50,
     default_import_location = "panglia",
-    weight = 20*kg,
+    weight = 0.5*kg,
     auto_recycle = false,
   },
 
   {
     type = "item",
-    name = "panglia_cloned_specimen_body_0",
-    icon = icons .. "panglia_cloned_specimen_body_0.png",
+    name = "panglia_cloned_specimen_body_1",
+    icon = icons .. "panglia_cloned_specimen_body_1.png",
     subgroup = "panglia-processes",
-    order = "c[cloning]-ff",
+    order = "c[cloning]-bez",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 1,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 1 * minute,
+    spoil_result = "spoilage",
+    auto_recycle = false,
+    weight = 4*kg,
+  },
+  {
+    type = "item",
+    name = "panglia_cloned_specimen_body_2",
+    icon = icons .. "panglia_cloned_specimen_body_2.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bgy",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 1,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    auto_recycle = false,
+    weight = 50*kg,
+  },
+  {
+    type = "item",
+    name = "mutated_monster_egg",
+    icon = icons .. "mutated_monster_egg.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bgz",
+    --hidden = true,
     inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
     pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 50,
     default_import_location = "panglia",
     random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 1 * minute,
+    weight = 5*kg,
+    spoil_ticks = 15 * 60, -- 15s
+    --spoil_result = "spoilage",
+    auto_recycle = false,
+    spoil_to_trigger_result = mutated_monster_egg_trigger_result,
+  },
+  {
+    type = "item",
+    name = "panglia_cloned_specimen_body_3_genius",
+    icon = icons .. "panglia_cloned_specimen_body_3_genius.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bhy",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 1,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
     spoil_result = "spoilage",
     auto_recycle = false,
-    weight = 2*kg,
+    weight = 65*kg,
   },
-  ---datacells
+  {
+    type = "item",
+    name = "panglia_cloned_specimen_body_3",
+    icon = icons .. "panglia_cloned_specimen_body_3_dumb.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bhz",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 1,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    spoil_ticks = 2 * minutes,
+    spoil_result = "spoilage",
+    auto_recycle = false,
+    weight = 65*kg,
+  },
+  {
+    type = "item",
+    name = "panglia_sentient_processor",
+    icon = icons .. "panglia_sentient_processor.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bjb",
+    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
+    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
+    drop_sound = space_age_item_sounds.agriculture_inventory_move,
+    stack_size = 50,
+    default_import_location = "panglia",
+    random_tint_color = item_tints.iron_rust,
+    weight = 10*kg,
+  },
+--    ██████   █████  ████████  █████   ██████ ███████ ██      ██      
+--    ██   ██ ██   ██    ██    ██   ██ ██      ██      ██      ██      
+--    ██   ██ ███████    ██    ███████ ██      █████   ██      ██      
+--    ██   ██ ██   ██    ██    ██   ██ ██      ██      ██      ██      
+--    ██████  ██   ██    ██    ██   ██  ██████ ███████ ███████ ███████ 
   {
     type = "item",
     name = "datacell-dna-raw",
@@ -405,143 +600,6 @@ data:extend({
     stack_size = 200,
     default_import_location = "panglia",
     weight = 0.5*kg
-  },
-  {
-    type = "item",
-    name = "mutated_monster_egg",
-    icon = icons .. "mutated_monster_egg.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-dd",
-    --hidden = true,
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    weight = 5*kg,
-    spoil_ticks = 15 * 60, -- 15s
-    --spoil_result = "spoilage",
-    auto_recycle = false,
-    spoil_to_trigger_result =
-    {
-      items_per_trigger = 1,
-      trigger =
-      {
-        type = "direct",
-        action_delivery =
-        {
-          type = "instant",
-          source_effects =
-          {
-            {
-              type = "create-entity",
-              entity_name = "panglia_monster_1",
-              affects_target = true,
-              show_in_tooltip = true,
-              as_enemy = true,
-              find_non_colliding_position = true,
-              abort_if_over_space = true,
-              offset_deviation = {{-5, -5}, {5, 5}},
-              non_colliding_fail_result =
-              {
-                type = "direct",
-                action_delivery =
-                {
-                  type = "instant",
-                  source_effects =
-                  {
-                    {
-                      type = "create-entity",
-                      entity_name = "panglia_monster_1",
-                      affects_target = true,
-                      show_in_tooltip = false,
-                      as_enemy = true,
-                      offset_deviation = {{-1, -1}, {1, 1}},
-                    }
-} } } } } } } },},
-
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_1",
-    icon = icons .. "panglia_cloned_specimen_body_1.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-hh",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 1 * minute,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 4*kg,
-  },
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_2",
-    icon = icons .. "panglia_cloned_specimen_body_2.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-jj",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 50*kg,
-  },
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_3_genius",
-    icon = icons .. "panglia_cloned_specimen_body_3_genius.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-ll",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 65*kg,
-  },
-  {
-    type = "item",
-    name = "panglia_cloned_specimen_body_3",
-    icon = icons .. "panglia_cloned_specimen_body_3_dumb.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-mm",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 1,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    spoil_ticks = 2 * minutes,
-    spoil_result = "spoilage",
-    auto_recycle = false,
-    weight = 65*kg,
-  },
-  {
-    type = "item",
-    name = "panglia_sentient_processor",
-    icon = icons .. "panglia_sentient_processor.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-nn",
-    inventory_move_sound = space_age_item_sounds.agriculture_inventory_move,
-    pick_sound = space_age_item_sounds.agriculture_inventory_pickup,
-    drop_sound = space_age_item_sounds.agriculture_inventory_move,
-    stack_size = 50,
-    default_import_location = "panglia",
-    random_tint_color = item_tints.iron_rust,
-    weight = 10*kg,
   },
 })
 

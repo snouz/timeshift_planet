@@ -2,25 +2,33 @@
 Version: 0.8.0
 Date: 2026-10-
   Features:
-    - Added DNA builder building
-    - (The DNA builder has 2 phases: create new DNA, send to simchamber, if successful, send back to make phase 2 (for a batch of embryos))
-    - Added items dna candidate, dna validator, dna validated
+    - Added Embryo forge building
+    - (The Embryo forge has 2 phases: create new DNA, send to simchamber, if successful, send back to make phase 2 (for a batch of embryos))
+    - Added items DNA embryo candidate, dna validator, DNA embryo validated (-> replace previous embryo item)
   Changes:
-    - DNA scanner is now a furnace, so no need to choose the recipe
-    - Changed embryo recipe
+    - Nanoscale Plant is now a furnace, so no need to choose the recipe
+    - Changed recipes for the cloning line (time, ingredients, results, icons...)
     - 2 new technologies, Reworked technologies from raw dna to simulation chamber 2 (unlocks, price, icons, structure, requirements, descriptions...)
+    - Simulation chamber has a speed of 1 instead of 0.1
+    - Removed all dependency to cloning vat submod (not relevant to panglia anymore)
   Bugfixes:
     - Fixed missing key and icon for biter flesh residues
     - Fixed mod breaking change in factorio 2.1.22
     - Sentient Processor tech now requires mandatory synaptic assembler
   Graphics:
-    - DNA scanner colors based on input
+    - Nanoscale Plant colors based on input
     - Many tech icons redone
-    - Some icons reworked
-    - Icon variations for panglite glass
-    - Slightly modified Simulation chamber graphics
+    - Many icons reworked
+    - Icon variations for panglite glass and embryos
+    - Simulation chamber graphics modified
     - Planet backdrop reworked (thanks Hanodest for the great tool)
     - Modified map colors
+    - Changed appearance of fast zones
+  Sounds:
+    - Changed planet atmosphere
+    - Changed sound volume of Nanoscale Plant
+  Gui:
+    - Re-ordered some icons
   Locale:
     - Changed name of Branbalite/branbalite slurry into Gliate tree/Gliate leaves/Gliatine (Easier to memorize since it's in the name of the planet)
     - Changed and added some descriptions

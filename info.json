@@ -13,7 +13,6 @@
     "Moshine >= 1.2.9",
     "thinking_brain >= 1.2.3",
     "matter_printer >= 0.2.3",
-    "Cloning-vat-building",
     "PlanetsLib >= 1.12.1",
     "module-category-defaults",
     "+ snouz_better_asteroid_collector >= 1.0.2",

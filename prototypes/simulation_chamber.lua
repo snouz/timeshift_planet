@@ -19,7 +19,7 @@ data:extend(
     name = "simulation_chamber",
     icon = icons .. "simulation_chamber.png",
     subgroup = "panglia-production-machine",
-    order = "e[simulation_chamber]",
+    order = "a6[simulation_chamber]",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,
     drop_sound = item_sounds.mechanical_inventory_move,
@@ -56,7 +56,7 @@ data:extend(
   {
     type = "corpse",
     name = "simulation_chamber-remnants",
-    icon = icons .. "simulation_chamber-remnants.png",
+    icon = icons .. "simulation_chamber.png",
     hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "production-machine-remnants",
@@ -115,7 +115,7 @@ data:extend(
     allowed_effects = {"speed", "pollution"},
     source_inventory_size = 1,
     result_inventory_size = 6,
-    crafting_speed = 0.1,
+    crafting_speed = 1,
 
     graphics_set =
     {
@@ -147,6 +147,7 @@ data:extend(
       working_visualisations =
       {
         {
+          secondary_draw_order = 10,
           animation =
           {
             filename = entity .. "simulation_chamber/simulation_chamber_screen_anim.png",
@@ -161,6 +162,51 @@ data:extend(
           },
         },
         {
+          apply_recipe_tint = "primary",
+          secondary_draw_order = 10,
+          animation =
+          {
+            filename = entity .. "simulation_chamber/layer1.png",
+            width = 512,
+            height = 512,
+            scale = 0.5,
+          },
+        },
+        {
+          secondary_draw_order = 10,
+          apply_recipe_tint = "secondary",
+          animation =
+          {
+            filename = entity .. "simulation_chamber/layer2.png",
+            width = 512,
+            height = 512,
+            scale = 0.5,
+          },
+        },
+        {
+          secondary_draw_order = 10,
+          apply_recipe_tint = "tertiary",
+          animation =
+          {
+            filename = entity .. "simulation_chamber/layer3.png",
+            width = 512,
+            height = 512,
+            scale = 0.5,
+          },
+        },
+        {
+          secondary_draw_order = 10,
+          apply_recipe_tint = "quaternary",
+          animation =
+          {
+            filename = entity .. "simulation_chamber/layer4.png",
+            width = 512,
+            height = 512,
+            scale = 0.5,
+          },
+        },
+        {
+          secondary_draw_order = 11,
           animation =
           {
             filename = entity .. "simulation_chamber/simulation_chamber_glow.png",
@@ -173,46 +219,6 @@ data:extend(
             scale = 0.5,
             draw_as_glow = true,
             blend_mode = "additive",
-          },
-        },
-        {
-          apply_recipe_tint = "primary",
-          animation =
-          {
-            filename = entity .. "simulation_chamber/layer1.png",
-            width = 512,
-            height = 512,
-            scale = 0.5,
-          },
-        },
-        {
-          apply_recipe_tint = "secondary",
-          animation =
-          {
-            filename = entity .. "simulation_chamber/layer2.png",
-            width = 512,
-            height = 512,
-            scale = 0.5,
-          },
-        },
-        {
-          apply_recipe_tint = "tertiary",
-          animation =
-          {
-            filename = entity .. "simulation_chamber/layer3.png",
-            width = 512,
-            height = 512,
-            scale = 0.5,
-          },
-        },
-        {
-          apply_recipe_tint = "quaternary",
-          animation =
-          {
-            filename = entity .. "simulation_chamber/layer4.png",
-            width = 512,
-            height = 512,
-            scale = 0.5,
           },
         },
       }

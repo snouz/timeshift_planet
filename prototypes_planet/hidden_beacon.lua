@@ -48,7 +48,7 @@ data:extend({
       {
         
         {
-          render_layer = "air-object",
+          render_layer = "above-tiles",
           always_draw = true,
           animation =
           {
@@ -64,13 +64,14 @@ data:extend({
                 animation_speed = 0.123,
                 shift = util.by_pixel(0, 0),
                 --draw_as_glow = true,
-                --blend_mode = "additive",
-                blend_mode = "multiplicative-with-alpha",
+                blend_mode = "additive",
+                run_mode = "backward",
+                --blend_mode = "multiplicative-with-alpha",
               },
             }
           }
         },
-
+        
         {
           render_layer = "smoke",
           always_draw = true,

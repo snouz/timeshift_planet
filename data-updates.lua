@@ -8,20 +8,17 @@ if settings.startup["moshine-data-colors"] and settings.startup["moshine-data-co
   if data.raw.item["datacell-dna-raw"] then
     data.raw.item["datacell-dna-raw"].localised_name = {"item-name.datacell-dna-raw_nocolor"}
   end
-  if data.raw.item["dna-sequenced"] then
-    data.raw.item["dna-sequenced"].localised_name = {"item-name.dna-sequenced_nocolor"}
-  end
   if data.raw.item["datacell-timewarp_data"] then
     data.raw.item["datacell-timewarp_data"].localised_name = {"item-name.datacell-timewarp_data_nocolor"}
   end
-  if data.raw.item["panglia_dna_candidate"] then
-    data.raw.item["panglia_dna_candidate"].localised_name = {"item-name.panglia_dna_candidate_nocolor"}
+  if data.raw.item["panglia_cloned_specimen_embryo_candidate"] then
+    data.raw.item["panglia_cloned_specimen_embryo_candidate"].localised_name = {"item-name.panglia_cloned_specimen_embryo_candidate_nocolor"}
   end
   if data.raw.item["panglia_dna_validated"] then
     data.raw.item["panglia_dna_validated"].localised_name = {"item-name.panglia_dna_validated_nocolor"}
   end
-  if data.raw.item["panglia_cloned_specimen_body_0"] then
-    data.raw.item["panglia_cloned_specimen_body_0"].localised_name = {"item-name.panglia_cloned_specimen_body_0_nocolor"}
+  if data.raw.item["panglia_cloned_specimen_embryo"] then
+    data.raw.item["panglia_cloned_specimen_embryo"].localised_name = {"item-name.panglia_cloned_specimen_embryo_nocolor"}
   end
 --recipe
   if data.raw.recipe["datacell-remove-timewarp_data"] then

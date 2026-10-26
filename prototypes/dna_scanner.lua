@@ -501,7 +501,7 @@ data:extend({
       fade_out_ticks = 20,
       sound_accents = {
         {
-          sound = {filename = soundspath .. "dna_scanner_recurring.ogg", volume = 1.5},
+          sound = {filename = soundspath .. "dna_scanner_recurring.ogg", volume = 0.1},
           frame = 30,
           play_for_working_visualisation = "running_anim"
         },

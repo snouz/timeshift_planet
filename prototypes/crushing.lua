@@ -36,7 +36,7 @@ data:extend({
     icon = icons .. "panglia_crusher.png",
     icon_size = 64,
     subgroup = "panglia-production-machine",
-    order = "b[panglia_crusher]",
+    order = "a3[panglia_crusher]",
     place_result = "panglia_crusher",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,

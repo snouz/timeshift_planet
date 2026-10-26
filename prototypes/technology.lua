@@ -503,6 +503,7 @@ data:extend({
     }
   },
 
+
   {
     type = "technology",
     name = "panglia_dna_manipulation",
@@ -516,14 +517,17 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "panglia_dna_candidate"
+        recipe = "panglia_cloned_specimen_embryo_candidate"
       },
     },
-    prerequisites = { "panglia_collect_dna_fish", 
-                      "panglia_collect_dna_biter", 
-                      "panglia_collect_dna_demolisher", 
-                      "panglia_collect_dna_pentapod",
-                      "moshine-tech-ai-tier-10"},
+    prerequisites = {
+      "panglia_branbalite_slurry",
+      "panglia_collect_dna_fish", 
+      "panglia_collect_dna_biter", 
+      "panglia_collect_dna_demolisher", 
+      "panglia_collect_dna_pentapod",
+      "moshine-tech-ai-tier-10",
+    },
     unit =
     {
       count = 10,
@@ -551,14 +555,14 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_1_trial"
+        recipe = "panglia_cloned_specimen_body_1_candidate"
       },
       {
         type = "unlock-recipe",
         recipe = "panglia_dna_builder_make_phasetwo"
       },
     },
-    prerequisites = { "panglia_dna_manipulation"},
+    prerequisites = {"panglia_dna_manipulation"},
     unit =
     {
       count = 15,
@@ -582,7 +586,7 @@ data:extend({
     {
       {
         type = "unlock-recipe",
-        recipe = "panglia_cloned_specimen_body_0",
+        recipe = "panglia_cloned_specimen_embryo",
       },
       {
         type = "unlock-recipe",
@@ -821,14 +825,14 @@ if data.raw["technology"]["matter_printer-technology"] then
 end
   --table.insert(data.raw["technology"]["panglia_crusher"].effects, {type = "unlock-recipe", recipe = "panglia_universe_precursor"})
 
-if data.raw["technology"]["cloning-vat-technology"] then
-  table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_branbalite_slurry")
-  table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_advanced_optics_nanotech")
-  table.insert(data.raw["technology"]["panglia_dna_manipulation"].prerequisites, "cloning-vat-technology")
+--if data.raw["technology"]["cloning-vat-technology"] then
+--  table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_branbalite_slurry")
+--  table.insert(data.raw["technology"]["cloning-vat-technology"].prerequisites, "panglia_advanced_optics_nanotech")
+--  table.insert(data.raw["technology"]["panglia_dna_manipulation"].prerequisites, "cloning-vat-technology")
   --table.insert(data.raw["technology"]["cloning-vat-technology"].effects,
   --  {type = "unlock-recipe", recipe = "datacell-dna-raw"}
   --)
-end
+--end
 
 if data.raw["technology"]["thinking-brain-technology"] then
   data.raw["technology"]["thinking-brain-technology"].prerequisites = {"panglia_simulation_matrix"}

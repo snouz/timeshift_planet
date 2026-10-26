@@ -426,6 +426,10 @@ script.on_event(prototypes.recipe["panglia_dna_builder_make_phasetwo"].on_crafte
   local new_entity = transform_entity(entity, PHASE_TWO)
   if new_entity and new_entity.valid then
     new_entity.clear_fluids()
+    local inventoryoutput = new_entity.get_output_inventory()
+    if inventoryoutput then
+      inventoryoutput.remove({name="panglia_dummy_dna_builder_phase2"})
+    end
     storage.panglia_dna_builder_progress[new_entity.unit_number] = 0
     create_or_update_countdown(new_entity, 0)
     if new_entity.surface then
@@ -439,22 +443,24 @@ script.on_event(prototypes.recipe["panglia_dna_builder_make_phasetwo"].on_crafte
 end)
 
 
-script.on_event(prototypes.recipe["panglia_dna_candidate"].on_crafted_event, function(event)
+script.on_event(prototypes.recipe["panglia_cloned_specimen_embryo_candidate"].on_crafted_event, function(event)
   local entity = event.entity
   if not entity or not entity.valid then return end
   local inventory = entity.get_inventory(defines.inventory.crafter_input)
   if not inventory or not inventory.valid then return end
-  local count = inventory.get_item_count("panglia_dna_validated")
-  if count >= 0 then
+  local vcount = inventory.get_item_count("panglia_dna_validated")
+  if vcount > 0 then
     entity.clear_fluids()
+    --game.print("entity.clear_fluids()1")
   else
-    if math.random(10) == 1 then
+    if math.random(3) == 1 then
       entity.clear_fluids()
+      ---game.print("entity.clear_fluids()2")
     end
   end
 end)
 
-script.on_event(prototypes.recipe["panglia_cloned_specimen_body_0"].on_crafted_event, function(event)
+script.on_event(prototypes.recipe["panglia_cloned_specimen_embryo"].on_crafted_event, function(event)
   local entity = event.entity
   if not entity or not entity.valid then return end
   if entity.name ~= PHASE_TWO then return end

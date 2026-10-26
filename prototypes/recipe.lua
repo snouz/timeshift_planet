@@ -1,8 +1,35 @@
+local cloning_multiplier = 1 --general multiplier for the whole cloning chain
+local beacon_multiplier = 1 --50 --time offset by the hidden beacons
+
+
+local one_year = 10
+
+
+local panglia_dna_builder_make_phasetwo_time = 10
+local embryo_candidate_time = 1 * one_year --1y
+local embryo_time = 1 * one_year --1y
+
+local body_1_candidate_time = 3 * one_year --3y
+local body_1_time = 3 * one_year --3y
+local body_2_time = 12* one_year --12y
+local body_3_time = 8 * one_year --8y
+
+
+local body_1_candidate_successrate = 0.1
+local body_1_successrate = 0.8
+
+--local body_2_successrate = 0.8
+local body_2_mutant_rate = 0.1
+local body_2_spoilage_rate = 0.1
+
+local body_3_successrate = 0.9
+local body_3_genius_rate = 0.1
+
+
 local icons = "__panglia_planet__/graphics/icons/"
 local datacellicons = "__panglia_planet__/graphics/icons/data/"
 local entity = "__panglia_planet_assets__/graphics/entity/"
 
-local beacon_multiplier = 50
 local panglia_only = {{property = "pressure", min = 1401, max = 1401}}
 local item_sounds = require("__base__.prototypes.item_sounds")
 local item_tints = require("__base__.prototypes.item-tints")
@@ -11,31 +38,13 @@ local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
 local seconds = 60
 local minutes = 60 * seconds
 
+local opaque = {r = 1, g = 1, b = 1, a = 1}
+local transparent = {r = 0, g = 0, b = 0, a = 0}
 
-local only_primary = {
-  primary = {r = 1, g = 1, b = 1, a = 1},
-  secondary = {r = 0, g = 0, b = 0, a = 0},
-  tertiary = {r = 0, g = 0, b = 0, a = 0},
-  quaternary = {r = 0, g = 0, b = 0, a = 0},
-}
-local only_secondary = {
-  primary = {r = 0, g = 0, b = 0, a = 0}, -- #ffa342ff
-  secondary = {r = 1, g = 1, b = 1, a = 1}, -- #ffb85fff
-  tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
-  quaternary = {r = 0, g = 0, b = 0, a = 0}, -- #ff7e45ff
-}
-local only_tertiary = {
-  primary = {r = 0, g = 0, b = 0, a = 0},
-  secondary = {r = 0, g = 0, b = 0, a = 0},
-  tertiary = {r = 1, g = 1, b = 1, a = 1},
-  quaternary = {r = 0, g = 0, b = 0, a = 0},
-}
-local only_quaternary = {
-  primary = {r = 0, g = 0, b = 0, a = 0}, -- #ffa342ff
-  secondary = {r = 0, g = 0, b = 0, a = 0}, -- #ffb85fff
-  tertiary = {r = 0, g = 0, b = 0, a = 0}, -- #d9a892ff
-  quaternary = {r = 1, g = 1, b = 1, a = 1}, -- #ff7e45ff
-}
+local only_primary =    { primary = opaque,      secondary = transparent, tertiary = transparent, quaternary = transparent }
+local only_secondary =  { primary = transparent, secondary = opaque,      tertiary = transparent, quaternary = transparent }
+local only_tertiary =   { primary = transparent, secondary = transparent, tertiary = opaque,      quaternary = transparent }
+local only_quaternary = { primary = transparent, secondary = transparent, tertiary = transparent, quaternary = opaque      }
 
 
 data:extend({
@@ -61,10 +70,10 @@ data:extend({
     },
     crafting_machine_tint =
     {
-      primary = {245, 105, 66},
-      secondary = {245, 105, 66},
-      tertiary = {245, 105, 66},
-      quaternary = {245, 105, 66},
+      primary =    util.color("#f56942"),
+      secondary =  util.color("#f56942"),
+      tertiary =   util.color("#f56942"),
+      quaternary = util.color("#f56942"),
     },
     --main_product = "panglia_panglite",
     allow_productivity = true,
@@ -136,7 +145,6 @@ data:extend({
     energy_required = 5 * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_panglite", amount = 40},
-      --{type = "fluid", name = "sulfuric-acid", amount = 40},
       {type = "item", name = "uranium-238", amount = 1, show_details_in_recipe_tooltip = false},
     },
     results = {
@@ -151,10 +159,10 @@ data:extend({
     sort_item_ingredients = false,
     crafting_machine_tint =
     {
-      primary = {240, 168, 56, 255}, -- #f0a938ff
-      secondary = {240, 168, 56, 255},
-      tertiary = {240, 168, 56, 255},
-      quaternary = {240, 168, 56, 255},
+      primary =    util.color("#f0a838"), --orange
+      secondary =  util.color("#f0a838"),
+      tertiary =   util.color("#f0a838"),
+      quaternary = util.color("#f0a838"),
     },
     surface_conditions = panglia_only,
   },
@@ -180,16 +188,15 @@ data:extend({
     surface_conditions = panglia_only,
     crafting_machine_tint =
     {
-      primary = {82, 199, 238},
-      secondary = {82, 199, 238},
-      tertiary = {82, 199, 238},
-      quaternary = {82, 199, 238},
+      primary =    util.color("#52c7ee"),
+      secondary =  util.color("#52c7ee"),
+      tertiary =   util.color("#52c7ee"),
+      quaternary = util.color("#52c7ee"),
     },
   },
   {
     type = "recipe",
     name = "panglia_dust",
-    --icon = icons .. "panglia_dust.png",
     categories = {"panglia_crushing"},
     subgroup = "panglia-processes",
     order = "a[base]-ff1",
@@ -228,7 +235,9 @@ data:extend({
     ingredients = {
       { type = "item", name = "panglia_dust", amount = 1 },
     },
-    results = {{ type = "item", name = "panglia_dust", amount = 1, independent_probability = 0.5 }},
+    results = {
+      { type = "item", name = "panglia_dust", amount = 1, independent_probability = 0.5 }
+    },
     auto_recycle = false,
   },
 
@@ -243,18 +252,18 @@ data:extend({
     energy_required = 0.5 * beacon_multiplier,
     ingredients = {
       {type = "fluid", name = "panglia_branbalite_slurry", amount = 65},
-      {type = "fluid", name = "steam", amount = 35}
+      {type = "fluid", name = "steam", amount = 35},
     },
     results = {
       {type = "fluid", name = "lubricant", amount = 90},
-      {type = "fluid", name = "water", amount = 10, show_details_in_recipe_tooltip = false}
+      {type = "fluid", name = "water", amount = 10, show_details_in_recipe_tooltip = false},
     },
     crafting_machine_tint =
     {
-      primary = {66, 245, 156}, -- #44b838ff
-      secondary = {r = 0.432, g = 0.793, b = 0.386, a = 1.000}, -- #6eca62ff
-      tertiary = {r = 0.647, g = 0.471, b = 0.396, a = 1.000}, -- #a57865ff
-      quaternary = {r = 1.000, g = 0.395, b = 0.127, a = 1.000}, -- #ff6420ff
+      primary = util.color("#42f59c"),
+      secondary = util.color("#6eca62"),
+      tertiary = util.color("#a57865"),
+      quaternary = util.color("#ff6420"),
     },
     main_product = "lubricant",
     allow_productivity = true,
@@ -279,15 +288,15 @@ data:extend({
       {type = "item", name = "solid-fuel", amount = 10},
     },
     results = {
-      {type = "item", name = "rocket-fuel", amount = 1}
+      {type = "item", name = "rocket-fuel", amount = 1},
     },
     main_product = "rocket-fuel",
     crafting_machine_tint =
     {
-      primary = {82, 199, 238},
-      secondary = {82, 199, 238},
-      tertiary = {82, 199, 238},
-      quaternary = {82, 199, 238},
+      primary = util.color("#52c7ee"), --blue
+      secondary = util.color("#52c7ee"),
+      tertiary = util.color("#52c7ee"),
+      quaternary = util.color("#52c7ee"),
     },
     allow_decomposition = false,
     surface_conditions = panglia_only,
@@ -308,10 +317,10 @@ data:extend({
     {
       {type = "item", name = "panglia_panglite_fiber", amount = 2},
       {type = "item", name = "electronic-circuit", amount = 2},
-      {type = "item", name = "copper-cable", amount = 4}
+      {type = "item", name = "copper-cable", amount = 4},
     },
     results = {
-      {type = "item", name = "advanced-circuit", amount = 1}
+      {type = "item", name = "advanced-circuit", amount = 1},
     },
     main_product = "advanced-circuit",
     allow_decomposition = false,
@@ -332,7 +341,7 @@ data:extend({
       {type = "fluid", name = "steam", amount = 10},
     },
     results = {
-      {type = "item", name = "low-density-structure", amount = 2}
+      {type = "item", name = "low-density-structure", amount = 2},
     },
     allow_productivity = true,
     enabled = false,
@@ -363,10 +372,10 @@ data:extend({
     },
     crafting_machine_tint =
     {
-      primary = {245, 105, 66},
-      secondary = {245, 105, 66},
-      tertiary = {245, 105, 66},
-      quaternary = {245, 105, 66},
+      primary = util.color("#f56942"), --dark orange
+      secondary = util.color("#f56942"),
+      tertiary = util.color("#f56942"),
+      quaternary = util.color("#f56942"),
     },
     allow_productivity = true,
     enabled = false,
@@ -392,10 +401,10 @@ data:extend({
     },
     crafting_machine_tint =
     {
-      primary = {82, 199, 238},
-      secondary = {82, 199, 238},
-      tertiary = {82, 199, 238},
-      quaternary = {82, 199, 238},
+      primary = util.color("#52c7ee"), --blue
+      secondary = util.color("#52c7ee"),
+      tertiary = util.color("#52c7ee"),
+      quaternary = util.color("#52c7ee"),
     },
     allow_productivity = true,
     enabled = false,
@@ -431,8 +440,8 @@ data:extend({
     hidden_in_factoriopedia = false,
     crafting_machine_tint =
     {
-      primary = {252, 147, 68},
-      secondary = {245, 210, 184},
+      primary = util.color("#fc9344"), -- orange
+      secondary = util.color("#f5d2b8"), --pale orange
     },
 
 
@@ -484,8 +493,8 @@ data:extend({
     type = "recipe",
     name = "panglia_collect_dna_fish",
     icon = datacellicons .. "panglia_collect_dna_fish.png",
-    subgroup = "panglia-processes",
-    order = "c[dna_scanning]-dda",
+    subgroup = "data-fluid",
+    order = "h[dna_raw_data]-1",
     categories = {"dna_scanning"},
     energy_required = 1,
     ingredients = {
@@ -512,8 +521,8 @@ data:extend({
     type = "recipe",
     name = "panglia_collect_dna_biter",
     icon = datacellicons .. "panglia_collect_dna_biter.png",
-    subgroup = "panglia-processes",
-    order = "c[dna_scanning]-ddb",
+    subgroup = "data-fluid",
+    order = "h[dna_raw_data]-2",
     categories = {"dna_scanning"},
     energy_required = 1,
     ingredients = {
@@ -539,8 +548,8 @@ data:extend({
     type = "recipe",
     name = "panglia_collect_dna_biter_egg",
     icon = datacellicons .. "panglia_collect_dna_biter_egg.png",
-    subgroup = "panglia-processes",
-    order = "c[dna_scanning]-ddc",
+    subgroup = "data-fluid",
+    order = "h[dna_raw_data]-3",
     categories = {"dna_scanning"},
     energy_required = 30,
     ingredients = {
@@ -567,8 +576,8 @@ data:extend({
     type = "recipe",
     name = "panglia_collect_dna_demolisher",
     icon = datacellicons .. "panglia_collect_dna_demolisher.png",
-    subgroup = "panglia-processes",
-    order = "c[dna_scanning]-ddd",
+    subgroup = "data-fluid",
+    order = "h[dna_raw_data]-4",
     categories = {"dna_scanning"},
     energy_required = 100,
     ingredients = {
@@ -594,8 +603,8 @@ data:extend({
     type = "recipe",
     name = "panglia_collect_dna_pentapod",
     icon = datacellicons .. "panglia_collect_dna_pentapod.png",
-    subgroup = "panglia-processes",
-    order = "c[dna_scanning]-dde",
+    subgroup = "data-fluid",
+    order = "h[dna_raw_data]-5",
     categories = {"dna_scanning"},
     energy_required = 1,
     ingredients = {
@@ -620,18 +629,18 @@ data:extend({
 
   {
     type = "recipe",
-    name = "panglia_dna_candidate",
+    name = "panglia_cloned_specimen_embryo_candidate",
     categories = {"dna_builder_1"},
     always_show_made_in = true,
     enabled = false,
     auto_recycle = false,
     allow_decomposition = false,
-    energy_required = 1 * beacon_multiplier,
+    energy_required = embryo_candidate_time * cloning_multiplier * beacon_multiplier,
     ingredients = {
       {type = "fluid", name = "dna_raw_data", amount = 5},
     },
     results = {
-      {type = "item", name = "panglia_dna_candidate", amount = 1},
+      {type = "item", name = "panglia_cloned_specimen_embryo_candidate", amount = 1},
     },
     crafting_machine_tint = only_primary,
     allow_productivity = true,
@@ -646,68 +655,42 @@ data:extend({
     type = "recipe",
     name = "panglia_dna_builder_make_phasetwo",
     icon = icons .. "panglia_dna_builder_make_phasetwo.png",
-    order = "111",
+    --order = "111",
     categories = {"dna_builder_1"},
     always_show_made_in = true,
     enabled = false,
     auto_recycle = false,
     allow_decomposition = false,
-    energy_required = 10 * beacon_multiplier,
+    energy_required = panglia_dna_builder_make_phasetwo_time * cloning_multiplier * beacon_multiplier,
     ingredients = {
       {type = "item", name = "panglia_dna_validated", amount = 1},
     },
-    results = {},
+    results = {
+      {type = "item", name = "panglia_dummy_dna_builder_phase2", amount = 1},  ---dummy
+    },
     crafting_machine_tint = only_secondary,
     allow_productivity = true,
     show_amount_in_title = false,
     surface_conditions = panglia_only,
     allow_quality = false,
-    raise_on_crafted = true,
+    raise_on_crafted = true,  --------------------------TRANSFORMS BUILDING
     overload_multiplier = 1,
     allow_inserter_overload = false,
   },
-
-
   {
     type = "recipe",
-    name = "panglia_cloned_specimen_body_1_trial",
-    icon = icons .. "panglia_cloned_specimen_body_1_recipe.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-gg",
-    categories = {"simulation_chamber"},
-    energy_required = 1 * beacon_multiplier, --30 * beacon_multiplier,
-    ingredients = {
-      {type = "item", name = "panglia_dna_candidate", amount = 1},
-    },
-    results = 
-    {
-      {type = "item", name = "panglia_dna_validated", amount = 1, shared_probability = {min = 0, max = 0.5}},
-      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, shared_probability = {min = 0, max = 0.5}, always_fresh = true},
-      {type = "item", name = "spoilage", amount = 2, shared_probability = {min = 0.5, max = 1}, show_details_in_recipe_tooltip = false},
-    },
-    main_product = "panglia_dna_validated",
-    allow_productivity = false,
-    enabled = false,
-    crafting_machine_tint = only_primary,
-    surface_conditions = panglia_only,
-    auto_recycle = false,
-    allow_decomposition = false,
-  },
-
-  {
-    type = "recipe",
-    name = "panglia_cloned_specimen_body_0",
+    name = "panglia_cloned_specimen_embryo",
     categories = {"dna_builder_2"},
     always_show_made_in = true,
     enabled = true,
     auto_recycle = false,
     allow_decomposition = false,
-    energy_required = 1 * beacon_multiplier,
+    energy_required = embryo_time * cloning_multiplier * beacon_multiplier,
     ingredients = {
       {type = "fluid", name = "panglia_branbalite_slurry", amount = 15},
     },
     results = {
-      {type = "item", name = "panglia_cloned_specimen_body_0", amount = 5},
+      {type = "item", name = "panglia_cloned_specimen_embryo", amount = 1},
     },
     crafting_machine_tint = only_primary,
     allow_productivity = true,
@@ -717,6 +700,112 @@ data:extend({
     raise_on_crafted = true,
     overload_multiplier = 1,
     allow_inserter_overload = false,
+  },
+  {
+    type = "recipe",
+    name = "panglia_cloned_specimen_body_1_candidate",
+    icon = icons .. "panglia_cloned_specimen_body_1_candidate.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bdb",
+    categories = {"simulation_chamber"},
+    energy_required = body_1_candidate_time * cloning_multiplier * beacon_multiplier,
+    ingredients = {
+      {type = "item", name = "panglia_cloned_specimen_embryo_candidate", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "panglia_dna_validated", amount = 1, shared_probability = {min = 0, max = body_1_candidate_successrate}},
+      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, shared_probability = {min = 0, max = body_1_candidate_successrate}, always_fresh = true},
+      {type = "item", name = "spoilage", amount = 2, shared_probability = {min = body_1_candidate_successrate, max = 1}, show_details_in_recipe_tooltip = false},
+    },
+    main_product = "panglia_dna_validated",
+    allow_productivity = false,
+    enabled = false,
+    crafting_machine_tint = only_secondary,
+    surface_conditions = panglia_only,
+    auto_recycle = false,
+    allow_decomposition = false,
+    sort_item_ingredients = false,
+  },
+
+  {
+    type = "recipe",
+    name = "panglia_cloned_specimen_body_1",
+    icon = icons .. "panglia_cloned_specimen_body_1_recipe.png",
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bfb",
+    categories = {"simulation_chamber"},
+    energy_required = body_1_time * cloning_multiplier * beacon_multiplier,
+    ingredients = {
+      {type = "item", name = "panglia_cloned_specimen_embryo", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, shared_probability = {min = 0, max = body_1_successrate}, always_fresh = true},
+      {type = "item", name = "spoilage", amount = 2,                       shared_probability = {min = body_1_successrate, max = 1}, show_details_in_recipe_tooltip = false},
+    },
+    main_product = "panglia_cloned_specimen_body_1",
+    allow_productivity = false,
+    enabled = false,
+    crafting_machine_tint = only_secondary,
+    surface_conditions = panglia_only,
+    auto_recycle = false,
+    allow_decomposition = false,
+    sort_item_ingredients = false,
+  },
+  {
+    type = "recipe",
+    name = "panglia_cloned_specimen_body_2",
+    icon = icons .. "panglia_cloned_specimen_body_2_recipe.png",
+    categories = {"simulation_chamber"},
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bgb",
+    energy_required = body_2_time * cloning_multiplier * beacon_multiplier,
+    ingredients = {
+      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1, shared_probability = {min = 0, max = (1 - body_2_spoilage_rate - body_2_mutant_rate)}, always_fresh = true},
+      {type = "item", name = "mutated_monster_egg", amount = 1,            shared_probability = {min = (1 - body_2_spoilage_rate - body_2_mutant_rate), max = (1 - body_2_spoilage_rate)}, always_fresh = true},
+      {type = "item", name = "spoilage", amount = 1,                       shared_probability = {min = (1 - body_2_spoilage_rate), max = 1}, show_details_in_recipe_tooltip = false},
+    },
+    main_product = "panglia_cloned_specimen_body_2",
+    allow_productivity = true,
+    enabled = false,
+    crafting_machine_tint = only_tertiary,
+    hide_from_player_crafting = true,
+    surface_conditions = panglia_only,
+    auto_recycle = false,
+    allow_decomposition = false,
+    sort_item_ingredients = false,
+  },
+  {
+    type = "recipe",
+    name = "panglia_cloned_specimen_body_3",
+    icon = icons .. "panglia_cloned_specimen_body_3_recipe.png",
+    categories = {"simulation_chamber"},
+    subgroup = "panglia-processes",
+    order = "c[cloning]-bhb",
+    energy_required = body_3_time * cloning_multiplier * beacon_multiplier,
+    ingredients = {
+      {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1},
+    },
+    results = 
+    {
+      {type = "item", name = "panglia_cloned_specimen_body_3_genius", amount = 1, shared_probability = {min = 0, max = body_3_genius_rate}, always_fresh = true, show_details_in_recipe_tooltip = false},
+      {type = "item", name = "panglia_cloned_specimen_body_3", amount = 1, shared_probability = {min = body_3_genius_rate, max = body_3_successrate}, always_fresh = true},
+      {type = "item", name = "spoilage", amount = 1, shared_probability = {min = body_3_successrate, max = 1}, show_details_in_recipe_tooltip = false},
+    },
+    main_product = "panglia_cloned_specimen_body_3",
+    allow_productivity = true,
+    enabled = false,
+    crafting_machine_tint = only_quaternary,
+    hide_from_player_crafting = true,
+    surface_conditions = panglia_only,
+    auto_recycle = false,
+    allow_decomposition = false,
+    sort_item_ingredients = false,
   },
 
 --    ██████   █████  ████████  █████   ██████ ███████ ██      ██      ███████ 
@@ -888,84 +977,6 @@ data:extend({
 ]]
 
 
-
-  {
-    type = "recipe",
-    name = "panglia_cloned_specimen_body_1",
-    icon = icons .. "panglia_cloned_specimen_body_1_recipe.png",
-    subgroup = "panglia-processes",
-    order = "c[cloning]-gg",
-    categories = {"simulation_chamber"},
-    energy_required = 30 * beacon_multiplier,
-    ingredients = {
-      {type = "item", name = "panglia_cloned_specimen_body_0", amount = 1},
-    },
-    results = 
-    {
-      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1, shared_probability = {min = 0, max = 0.9}, always_fresh = true},
-      {type = "item", name = "spoilage", amount = 2, shared_probability = {min = 0.9, max = 1}, show_details_in_recipe_tooltip = false},
-    },
-    main_product = "panglia_cloned_specimen_body_1",
-    allow_productivity = false,
-    enabled = false,
-    crafting_machine_tint = only_primary,
-    surface_conditions = panglia_only,
-    auto_recycle = false,
-    allow_decomposition = false,
-  },
-
-
-  {
-    type = "recipe",
-    name = "panglia_cloned_specimen_body_2",
-    icon = icons .. "panglia_cloned_specimen_body_2_recipe.png",
-    categories = {"simulation_chamber"},
-    subgroup = "panglia-processes",
-    order = "c[cloning]-ii",
-    energy_required = 60 * beacon_multiplier,
-    ingredients = {
-      {type = "item", name = "panglia_cloned_specimen_body_1", amount = 1},
-    },
-    results = 
-    {
-      {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1, shared_probability = {min = 0, max = 0.8}, always_fresh = true},
-      {type = "item", name = "spoilage", amount = 1, shared_probability = {min = 0.8, max = 1}, show_details_in_recipe_tooltip = false},
-    },
-    main_product = "panglia_cloned_specimen_body_2",
-    allow_productivity = true,
-    enabled = false,
-    crafting_machine_tint = only_tertiary,
-    hide_from_player_crafting = true,
-    surface_conditions = panglia_only,
-    auto_recycle = false,
-    allow_decomposition = false,
-  },
-
-  {
-    type = "recipe",
-    name = "panglia_cloned_specimen_body_3",
-    icon = icons .. "panglia_cloned_specimen_body_3_recipe.png",
-    categories = {"simulation_chamber"},
-    subgroup = "panglia-processes",
-    order = "c[cloning]-kk",
-    energy_required = 30 * beacon_multiplier,
-    ingredients = {
-      {type = "item", name = "panglia_cloned_specimen_body_2", amount = 1},
-    },
-    results = 
-    {
-      {type = "item", name = "panglia_cloned_specimen_body_3_genius", amount = 1, shared_probability = {min = 0, max = 0.1}, always_fresh = true, show_details_in_recipe_tooltip = false},
-      {type = "item", name = "panglia_cloned_specimen_body_3", amount = 1, shared_probability = {min = 0.1, max = 1}, always_fresh = true},
-    },
-    main_product = "panglia_cloned_specimen_body_3",
-    allow_productivity = true,
-    enabled = false,
-    crafting_machine_tint = only_quaternary,
-    hide_from_player_crafting = true,
-    surface_conditions = panglia_only,
-    auto_recycle = false,
-    allow_decomposition = false,
-  },
 
   {
     type = "recipe",

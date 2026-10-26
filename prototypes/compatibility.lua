@@ -17,10 +17,10 @@ if data.raw.item["matter_printer"] then
 	data.raw.item["matter_printer"].subgroup = "panglia-production-machine"
   data.raw.item["matter_printer"].order = "a2[matter_printer]"
 end
-if data.raw.item["cloning-vat"] then
-	data.raw.item["cloning-vat"].subgroup = "panglia-production-machine"
-  data.raw.item["cloning-vat"].order = "c[cloning-vat]"
-end
+--if data.raw.item["cloning-vat"] then
+--	data.raw.item["cloning-vat"].subgroup = "panglia-production-machine"
+--  data.raw.item["cloning-vat"].order = "c[cloning-vat]"
+--end
 if data.raw.item["thinking-brain"] then
 	data.raw.item["thinking-brain"].subgroup = "panglia-production-machine"
   data.raw.item["thinking-brain"].order = "f[universe_precursor]"
@@ -62,21 +62,21 @@ end
 --	table.insert(data.raw.technology["cloning-vat-technology"].effects, {type = "unlock-recipe", recipe = "cloning-vat"})
 --end
 
-if data.raw.recipe["cloning-vat"] then
-	data.raw.recipe["cloning-vat"].ingredients = {
-    {type = "item", name = "biochamber", amount = 1},
-    {type = "item", name = "carbon-fiber", amount = 5},
-    {type = "item", name = "processing-unit", amount = 1},
-    {type = "fluid", name = "panglia_branbalite_slurry", amount = 150},
-  }
-  data.raw.recipe["cloning-vat"].sort_item_ingredients = false
-  data.raw.recipe["cloning-vat"].categories = {"crafting-with-fluid"}
-end
+--if data.raw.recipe["cloning-vat"] then
+--	data.raw.recipe["cloning-vat"].ingredients = {
+--    {type = "item", name = "biochamber", amount = 1},
+--    {type = "item", name = "carbon-fiber", amount = 5},
+--    {type = "item", name = "processing-unit", amount = 1},
+--    {type = "fluid", name = "panglia_branbalite_slurry", amount = 150},
+--  }
+--  data.raw.recipe["cloning-vat"].sort_item_ingredients = false
+--  data.raw.recipe["cloning-vat"].categories = {"crafting-with-fluid"}
+--end
 
 
-if data.raw["assembling-machine"]["cloning-vat"] then
-  table.insert(data.raw["assembling-machine"]["cloning-vat"].allowed_module_categories, "panglia_module")
-end
+--if data.raw["assembling-machine"]["cloning-vat"] then
+--  table.insert(data.raw["assembling-machine"]["cloning-vat"].allowed_module_categories, "panglia_module")
+--end
 
 
 if mods["quality-seeds"] then

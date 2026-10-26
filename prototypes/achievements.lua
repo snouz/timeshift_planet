@@ -32,7 +32,7 @@ data:extend({
     type = "produce-achievement",
     name = "panglia_produce_cloned_specimen_body_0",
     order = "p[panglia]-ccc",
-    item_product = "panglia_cloned_specimen_body_0",
+    item_product = "panglia_cloned_specimen_embryo",
     amount = 1,
     limited_to_one_game = true,
     icon = ach .. "panglia_produce_cloned_specimen_body_0.png",

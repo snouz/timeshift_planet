@@ -29,4 +29,7 @@ ok, followup problem: how do I destroy excess igneous rock on panglia? Its unrec
 
 
 
-add panglite to cliffs graphics
+
+Add smoke to crusher
+
+item ordering

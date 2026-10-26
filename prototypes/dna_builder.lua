@@ -321,20 +321,20 @@ local graphicsset = function(num)
 end
 
 data:extend({
-    {
-        type = "sound",
-        name = "panglia_dna_builder_switch_to_phase1",
-        category = "game-effect",
-        filename = "__panglia_planet_assets__/sounds/panglia_dna_builder_switch_to_phase1.ogg",
-        volume = 0.8,
-    },
-    {
-        type = "sound",
-        name = "panglia_dna_builder_switch_to_phase2",
-        category = "game-effect",
-        filename = "__panglia_planet_assets__/sounds/panglia_dna_builder_switch_to_phase2.ogg",
-        volume = 0.8,
-    }
+  {
+    type = "sound",
+    name = "panglia_dna_builder_switch_to_phase1",
+    category = "game-effect",
+    filename = "__panglia_planet_assets__/sounds/dna_builder_p1_to_p2.ogg",
+    volume = 1,
+  },
+  {
+    type = "sound",
+    name = "panglia_dna_builder_switch_to_phase2",
+    category = "game-effect",
+    filename = "__panglia_planet_assets__/sounds/dna_builder_p1_to_p2.ogg",
+    volume = 1,
+  }
 })
 
 
@@ -350,7 +350,7 @@ data:extend({
     name = entityname,
     icon = "__panglia_planet__/graphics/icons/panglia_dna_builder.png",
     subgroup = "panglia-production-machine",
-    order = "a3[".. entityname .."]",
+    order = "a4[".. entityname .."]",
     place_result = entityname,
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,
@@ -439,7 +439,7 @@ data:extend({
       {
         production_type = "input",
         pipe_picture = pipe_connectors,
-        volume = 100,
+        volume = 5,
         pipe_connections = {
           {flow_direction = "input", direction = defines.direction.north, position = {pipedistance, -((size/2)-0.5)}, connection_category = "data"},
           {flow_direction = "input", direction = defines.direction.north, position = {-pipedistance, -((size/2)-0.5)}, connection_category = "data"},
@@ -478,10 +478,12 @@ data:extend({
     build_sound = {filename = soundspath .. "dna_builder_built.ogg", volume = 1},
     working_sound =
     {
-      sound = {filename = soundspath .. "dna_builder_working1.ogg", volume = 1},
+      sound = {filename = soundspath .. "dna_builder_p1_working.ogg", volume = 1},
+      activate_sound = {filename = soundspath .. "dna_builder_p1_start.ogg", volume = 1},
+      deactivate_sound = {filename = soundspath .. "dna_builder_p1_stop.ogg", volume = 1},
       max_sounds_per_prototype = 5,
-      fade_in_ticks = 20,
-      fade_out_ticks = 20,
+      fade_in_ticks = 0,
+      fade_out_ticks = 0,
       --sound_accents = {
       --  {
       --    sound = {filename = soundspath .. "dna_scanner_recurring.ogg", volume = 1.5},
@@ -500,7 +502,7 @@ data:extend({
 
   {
     type = "furnace",
-    fixed_recipe = "panglia_cloned_specimen_body_0",
+    fixed_recipe = "panglia_cloned_specimen_embryo",
     name = entityname2,
     icon = "__panglia_planet__/graphics/icons/panglia_dna_builder.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
@@ -521,7 +523,7 @@ data:extend({
         production_type = "input",
         pipe_picture = actual_pipe_connectors,
         pipe_covers = pipecoverspictures(),
-        volume = 100,
+        volume = 15,
         pipe_connections = {
           {flow_direction = "input", direction = defines.direction.east, position = {((size/2)-0.5), pipedistance}},
           {flow_direction = "input", direction = defines.direction.east, position = {((size/2)-0.5), -pipedistance}},
@@ -558,17 +560,19 @@ data:extend({
     close_sound = {filename = soundspath .. "dna_builder_close.ogg", volume = 1},
     working_sound =
     {
-      sound = {filename = soundspath .. "dna_builder_working2.ogg", volume = 1},
+      sound = {filename = soundspath .. "dna_builder_p2_working.ogg", volume = 1},
+      activate_sound = {filename = soundspath .. "dna_builder_p2_start.ogg", volume = 1},
+      deactivate_sound = {filename = soundspath .. "dna_builder_p2_stop.ogg", volume = 1},
       max_sounds_per_prototype = 5,
-      fade_in_ticks = 20,
-      fade_out_ticks = 20,
-      --sound_accents = {
-      --  {
-      --    sound = {filename = soundspath .. "dna_scanner_recurring.ogg", volume = 1.5},
-      --    frame = 30,
-      --    play_for_working_visualisation = "running_anim"
-      --  },
-      --},
+      fade_in_ticks = 0,
+      fade_out_ticks = 0,
+      sound_accents = {
+        {
+          sound = {filename = soundspath .. "dna_builder_p2_rotary.ogg", volume = 0.8},
+          frame = 14,
+          play_for_working_visualisation = "running_anim"
+        },
+      },
     },
   },
 
