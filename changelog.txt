@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.2
+Date: 2026-10-31
+  Bugfixes:
+    - Fixed DNA unfolding tech being unresearchable
+  Locale:
+    - Update of Chinese locale by ChuijkYahus
+---------------------------------------------------------------------------------------------------
 Version: 0.8.1
 Date: 2026-10-28
   Changes:
