@@ -531,13 +531,15 @@ data:extend({
       "panglia_collect_dna_demolisher", 
       "panglia_collect_dna_pentapod",
     },
-    research_trigger =
+    unit =
     {
-      type = "build-entity",
-      --trigger_description = {"description.panglia_collect_dna_pentapod"},
-      --icon = icons .. "data/panglia_collect_dna_pentapod.png",
-      entity = "processing-grid-process-dna",
-    },
+      count = 500,
+      ingredients =
+      {
+        {"datacell-dna-raw", 1},
+      },
+      time = 60
+    }
   },
 
   {
