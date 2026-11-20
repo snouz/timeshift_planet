@@ -287,7 +287,7 @@ local graphicsset = function(num)
 
   return
   {
-    animation_progress = 0.5,
+    animation_progress = 0.2,
     always_draw_idle_animation = true,
     states =
     {
@@ -461,7 +461,7 @@ data:extend({
     alert_icon_shift = util.by_pixel(0, 0),
     graphics_set = graphicsset(1),
     match_animation_speed_to_activity = true,
-    perceived_performance  = {minimum = 0.5, maximum = 5},
+    perceived_performance  = {minimum = 0.5, maximum = 2},
     crafting_speed = 1,
     energy_source =
     {
@@ -544,7 +544,7 @@ data:extend({
     alert_icon_shift = util.by_pixel(0, 0),
     graphics_set = graphicsset(2),
     match_animation_speed_to_activity = true,
-    perceived_performance  = {minimum = 0.5, maximum = 5},
+    perceived_performance  = {minimum = 0.5, maximum = 2},
     crafting_speed = 1,
     energy_source =
     {

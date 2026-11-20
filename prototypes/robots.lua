@@ -1,8 +1,22 @@
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
+local item_sounds = require("__base__.prototypes.item_sounds")
 local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
 local robot_animations = {}
+
+local logisticbot = "__panglia_planet_assets__/graphics/entity/logistic-robot/"
+local constructionbot = "__panglia_planet_assets__/graphics/entity/construction-robot/"
+local icons = "__panglia_planet__/graphics/icons/"
+
+
+
+---------------------------------------
+
+local bot_speed_multiplier = 3
+
+---------------------------------------
+
 
 data:extend({
 
@@ -15,7 +29,7 @@ data:extend({
   {
     type = "item",
     name = "panglia_logistic-robot",
-    icon = "__base__/graphics/icons/logistic-robot.png",
+    icon = icons .. "logistic-robot.png",
     subgroup = "logistic-network",
     order = "a[robot]-a1[logistic-robot]",
     inventory_move_sound = item_sounds.robotic_inventory_move,
@@ -28,7 +42,7 @@ data:extend({
   {
     type = "item",
     name = "panglia_construction-robot",
-    icon = "__base__/graphics/icons/construction-robot.png",
+    icon = icons .. "construction-robot.png",
     subgroup = "logistic-network",
     order = "a[robot]-b1[construction-robot]",
     inventory_move_sound = item_sounds.robotic_inventory_move,
@@ -144,13 +158,27 @@ robot_animations.sparks =
     animation_speed = 0.3
   }
 }
-
+--    ██       ██████   ██████  ██ ███████ ████████         ██████  ██████   █████  ██████  ██   ██ ██  ██████ ███████ 
+--    ██      ██    ██ ██       ██ ██         ██           ██       ██   ██ ██   ██ ██   ██ ██   ██ ██ ██      ██      
+--    ██      ██    ██ ██   ███ ██ ███████    ██           ██   ███ ██████  ███████ ██████  ███████ ██ ██      ███████ 
+--    ██      ██    ██ ██    ██ ██      ██    ██           ██    ██ ██   ██ ██   ██ ██      ██   ██ ██ ██           ██ 
+--    ███████  ██████   ██████  ██ ███████    ██    ██      ██████  ██   ██ ██   ██ ██      ██   ██ ██  ██████ ███████ 
 robot_animations.logistic_robot =
 {
+
+  idle_with_cargo =
+  {
+    filename = logisticbot .. "logistic-robot.png",
+    line_length = 16,
+    width = 80,
+    height = 84,
+    shift = util.by_pixel(0, -3),
+    direction_count = 16,
+    scale = 0.5
+  },
   idle =
   {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot.png",
-    priority = "high",
+    filename = logisticbot .. "logistic-robot.png",
     line_length = 16,
     width = 80,
     height = 84,
@@ -159,70 +187,55 @@ robot_animations.logistic_robot =
     y = 84,
     scale = 0.5
   },
-  idle_with_cargo =
+  in_motion_with_cargo =
   {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot.png",
-    priority = "high",
+    filename = logisticbot .. "logistic-robot.png",
     line_length = 16,
     width = 80,
     height = 84,
     shift = util.by_pixel(0, -3),
     direction_count = 16,
+    y = 84*2,
     scale = 0.5
   },
   in_motion =
   {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot.png",
-    priority = "high",
+    filename = logisticbot .. "logistic-robot.png",
     line_length = 16,
     width = 80,
     height = 84,
     shift = util.by_pixel(0, -3),
     direction_count = 16,
-    y = 252,
+    y = 84*3,
     scale = 0.5
   },
-  in_motion_with_cargo =
+-------------------------------------------------------------------------------------
+  shadow_idle_with_cargo =
   {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot.png",
-    priority = "high",
-    line_length = 16,
-    width = 80,
-    height = 84,
-    shift = util.by_pixel(0, -3),
-    direction_count = 16,
-    y = 168,
-    scale = 0.5
-  },
-  shadow_idle =
-  {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
-    priority = "high",
+    filename = logisticbot .. "logistic-robot-shadow.png",
     line_length = 16,
     width = 115,
     height = 57,
     shift = util.by_pixel(31.75, 19.75),
     direction_count = 16,
-    y = 57,
     scale = 0.5,
     draw_as_shadow = true
   },
-  shadow_idle_with_cargo =
+  shadow_idle =
   {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
-    priority = "high",
+    filename = logisticbot .. "logistic-robot-shadow.png",
     line_length = 16,
     width = 115,
     height = 57,
     shift = util.by_pixel(31.75, 19.75),
     direction_count = 16,
+    y = 57*1,
     scale = 0.5,
     draw_as_shadow = true
   },
   shadow_in_motion =
   {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
-    priority = "high",
+    filename = logisticbot .. "logistic-robot-shadow.png",
     line_length = 16,
     width = 115,
     height = 57,
@@ -234,27 +247,28 @@ robot_animations.logistic_robot =
   },
   shadow_in_motion_with_cargo =
   {
-    filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
-    priority = "high",
+    filename = logisticbot .. "logistic-robot-shadow.png",
     line_length = 16,
     width = 115,
     height = 57,
     shift = util.by_pixel(31.75, 19.75),
     direction_count = 16,
-    y = 114,
+    y = 57*2,
     scale = 0.5,
     draw_as_shadow = true
   }
 }
 
-
+--     ██████  ██████  ███    ██ ███████ ████████         ██████  ██████   █████  ██████  ██   ██ ██  ██████ ███████ 
+--    ██      ██    ██ ████   ██ ██         ██           ██       ██   ██ ██   ██ ██   ██ ██   ██ ██ ██      ██      
+--    ██      ██    ██ ██ ██  ██ ███████    ██           ██   ███ ██████  ███████ ██████  ███████ ██ ██      ███████ 
+--    ██      ██    ██ ██  ██ ██      ██    ██           ██    ██ ██   ██ ██   ██ ██      ██   ██ ██ ██           ██ 
+--     ██████  ██████  ██   ████ ███████    ██    ██      ██████  ██   ██ ██   ██ ██      ██   ██ ██  ██████ ███████ 
 robot_animations.construction_robot =
 {
-
   idle =
   {
-    filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
-    priority = "high",
+    filename = constructionbot .. "construction-robot.png",
     line_length = 16,
     width = 66,
     height = 76,
@@ -264,8 +278,7 @@ robot_animations.construction_robot =
   },
   in_motion =
   {
-    filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
-    priority = "high",
+    filename = constructionbot .. "construction-robot.png",
     line_length = 16,
     width = 66,
     height = 76,
@@ -274,10 +287,22 @@ robot_animations.construction_robot =
     y = 76,
     scale = 0.5
   },
+  working =
+  {
+    filename = constructionbot .. "construction-robot-working.png",
+    line_length = 2,
+    width = 57,
+    height = 74,
+    frame_count = 2,
+    shift = util.by_pixel(-0.25, -5),
+    direction_count = 16,
+    animation_speed = 0.3,
+    scale = 0.5
+  },
+-------------------------------------------------------------------------------------
   shadow_idle =
   {
-    filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
-    priority = "high",
+    filename = constructionbot .. "construction-robot-shadow.png",
     line_length = 16,
     width = 104,
     height = 49,
@@ -288,8 +313,7 @@ robot_animations.construction_robot =
   },
   shadow_in_motion =
   {
-    filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
-    priority = "high",
+    filename = constructionbot .. "construction-robot-shadow.png",
     line_length = 16,
     width = 104,
     height = 49,
@@ -298,23 +322,9 @@ robot_animations.construction_robot =
     scale = 0.5,
     draw_as_shadow = true
   },
-  working =
-  {
-    filename = "__base__/graphics/entity/construction-robot/construction-robot-working.png",
-    priority = "high",
-    line_length = 2,
-    width = 57,
-    height = 74,
-    frame_count = 2,
-    shift = util.by_pixel(-0.25, -5),
-    direction_count = 16,
-    animation_speed = 0.3,
-    scale = 0.5
-  },
   shadow_working =
   {
-    filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
-    priority = "high",
+    filename = constructionbot .. "construction-robot-shadow.png",
     line_length = 16,
     width = 104,
     height = 49,
@@ -328,29 +338,133 @@ robot_animations.construction_robot =
 
 data:extend({
 
---    ██████  ██    ██ ██ ██      ██████      ██████   ██████  ████████ 
---    ██   ██ ██    ██ ██ ██      ██   ██     ██   ██ ██    ██    ██    
---    ██████  ██    ██ ██ ██      ██   ██     ██████  ██    ██    ██    
---    ██   ██ ██    ██ ██ ██      ██   ██     ██   ██ ██    ██    ██    
---    ██████   ██████  ██ ███████ ██████      ██████   ██████     ██    
+--    ██████  ███████ ███    ███ ███    ██  █████  ███    ██ ████████ ███████ 
+--    ██   ██ ██      ████  ████ ████   ██ ██   ██ ████   ██    ██    ██      
+--    ██████  █████   ██ ████ ██ ██ ██  ██ ███████ ██ ██  ██    ██    ███████ 
+--    ██   ██ ██      ██  ██  ██ ██  ██ ██ ██   ██ ██  ██ ██    ██         ██ 
+--    ██   ██ ███████ ██      ██ ██   ████ ██   ██ ██   ████    ██    ███████ 
+
+{
+  type = "corpse",
+  name = "panglia_logistic-robot-remnants",
+  icon = "__base__/graphics/icons/logistic-robot.png",
+  flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+  hidden_in_factoriopedia = true,
+  selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+  tile_width = 3,
+  tile_height = 3,
+  selectable_in_game = false,
+  subgroup = "remnants",
+  order="d[remnants]-a[generic]-a[small]",
+  time_before_removed = 60 * 60 * 15, -- 15 minutes
+  final_render_layer = "remnants",
+  remove_on_tile_placement = false,
+  animation = make_rotated_animation_variations_from_sheet (3,
+  {
+    filename = logisticbot .. "remnants/logistic-robot-remnants.png",
+    line_length = 1,
+    width = 116,
+    height = 114,
+    direction_count = 1,
+    shift = util.by_pixel(1, 1),
+    scale = 0.5
+  })
+},
+
+{
+  type = "corpse",
+  name = "panglia_construction-robot-remnants",
+  icon = "__base__/graphics/icons/construction-robot.png",
+  flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+  hidden_in_factoriopedia = true,
+  selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+  tile_width = 3,
+  tile_height = 3,
+  selectable_in_game = false,
+  subgroup = "remnants",
+  order="d[remnants]-a[generic]-a[small]",
+  time_before_removed = 60 * 60 * 15, -- 15 minutes
+  final_render_layer = "remnants",
+  remove_on_tile_placement = false,
+  animation = make_rotated_animation_variations_from_sheet (3,
+  {
+    filename = constructionbot .. "remnants/construction-robot-remnants.png",
+    line_length = 1,
+    width = 120,
+    height = 114,
+    direction_count = 1,
+    shift = util.by_pixel(2, 1),
+    scale = 0.5
+  })
+},
+
+
+--    ██       ██████   ██████  ██ ███████ ████████ ██  ██████     ██████   ██████  ████████ 
+--    ██      ██    ██ ██       ██ ██         ██    ██ ██          ██   ██ ██    ██    ██    
+--    ██      ██    ██ ██   ███ ██ ███████    ██    ██ ██          ██████  ██    ██    ██    
+--    ██      ██    ██ ██    ██ ██      ██    ██    ██ ██          ██   ██ ██    ██    ██    
+--    ███████  ██████   ██████  ██ ███████    ██    ██  ██████     ██████   ██████     ██    
+
+{
+  type = "logistic-robot",
+  name = "panglia_logistic-robot",
+  icon = icons .. "logistic-robot.png",
+  flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
+  minable = {mining_time = 0.1, result = "logistic-robot"},
+  tall = true,
+  is_military_target = false,
+  resistances =
+  {
+    { type = "fire", percent = 85 }
+  },
+  max_health = 100,
+  collision_box = {{0, 0}, {0, 0}},
+  selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
+  hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
+  damaged_trigger_effect = hit_effects.flying_robot(),
+  dying_explosion = "logistic-robot-explosion",
+  factoriopedia_simulation = simulations.factoriopedia_logistic_robot,
+  max_payload_size = 1,
+  speed = 0.05 * bot_speed_multiplier,
+  max_energy = "1.5MJ",
+  energy_per_tick = "0.05kJ",
+  speed_multiplier_when_out_of_energy = 0.2,
+  energy_per_move = tostring(math.floor(5000 / bot_speed_multiplier)) .. "J", --5kJ 
+  min_to_charge = 0.2,
+  max_to_charge = 0.95,
+  working_sound = sounds.flying_robot(0.48),
+  charging_sound = sounds.robot_charging,
+  icon_draw_specification = {shift = {0, -0.2}, scale = 0.5, render_layer = "air-entity-info-icon"},
+  water_reflection = robot_reflection(1),
+  idle = robot_animations.logistic_robot.idle,
+  idle_with_cargo = robot_animations.logistic_robot.idle_with_cargo,
+  in_motion = robot_animations.logistic_robot.in_motion,
+  in_motion_with_cargo = robot_animations.logistic_robot.in_motion_with_cargo,
+  shadow_idle = robot_animations.logistic_robot.shadow_idle,
+  shadow_idle_with_cargo = robot_animations.logistic_robot.shadow_idle_with_cargo,
+  shadow_in_motion = robot_animations.logistic_robot.shadow_in_motion,
+  shadow_in_motion_with_cargo = robot_animations.logistic_robot.shadow_in_motion_with_cargo
+},
+
+
+
+--     ██████  ██████  ███    ██ ███████ ████████ ██████  ██    ██  ██████ ████████ ██  ██████  ███    ██     ██████   ██████  ████████ 
+--    ██      ██    ██ ████   ██ ██         ██    ██   ██ ██    ██ ██         ██    ██ ██    ██ ████   ██     ██   ██ ██    ██    ██    
+--    ██      ██    ██ ██ ██  ██ ███████    ██    ██████  ██    ██ ██         ██    ██ ██    ██ ██ ██  ██     ██████  ██    ██    ██    
+--    ██      ██    ██ ██  ██ ██      ██    ██    ██   ██ ██    ██ ██         ██    ██ ██    ██ ██  ██ ██     ██   ██ ██    ██    ██    
+--     ██████  ██████  ██   ████ ███████    ██    ██   ██  ██████   ██████    ██    ██  ██████  ██   ████     ██████   ██████     ██    
 
 {
   type = "construction-robot",
   name = "panglia_construction-robot",
-  icon = "__base__/graphics/icons/construction-robot.png",
+  icon = icons .. "construction-robot.png",
   flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
   minable = {mining_time = 0.1, result = "construction-robot"},
   tall = true,
   resistances =
   {
-    {
-      type = "fire",
-      percent = 85
-    },
-    {
-      type = "electric",
-      percent = 50
-    }
+    { type = "fire", percent = 85 },
+    { type = "electric", percent = 50 }
   },
   max_health = 100,
   collision_box = {{0, 0}, {0, 0}},
@@ -360,11 +474,11 @@ data:extend({
   dying_explosion = "construction-robot-explosion",
   factoriopedia_simulation = simulations.factoriopedia_construction_robot,
   max_payload_size = 1,
-  speed = 0.06,
+  speed = 0.06 * bot_speed_multiplier,
   max_energy = "3MJ",
   energy_per_tick = "0.05kJ",
   speed_multiplier_when_out_of_energy = 0.2,
-  energy_per_move = "5kJ",
+  energy_per_move = tostring(math.floor(5000 / bot_speed_multiplier)) .. "J", --5kJ 
   min_to_charge = 0.2,
   max_to_charge = 0.95,
   smoke =
@@ -395,56 +509,6 @@ data:extend({
   shadow_in_motion_with_cargo = robot_animations.construction_robot.shadow_in_motion_with_cargo,
   working = robot_animations.construction_robot.working,
   shadow_working = robot_animations.construction_robot.shadow_working
-},
-
---    ██       ██████   ██████  ██ ███████ ████████ ██  ██████     ██████   ██████  ████████ 
---    ██      ██    ██ ██       ██ ██         ██    ██ ██          ██   ██ ██    ██    ██    
---    ██      ██    ██ ██   ███ ██ ███████    ██    ██ ██          ██████  ██    ██    ██    
---    ██      ██    ██ ██    ██ ██      ██    ██    ██ ██          ██   ██ ██    ██    ██    
---    ███████  ██████   ██████  ██ ███████    ██    ██  ██████     ██████   ██████     ██    
-
-{
-  type = "logistic-robot",
-  name = "panglia_logistic-robot",
-  icon = "__base__/graphics/icons/logistic-robot.png",
-  flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
-  minable = {mining_time = 0.1, result = "logistic-robot"},
-  tall = true,
-  is_military_target = false,
-  resistances =
-  {
-    {
-      type = "fire",
-      percent = 85
-    }
-  },
-  max_health = 100,
-  collision_box = {{0, 0}, {0, 0}},
-  selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-  hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
-  damaged_trigger_effect = hit_effects.flying_robot(),
-  dying_explosion = "logistic-robot-explosion",
-  factoriopedia_simulation = simulations.factoriopedia_logistic_robot,
-  max_payload_size = 1,
-  speed = 0.05,
-  max_energy = "1.5MJ",
-  energy_per_tick = "0.05kJ",
-  speed_multiplier_when_out_of_energy = 0.2,
-  energy_per_move = "5kJ",
-  min_to_charge = 0.2,
-  max_to_charge = 0.95,
-  working_sound = sounds.flying_robot(0.48),
-  charging_sound = sounds.robot_charging,
-  icon_draw_specification = {shift = {0, -0.2}, scale = 0.5, render_layer = "air-entity-info-icon"},
-  water_reflection = robot_reflection(1),
-  idle = robot_animations.logistic_robot.idle,
-  idle_with_cargo = robot_animations.logistic_robot.idle_with_cargo,
-  in_motion = robot_animations.logistic_robot.in_motion,
-  in_motion_with_cargo = robot_animations.logistic_robot.in_motion_with_cargo,
-  shadow_idle = robot_animations.logistic_robot.shadow_idle,
-  shadow_idle_with_cargo = robot_animations.logistic_robot.shadow_idle_with_cargo,
-  shadow_in_motion = robot_animations.logistic_robot.shadow_in_motion,
-  shadow_in_motion_with_cargo = robot_animations.logistic_robot.shadow_in_motion_with_cargo
 },
 
 })

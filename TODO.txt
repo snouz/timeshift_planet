@@ -32,4 +32,9 @@ ok, followup problem: how do I destroy excess igneous rock on panglia? Its unrec
 
 Add smoke to crusher
 
-item ordering
+
+moshine: add underground data cable (length 2 hole)
+
+use klaudia brains to make custom spidertron
+
+equipment/research to increase character crafting

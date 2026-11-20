@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.3
+Date: 2026-11-
+  Balancing:
+    - Time of cloning recipes made much longer (to offset speed zones) (accidentally left the placeholder multiplier in beta 8)
+  Gui:
+    - Correctly ordered sentient processor recipe
+    - Correctly placed raw dna data recipe (doesn't make fluid category appear by itself)
+  Graphics:
+    - Slowed down sped-up Embryo forge animation
+  Locale:
+    - Update of Chinese locale by ChuijkYahus
+---------------------------------------------------------------------------------------------------
 Version: 0.8.2
 Date: 2026-10-31
   Bugfixes:
