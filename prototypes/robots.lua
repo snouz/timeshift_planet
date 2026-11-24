@@ -31,11 +31,11 @@ data:extend({
     name = "panglia_logistic-robot",
     icon = icons .. "logistic-robot.png",
     subgroup = "logistic-network",
-    order = "a[robot]-a1[logistic-robot]",
+    order = "a[robot]-c[panglia_logistic-robot]",
     inventory_move_sound = item_sounds.robotic_inventory_move,
     pick_sound = item_sounds.robotic_inventory_pickup,
     drop_sound = item_sounds.robotic_inventory_move,
-    place_result = "logistic-robot",
+    place_result = "panglia_logistic-robot",
     stack_size = 50,
     random_tint_color = item_tints.iron_rust
   },
@@ -44,11 +44,11 @@ data:extend({
     name = "panglia_construction-robot",
     icon = icons .. "construction-robot.png",
     subgroup = "logistic-network",
-    order = "a[robot]-b1[construction-robot]",
+    order = "a[robot]-d[panglia_construction-robot]",
     inventory_move_sound = item_sounds.robotic_inventory_move,
     pick_sound = item_sounds.robotic_inventory_pickup,
     drop_sound = item_sounds.robotic_inventory_move,
-    place_result = "construction-robot",
+    place_result = "panglia_construction-robot",
     stack_size = 50,
     random_tint_color = item_tints.iron_rust
   },
@@ -65,10 +65,10 @@ data:extend({
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "flying-robot-frame", amount = 1},
-      {type = "item", name = "advanced-circuit", amount = 2}
+      {type = "item", name = "logistic-robot", amount = 1},
+      {type = "item", name = "panglia_sentient_processor", amount = 1}
     },
-    results = {{type="item", name="logistic-robot", amount=1}}
+    results = {{type="item", name="panglia_logistic-robot", amount=1}}
   },
   {
     type = "recipe",
@@ -76,10 +76,10 @@ data:extend({
     enabled = false,
     ingredients =
     {
-      {type = "item", name = "flying-robot-frame", amount = 1},
-      {type = "item", name = "electronic-circuit", amount = 2}
+      {type = "item", name = "construction-robot", amount = 1},
+      {type = "item", name = "panglia_sentient_processor", amount = 1}
     },
-    results = {{type="item", name="construction-robot", amount=1}}
+    results = {{type="item", name="panglia_construction-robot", amount=1}}
   },
 })
 
@@ -88,8 +88,8 @@ data:extend({
 --    ██   ███ ██████  ███████ ██████  ███████ ██ ██      ███████ 
 --    ██    ██ ██   ██ ██   ██ ██      ██   ██ ██ ██           ██ 
 --     ██████  ██   ██ ██   ██ ██      ██   ██ ██  ██████ ███████ 
-
-robot_animations.sparks =
+local panglia_robot_animations = {}
+panglia_robot_animations.sparks =
 {
   {
     filename = "__base__/graphics/entity/sparks/sparks-01.png",
@@ -163,7 +163,7 @@ robot_animations.sparks =
 --    ██      ██    ██ ██   ███ ██ ███████    ██           ██   ███ ██████  ███████ ██████  ███████ ██ ██      ███████ 
 --    ██      ██    ██ ██    ██ ██      ██    ██           ██    ██ ██   ██ ██   ██ ██      ██   ██ ██ ██           ██ 
 --    ███████  ██████   ██████  ██ ███████    ██    ██      ██████  ██   ██ ██   ██ ██      ██   ██ ██  ██████ ███████ 
-robot_animations.logistic_robot =
+panglia_robot_animations.logistic_robot =
 {
 
   idle_with_cargo =
@@ -195,7 +195,7 @@ robot_animations.logistic_robot =
     height = 84,
     shift = util.by_pixel(0, -3),
     direction_count = 16,
-    y = 84*2,
+    y = 84*0,
     scale = 0.5
   },
   in_motion =
@@ -206,7 +206,7 @@ robot_animations.logistic_robot =
     height = 84,
     shift = util.by_pixel(0, -3),
     direction_count = 16,
-    y = 84*3,
+    y = 84*1,
     scale = 0.5
   },
 -------------------------------------------------------------------------------------
@@ -233,6 +233,18 @@ robot_animations.logistic_robot =
     scale = 0.5,
     draw_as_shadow = true
   },
+  shadow_in_motion_with_cargo =
+  {
+    filename = logisticbot .. "logistic-robot-shadow.png",
+    line_length = 16,
+    width = 115,
+    height = 57,
+    shift = util.by_pixel(31.75, 19.75),
+    direction_count = 16,
+    y = 57*2,
+    scale = 0.5,
+    draw_as_shadow = true
+  },
   shadow_in_motion =
   {
     filename = logisticbot .. "logistic-robot-shadow.png",
@@ -245,18 +257,6 @@ robot_animations.logistic_robot =
     scale = 0.5,
     draw_as_shadow = true
   },
-  shadow_in_motion_with_cargo =
-  {
-    filename = logisticbot .. "logistic-robot-shadow.png",
-    line_length = 16,
-    width = 115,
-    height = 57,
-    shift = util.by_pixel(31.75, 19.75),
-    direction_count = 16,
-    y = 57*2,
-    scale = 0.5,
-    draw_as_shadow = true
-  }
 }
 
 --     ██████  ██████  ███    ██ ███████ ████████         ██████  ██████   █████  ██████  ██   ██ ██  ██████ ███████ 
@@ -264,7 +264,7 @@ robot_animations.logistic_robot =
 --    ██      ██    ██ ██ ██  ██ ███████    ██           ██   ███ ██████  ███████ ██████  ███████ ██ ██      ███████ 
 --    ██      ██    ██ ██  ██ ██      ██    ██           ██    ██ ██   ██ ██   ██ ██      ██   ██ ██ ██           ██ 
 --     ██████  ██████  ██   ████ ███████    ██    ██      ██████  ██   ██ ██   ██ ██      ██   ██ ██  ██████ ███████ 
-robot_animations.construction_robot =
+panglia_robot_animations.construction_robot =
 {
   idle =
   {
@@ -333,7 +333,7 @@ robot_animations.construction_robot =
     direction_count = 16,
     scale = 0.5,
     draw_as_shadow = true
-  }
+  },
 }
 
 data:extend({
@@ -410,14 +410,14 @@ data:extend({
   name = "panglia_logistic-robot",
   icon = icons .. "logistic-robot.png",
   flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
-  minable = {mining_time = 0.1, result = "logistic-robot"},
+  minable = {mining_time = 0.1, result = "panglia_logistic-robot"},
   tall = true,
   is_military_target = false,
   resistances =
   {
-    { type = "fire", percent = 85 }
+    --{ type = "fire", percent = 85 }
   },
-  max_health = 100,
+  max_health = 70,
   collision_box = {{0, 0}, {0, 0}},
   selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
   hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
@@ -436,14 +436,14 @@ data:extend({
   charging_sound = sounds.robot_charging,
   icon_draw_specification = {shift = {0, -0.2}, scale = 0.5, render_layer = "air-entity-info-icon"},
   water_reflection = robot_reflection(1),
-  idle = robot_animations.logistic_robot.idle,
-  idle_with_cargo = robot_animations.logistic_robot.idle_with_cargo,
-  in_motion = robot_animations.logistic_robot.in_motion,
-  in_motion_with_cargo = robot_animations.logistic_robot.in_motion_with_cargo,
-  shadow_idle = robot_animations.logistic_robot.shadow_idle,
-  shadow_idle_with_cargo = robot_animations.logistic_robot.shadow_idle_with_cargo,
-  shadow_in_motion = robot_animations.logistic_robot.shadow_in_motion,
-  shadow_in_motion_with_cargo = robot_animations.logistic_robot.shadow_in_motion_with_cargo
+  idle = panglia_robot_animations.logistic_robot.idle,
+  idle_with_cargo = panglia_robot_animations.logistic_robot.idle_with_cargo,
+  in_motion = panglia_robot_animations.logistic_robot.in_motion,
+  in_motion_with_cargo = panglia_robot_animations.logistic_robot.in_motion_with_cargo,
+  shadow_idle = panglia_robot_animations.logistic_robot.shadow_idle,
+  shadow_idle_with_cargo = panglia_robot_animations.logistic_robot.shadow_idle_with_cargo,
+  shadow_in_motion = panglia_robot_animations.logistic_robot.shadow_in_motion,
+  shadow_in_motion_with_cargo = panglia_robot_animations.logistic_robot.shadow_in_motion_with_cargo
 },
 
 
@@ -459,14 +459,14 @@ data:extend({
   name = "panglia_construction-robot",
   icon = icons .. "construction-robot.png",
   flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
-  minable = {mining_time = 0.1, result = "construction-robot"},
+  minable = {mining_time = 0.1, result = "panglia_construction-robot"},
   tall = true,
   resistances =
   {
-    { type = "fire", percent = 85 },
-    { type = "electric", percent = 50 }
+    --{ type = "fire", percent = 85 },
+    --{ type = "electric", percent = 50 }
   },
-  max_health = 100,
+  max_health = 60,
   collision_box = {{0, 0}, {0, 0}},
   selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
   hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
@@ -491,7 +491,7 @@ data:extend({
     shift = {0.078125, -0.15625},
     animation_speed = 0.3
   },
-  sparks = robot_animations.sparks,
+  sparks = panglia_robot_animations.sparks,
   repairing_sound = sound_variations("__base__/sound/robot-repair", 6, 0.6),
   working_sound = sounds.construction_robot(0.47),
   charging_sound = sounds.robot_charging,
@@ -499,16 +499,16 @@ data:extend({
   icon_draw_specification = {shift = {0, -0.2}, scale = 0.5, render_layer = "air-entity-info-icon"},
   construction_vector = {0.30, 0.22},
   water_reflection = robot_reflection(1),
-  idle = robot_animations.construction_robot.idle,
-  idle_with_cargo = robot_animations.construction_robot.idle_with_cargo,
-  in_motion = robot_animations.construction_robot.in_motion,
-  in_motion_with_cargo = robot_animations.construction_robot.in_motion_with_cargo,
-  shadow_idle = robot_animations.construction_robot.shadow_idle,
-  shadow_idle_with_cargo = robot_animations.construction_robot.shadow_idle_with_cargo,
-  shadow_in_motion = robot_animations.construction_robot.shadow_in_motion,
-  shadow_in_motion_with_cargo = robot_animations.construction_robot.shadow_in_motion_with_cargo,
-  working = robot_animations.construction_robot.working,
-  shadow_working = robot_animations.construction_robot.shadow_working
+  idle = panglia_robot_animations.construction_robot.idle,
+  idle_with_cargo = panglia_robot_animations.construction_robot.idle_with_cargo,
+  in_motion = panglia_robot_animations.construction_robot.in_motion,
+  in_motion_with_cargo = panglia_robot_animations.construction_robot.in_motion_with_cargo,
+  shadow_idle = panglia_robot_animations.construction_robot.shadow_idle,
+  shadow_idle_with_cargo = panglia_robot_animations.construction_robot.shadow_idle_with_cargo,
+  shadow_in_motion = panglia_robot_animations.construction_robot.shadow_in_motion,
+  shadow_in_motion_with_cargo = panglia_robot_animations.construction_robot.shadow_in_motion_with_cargo,
+  working = panglia_robot_animations.construction_robot.working,
+  shadow_working = panglia_robot_animations.construction_robot.shadow_working
 },
 
 })

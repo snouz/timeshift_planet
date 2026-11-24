@@ -1,11 +1,14 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.8.3
 Date: 2026-11-
+  Changes:
+    - Limited the crushing recipes to raw and intermediate materials instead of "literally anything", to reduce the number of recipes used by the mod when other mods provide a lot of items.
   Balancing:
     - Time of cloning recipes made much longer (to offset speed zones) (accidentally left the placeholder multiplier in beta 8)
   Gui:
     - Correctly ordered sentient processor recipe
     - Correctly placed raw dna data recipe (doesn't make fluid category appear by itself)
+    - Show possible inputs in hypercrusher
   Graphics:
     - Slowed down sped-up Embryo forge animation
   Locale:

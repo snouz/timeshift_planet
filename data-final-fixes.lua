@@ -177,14 +177,13 @@ function pangliacrushing.incinerateRecipe(item, category, weight)
       icons = newicons,
       categories = {"panglia_crushing"},
       enabled = true,
+      hidden = false,
       hide_from_player_crafting = true,
-      hide_from_signal_gui = true,
-      hidden = true,
       hidden_in_factoriopedia = true,
       allow_decomposition = false,
       allow_as_intermediate = false,
       always_show_made_in = true,
-      hide_from_signal_gui = false,
+      hide_from_signal_gui = true,
       allow_quality = false,
       -- this is now done through incinerator crafting speed
       -- energy_required = 1.0 / settings.startup["flare-stack-item-rate"].value,
@@ -203,6 +202,7 @@ function pangliacrushing.incinerateRecipe(item, category, weight)
   })
 end
 
+--[[
 -- non-item categories to incinerate too
 pangliacrushing.category_list = {
   "item",
@@ -224,6 +224,64 @@ for _, cat in pairs(pangliacrushing.category_list) do
     for _, proto in pairs(data.raw[cat]) do
       if proto.name ~= "panglia_dust" then
         pangliacrushing.incinerateRecipe(proto, cat)
+      end
+    end
+  end
+end
+]]
+
+-- non-item categories to incinerate too
+pangliacrushing.category_list = {
+  "raw-resource",
+  "raw-material",
+  "intermediate-products",
+  "uranium-processing",
+  "vulcanus-processes",
+  "fulgora-processes",
+  "aquilo-processes",
+  "moshine-processes",
+  "panglia-processes",
+  "terrain",
+  --"capsule",
+  --"ammo",
+  --"gun",
+  --"module",
+  --"armor",
+  --"mining-tool",
+  --"repair-tool",
+  --"tool",
+  --"blueprint-book",
+  --"blueprint",
+  --"rail-planner",
+}
+
+pangliacrushing.excluded_items = {
+"panglia_dust", "explosives", "battery", "nuclear-fuel", "superconductor", "supercapacitor", 
+"fusion-power-cell", "uranium-fuel-cell", "depleted-uranium-fuel-cell", "solid-fuel",
+
+"panglia_branbalite", "biter_dna_sample", "panglia_universe_precursor_volcanic", "panglia_dna_builder_phasetwo", 
+"panglia_dummy_anything_sign", "panglia_dummy_dna_builder_phase2", "panglia_cloned_specimen_embryo_candidate",
+"panglia_cloned_specimen_embryo", "panglia_dna_validated", "panglia_cloned_specimen_body_1", "panglia_cloned_specimen_body_2", 
+"mutated_monster_egg", "panglia_cloned_specimen_body_3_genius", "panglia_cloned_specimen_body_3",
+"panglia_sentient_processor", "3d-data-storage", "model-unstable", "model-stable",
+}
+
+local function check_if_not_excluded (tab, val)
+  for index, value in ipairs(tab) do
+    if value == val then
+      return false
+    end
+  end
+  return true
+end
+
+for _, cat in pairs(pangliacrushing.category_list) do
+  if data.raw["item-subgroup"][cat] then
+    for _, proto in pairs(data.raw.item) do
+      if proto.subgroup and proto.subgroup == cat then
+        if check_if_not_excluded(pangliacrushing.excluded_items, proto.name) then
+          pangliacrushing.incinerateRecipe(proto, cat)
+        end
       end
     end
   end
